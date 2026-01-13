@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "801057253354",
+    "project_id": "emlpoyform",
+    "storage_bucket": "emlpoyform.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:801057253354:android:4d24b197d94f11098fb493",
+        "android_client_info": {
+          "package_name": "com.example.add_data_in__firestore"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCPCqaM7sw2NfTSZOvFCuu46QRsnMfJlSU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
