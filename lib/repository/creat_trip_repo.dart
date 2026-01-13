@@ -22,4 +22,10 @@ class CreatTripRepo {
         .doc(tripId)
         .set({...creatTripInfo, "userId": user.uid});
   }
+
+  Future<Stream<QuerySnapshot>> creattripdetails() async {
+    return  FirebaseFirestore.instance
+        .collection('creattripuser')
+        .snapshots();
+  }
 }
