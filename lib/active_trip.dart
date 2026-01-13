@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:turist_app/autj_view/michal_turist_profile.dart';
 import 'package:turist_app/autj_view/notification_page.dart';
 import 'package:turist_app/components/custom_text.dart';
 import 'package:turist_app/components/popin_text.dart';
@@ -20,9 +21,15 @@ class _ActiveTripState extends State<ActiveTrip> {
       appBar: AppBar(
         leading: Padding(
           padding: const EdgeInsets.all(8.0),
-          child: Container(
-            child: ClipOval(
-              child: Image.asset('assets/guider.png', fit: BoxFit.cover),
+          child: InkWell(
+            onTap: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => MichalTuristProfile()));
+            },
+            child: Container(
+              child: ClipOval(
+                child: Image.asset('assets/guider.png', fit: BoxFit.cover),
+              ),
             ),
           ),
         ),

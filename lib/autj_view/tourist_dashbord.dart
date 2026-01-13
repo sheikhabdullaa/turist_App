@@ -48,7 +48,16 @@ class _TouristDashbordState extends State<TouristDashbord> {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            ClipOval(child: Image.asset('assets/sarah.png')),
+                            InkWell(
+                              onTap: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => TuristProfile(),
+                                  ),
+                                );
+                              },
+                              child: ClipOval(child: Image.asset('assets/sarah.png'))),
 
                             customtext(
                               text: 'Hello! Sarah Smith',

@@ -17,7 +17,7 @@ class ChooseRole extends StatefulWidget {
 class _ChooseRoleState extends State<ChooseRole> {
   @override
   Widget build(BuildContext context) {
-  final screenheight = MediaQuery.of(context).size.height;
+    final screenheight = MediaQuery.of(context).size.height;
     return Scaffold(
       backgroundColor: Colors.white,
       body: SafeArea(
@@ -60,9 +60,7 @@ class _ChooseRoleState extends State<ChooseRole> {
                   //1st card
                   Expanded(
                     child: InkWell(
-                      onTap: () {
-                        
-                      },
+                      onTap: () {},
                       child: InkWell(
                         onTap: () {
                           Navigator.push(
@@ -100,7 +98,7 @@ class _ChooseRoleState extends State<ChooseRole> {
                                   fw: FontWeight.w500,
                                 ),
                                 SizedBox(height: screenheight * 0.03),
-                        
+
                                 Center(
                                   child: inter(
                                     text: 'Explore amazing ',
@@ -132,7 +130,6 @@ class _ChooseRoleState extends State<ChooseRole> {
                   //2nd card
                   Expanded(
                     child: InkWell(
-                     
                       onTap: () {
                         Navigator.push(
                           context,
@@ -157,7 +154,9 @@ class _ChooseRoleState extends State<ChooseRole> {
                                   shape: BoxShape.circle,
                                   color: AppColors.blueascent,
                                   image: DecorationImage(
-                                    image: AssetImage('assets/travelguider.png'),
+                                    image: AssetImage(
+                                      'assets/travelguider.png',
+                                    ),
                                   ),
                                 ),
                               ),
@@ -169,7 +168,7 @@ class _ChooseRoleState extends State<ChooseRole> {
                                 fw: FontWeight.w500,
                               ),
                               SizedBox(height: screenheight * 0.03),
-                      
+
                               Center(
                                 child: inter(
                                   text: 'Share your expertise,',
@@ -237,9 +236,8 @@ class _ChooseRoleState extends State<ChooseRole> {
                   ),
                 ),
               ),
-                 
-               SizedBox(height:screenheight*0.1 ,),
-             
+
+              SizedBox(height: screenheight * 0.1),
             ],
           ),
         ),

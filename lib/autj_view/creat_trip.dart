@@ -4,6 +4,7 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:random_string/random_string.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:turist_app/active_trip.dart';
 import 'package:turist_app/classes/date_picker.dart';
 import 'package:turist_app/classes/prson_count.dart';
 import 'package:turist_app/components/custom_drop_down.dart';
@@ -406,6 +407,10 @@ class _CreatTripState extends State<CreatTrip> {
                         ),
                       ),
                       onPressed: () async {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => ActiveTrip()),
+                        );
                         final user = FirebaseAuth.instance.currentUser;
                         if (user == null) {
                           Fluttertoast.showToast(msg: "Please login first");
