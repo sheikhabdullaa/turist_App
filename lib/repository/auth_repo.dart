@@ -24,9 +24,15 @@ class AuthRepo {
         email: email,
         password: password,
       );
-      FirebaseFirestore.instance.collection('signupuser').doc(user.user?.uid,).set();
-
-        
+      FirebaseFirestore.instance
+          .collection('signupuser')
+          .doc(user.user?.uid)
+          .set({
+            'name': name,
+            'email': email,
+            // 'number': number,
+            'password': password,
+          });
 
       // ignore: avoid_returning_null_for_void
       return null;

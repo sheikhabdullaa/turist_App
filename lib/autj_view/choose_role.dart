@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:turist_app/autj_view/bottom_sheet.dart';
 import 'package:turist_app/autj_view/turist_dashbord_bottom_sheet.dart';
 import 'package:turist_app/components/custom_text.dart';
 import 'package:turist_app/components/homenaje.dart';
@@ -62,56 +63,66 @@ class _ChooseRoleState extends State<ChooseRole> {
                       onTap: () {
                         
                       },
-                      child: Card(
-                        color: AppColors.white,
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(
-                            horizontal: 10,
-                            vertical: 30,
-                          ),
-                          child: Column(
-                            children: [
-                              Container(
-                                height: 50,
-                                width: 50,
-                                decoration: BoxDecoration(
-                                  shape: BoxShape.circle,
-                                  color: AppColors.blueascent,
-                                  image: DecorationImage(
-                                    image: AssetImage('assets/man.png'),
+                      child: InkWell(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (_) => const TuristDashbordBottomSheet(),
+                            ),
+                          );
+                        },
+                        child: Card(
+                          color: AppColors.white,
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: 10,
+                              vertical: 30,
+                            ),
+                            child: Column(
+                              children: [
+                                Container(
+                                  height: 50,
+                                  width: 50,
+                                  decoration: BoxDecoration(
+                                    shape: BoxShape.circle,
+                                    color: AppColors.blueascent,
+                                    image: DecorationImage(
+                                      image: AssetImage('assets/man.png'),
+                                    ),
                                   ),
                                 ),
-                              ),
-                              SizedBox(height: screenheight * 0.03),
-                              homenage(
-                                text: 'Traveler',
-                                fontSize: 30,
-                                color: AppColors.black,
-                                fw: FontWeight.w500,
-                              ),
-                              SizedBox(height: screenheight * 0.03),
-                      
-                              Center(
-                                child: inter(
-                                  text: 'Explore amazing ',
+                                SizedBox(height: screenheight * 0.03),
+                                homenage(
+                                  text: 'Traveler',
+                                  fontSize: 30,
+                                  color: AppColors.black,
+                                  fw: FontWeight.w500,
+                                ),
+                                SizedBox(height: screenheight * 0.03),
+                        
+                                Center(
+                                  child: inter(
+                                    text: 'Explore amazing ',
+                                    fontSize: 10,
+                                    color: AppColors.grey,
+                                    fw: FontWeight.w200,
+                                  ),
+                                ),
+                                inter(
+                                  text: ' destinations and book  ',
                                   fontSize: 10,
                                   color: AppColors.grey,
                                   fw: FontWeight.w200,
                                 ),
-                              ),
-                              inter(
-                                text: ' destinations and book  ',
-                                fontSize: 10,
-                                color: AppColors.grey,
-                                fw: FontWeight.w200,
-                              ),
-                              inter(
-                                text: 'unique experiences',
-                                fontSize: 10,
-                                color: AppColors.grey,
-                                fw: FontWeight.w200,
-                              ),
-                            ],
+                                inter(
+                                  text: 'unique experiences',
+                                  fontSize: 10,
+                                  color: AppColors.grey,
+                                  fw: FontWeight.w200,
+                                ),
+                              ],
+                            ),
                           ),
                         ),
                       ),
@@ -123,7 +134,12 @@ class _ChooseRoleState extends State<ChooseRole> {
                     child: InkWell(
                      
                       onTap: () {
-                        
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (_) => const guideBottomSheet(),
+                          ),
+                        );
                       },
                       child: Card(
                         color: AppColors.white,
