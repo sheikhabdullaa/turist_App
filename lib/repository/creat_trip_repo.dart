@@ -18,14 +18,12 @@ class CreatTripRepo {
     await _firestore
         .collection("creattripuser")
         .doc(user.uid)
-        .collection("trips")
-        .doc(tripId)
-        .set({...creatTripInfo, "userId": user.uid});
+        .collection("trips");
+
+    // .doc(tripId)
   }
 
   Future<Stream<QuerySnapshot>> creattripdetails() async {
-    return  FirebaseFirestore.instance
-        .collection('creattripuser')
-        .snapshots();
+    return FirebaseFirestore.instance.collection('creattripuser').snapshots();
   }
 }

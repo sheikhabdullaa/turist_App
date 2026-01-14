@@ -124,7 +124,7 @@ class _SignupWidgetState extends State<SignupWidget> {
                             await AuthRepo().signup(
                               emailcontroller.text.trim(),
                               passwordcontroller.text.trim(),
-                              namecontroller.text.trim()
+                              namecontroller.text.trim(),
                             );
 
                             // ignore: use_build_context_synchronously
