@@ -45,9 +45,9 @@ class _DatePickerFieldState extends State<DatePickerField> {
       _controller.text = widget.selectedDate != null
           ? _dateFormat.format(widget.selectedDate!)
           : '';
-      _controller.selection = TextSelection.fromPosition(
-        TextPosition(offset: _controller.text.length),
-      );
+      // _controller.selection = TextSelection.fromPosition(
+      //   TextPosition(offset: _controller.text.length),
+      // );
     }
   }
 

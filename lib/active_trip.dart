@@ -15,16 +15,6 @@ class ActiveTrip extends StatefulWidget {
 }
 
 class _ActiveTripState extends State<ActiveTrip> {
-  // Future<List<Trip?>>? trip;
-
-  // @override
-  // void initState() {
-  //   super.initState();
-  //   Future.microtask(() async {
-  //     trip =await CreatTripRepo().activeTripsGet();
-  //   });
-  // }
-
   @override
   Widget build(BuildContext context) {
     final screenHeight = MediaQuery.of(context).size.height;
@@ -108,189 +98,182 @@ class _ActiveTripState extends State<ActiveTrip> {
                       itemCount: snapshot.data?.length,
                       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                         crossAxisCount: 2,
-                        
                       ),
                       itemBuilder: (context, index) {
                         final trip = snapshot.data![index];
-                        return Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 5 , vertical: 50),
-                          child: Row(
-                            children: [
-                              Card(
-                                child: Column(
-                                  children: [
-                                    Stack(
-                                      children: [
-                                        Container(
-                                          width: 150,
-                                          height: 120,
-                                          decoration: BoxDecoration(
-                                            borderRadius: BorderRadius.circular(
-                                              10,
+                        return Row(
+                          children: [
+                            Card(
+                              child: Column(
+                                children: [
+                                  Stack(
+                                    children: [
+                                      Container(
+                                        width: 150,
+                                        height: 120,
+                                        decoration: BoxDecoration(
+                                          borderRadius: BorderRadius.circular(
+                                            10,
+                                          ),
+                                          image: DecorationImage(
+                                            image: AssetImage(
+                                              'assets/swizerland3.png',
                                             ),
-                                            image: DecorationImage(
-                                              image: AssetImage(
-                                                'assets/swizerland3.png',
+                                            fit: BoxFit.cover,
+                                          ),
+                                        ),
+
+                                        child: Padding(
+                                          padding: const EdgeInsets.symmetric(
+                                            vertical: 10,
+                                          ),
+                                          child: Row(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+
+                                            children: [
+                                              Padding(
+                                                padding:
+                                                    const EdgeInsets.symmetric(
+                                                      horizontal: 10,
+                                                    ),
+                                                child: ClipOval(
+                                                  child: Image.asset(
+                                                    'assets/maria.png',
+                                                  ),
+                                                ),
                                               ),
-                                              fit: BoxFit.cover,
-                                            ),
-                                          ),
+                                              Column(
+                                                children: [
+                                                  customtext(
+                                                    text: 'Planned by ',
+                                                    fontSize: 12,
+                                                    color: AppColors.white,
+                                                    fw: FontWeight.w400,
+                                                  ),
+                                                  customtext(
+                                                    text: trip?.username ?? '',
+                                                    fontSize: 12,
+                                                    color: AppColors.white,
+                                                    fw: FontWeight.w400,
+                                                  ),
+                                                ],
+                                              ),
 
-                                          child: Padding(
-                                            padding: const EdgeInsets.symmetric(
-                                              vertical: 10,
-                                            ),
-                                            child: Row(
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.start,
-
-                                              children: [
-                                                Padding(
-                                                  padding:
-                                                      const EdgeInsets.symmetric(
-                                                        horizontal: 10,
-                                                      ),
-                                                  child: Padding(
-                                                    padding:
-                                                        const EdgeInsets.only(
-                                                          top: 10,
-                                                        ),
-                                                    child: ClipOval(
-                                                      child: Image.asset(
-                                                        'assets/maria.png',
-                                                      ),
-                                                    ),
+                                              Expanded(
+                                                child: IconButton(
+                                                  onPressed: () {},
+                                                  icon: Icon(
+                                                    Icons.favorite_outline,
+                                                    color: AppColors.white,
                                                   ),
                                                 ),
-                                                Column(
-                                                  children: [
-                                                    customtext(
-                                                      text: 'Planned by ',
-                                                      fontSize: 12,
-                                                      color: AppColors.white,
-                                                      fw: FontWeight.w400,
-                                                    ),
-                                                    customtext(
-                                                      text: trip?.username ?? '',
-                                                      fontSize: 12,
-                                                      color: AppColors.white,
-                                                      fw: FontWeight.w400,
-                                                    ),
-                                                  ],
-                                                ),
-
-                                                Expanded(
-                                                  child: IconButton(
-                                                    onPressed: () {},
-                                                    icon: Icon(
-                                                      Icons.favorite_outline,
-                                                      color: AppColors.white,
-                                                    ),
-                                                  ),
-                                                ),
-                                              ],
-                                            ),
+                                              ),
+                                            ],
                                           ),
-                                        ),
-                                      ],
-                                    ),
-
-                                    Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.start,
-                                      children: [
-                                        popintext(
-                                          text: 'Swiss Alps',
-                                          fontSize: 16,
-                                          color: AppColors.black,
-                                          fw: FontWeight.w600,
-                                        ),
-                                        SizedBox(width: screenWidth * 0.03),
-                                        popintext(
-                                          text: trip?.members.toString() ??'',
-                                          fontSize: 14,
-                                          color: AppColors.grey,
-                                          fw: FontWeight.w400,
-                                        ),
-                                      ],
-                                    ),
-                                    popintext(
-                                      text: trip?.startDate.toString() ??'',
-                                      fontSize: 14,
-                                      color: AppColors.grey,
-                                      fw: FontWeight.w400,
-                                    ),
-                                    Row(
-                                      children: [
-                                        customtext(
-                                          text: trip?.budgetEstimate.toString() ??'',
-                                          fontSize: 16,
-                                          color: AppColors.green,
-                                          fw: FontWeight.w600,
-                                        ),
-                                        SizedBox(width: screenWidth * 0.03),
-                                        customtext(
-                                          text: trip?.members.toString() ??'',
-                                          fontSize: 14,
-                                          color: AppColors.grey,
-                                          fw: FontWeight.w400,
-                                        ),
-                                      ],
-                                    ),
-                                    SizedBox(height: screenHeight * 0.02),
-                                    SizedBox(
-                                      height: screenHeight * 0.055,
-                                      width: screenWidth * 0.4,
-                                      child: ElevatedButton(
-                                        onPressed: () {
-                                          Navigator.push(
-                                            context,
-                                            MaterialPageRoute(
-                                              builder: (context) =>
-                                                  ActiveTrip(),
-                                            ),
-                                          );
-                                        },
-                                        style: ElevatedButton.styleFrom(
-                                          backgroundColor: AppColors.blueascent,
-                                          foregroundColor: AppColors.white,
-                                          shape: RoundedRectangleBorder(
-                                            borderRadius: BorderRadius.circular(
-                                              17,
-                                            ),
-                                          ),
-                                          elevation: 0,
-                                        ),
-                                        child: Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.center,
-                                          children: [
-                                            popintext(
-                                              text: 'Join',
-                                              fontSize: 12,
-                                              color: AppColors.white,
-                                              fw: .w500,
-                                            ),
-                                            SizedBox(width: 6),
-                                            Icon(Icons.arrow_forward),
-                                          ],
                                         ),
                                       ),
+                                    ],
+                                  ),
+
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    children: [
+                                      popintext(
+                                        text: 'Swiss Alps',
+                                        fontSize: 16,
+                                        color: AppColors.black,
+                                        fw: FontWeight.w600,
+                                      ),
+                                      SizedBox(width: screenWidth * 0.03),
+                                      popintext(
+                                        text: trip?.members.toString() ?? '',
+                                        fontSize: 14,
+                                        color: AppColors.grey,
+                                        fw: FontWeight.w400,
+                                      ),
+                                      Icon(
+                                        Icons.person,
+                                        size: 14,
+                                        color: AppColors.grey,
+                                      ),
+                                    ],
+                                  ),
+                                  popintext(
+                                    text: trip?.startDate.toString() ?? '',
+                                    fontSize: 14,
+                                    color: AppColors.grey,
+                                    fw: FontWeight.w400,
+                                  ),
+                                  Row(
+                                    children: [
+                                      customtext(
+                                        text:
+                                            trip?.budgetEstimate.toString() ??
+                                            '',
+                                        fontSize: 16,
+                                        color: AppColors.green,
+                                        fw: FontWeight.w600,
+                                      ),
+                                      SizedBox(width: screenWidth * 0.03),
+                                      customtext(
+                                        text: 'per person',
+                                        fontSize: 14,
+                                        color: AppColors.grey,
+                                        fw: FontWeight.w400,
+                                      ),
+                                    ],
+                                  ),
+                                  SizedBox(height: screenHeight * 0.02),
+                                  SizedBox(
+                                    height: screenHeight * 0.055,
+                                    width: screenWidth * 0.4,
+                                    child: ElevatedButton(
+                                      onPressed: () {
+                                        Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                            builder: (context) => ActiveTrip(),
+                                          ),
+                                        );
+                                      },
+                                      style: ElevatedButton.styleFrom(
+                                        backgroundColor: AppColors.blueascent,
+                                        foregroundColor: AppColors.white,
+                                        shape: RoundedRectangleBorder(
+                                          borderRadius: BorderRadius.circular(
+                                            17,
+                                          ),
+                                        ),
+                                        elevation: 0,
+                                      ),
+                                      child: Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: [
+                                          popintext(
+                                            text: 'Join',
+                                            fontSize: 12,
+                                            color: AppColors.white,
+                                            fw: .w500,
+                                          ),
+                                          SizedBox(width: 6),
+                                          Icon(Icons.arrow_forward),
+                                        ],
+                                      ),
                                     ),
-                                    Container(height: screenHeight * 0.02),
-                                  ],
-                                ),
+                                  ),
+                                  Container(height: screenHeight * 0.02),
+                                ],
                               ),
-                            ],
-                          ),
+                            ),
+                          ],
                         );
                       },
                     );
                   }
 
-                  return Center(
-                    child: Text('No active trips found.'),
-                  );
+                  return Center(child: Text('No active trips found.'));
                 },
               ),
             ],
