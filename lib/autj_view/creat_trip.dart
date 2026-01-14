@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:image_picker/image_picker.dart';
@@ -400,6 +401,67 @@ class _CreatTripState extends State<CreatTrip> {
                         fw: FontWeight.w500,
                       ),
                     ),
+
+                    // ElevatedButton(
+                    //   style: ButtonStyle(
+                    //     backgroundColor: const WidgetStatePropertyAll(
+                    //       AppColors.blueascent,
+                    //     ),
+                    //   ),
+                    //   onPressed: () async {
+                    //     final user = FirebaseAuth.instance.currentUser;
+                    //     if (user == null) {
+                    //       Fluttertoast.showToast(msg: "Please login first");
+                    //       return;
+                    //     }
+
+                    //     String tripId = randomAlphaNumeric(10);
+
+                    //     await FirebaseFirestore.instance
+                    //         .collection('creattripuser')
+                    //         .doc(tripId)
+                    //         .set({
+                    //           'tripId': tripId,
+                    //           'userId': user.uid,
+
+                    //           // 🔥 REQUIRED BY ActiveTrip UI
+                    //           'tripName': selectedCategory ?? 'My Trip',
+                    //           'plannerName': 'Michal',
+                    //           'imageUrl':
+                    //               'https://images.unsplash.com/photo-1501785888041-af3ef285b470',
+                    //           'price': budgeteastimatecontroller.text,
+
+                    //           // EXTRA DATA
+                    //           'withFamily': withFamily,
+                    //           'withFriends': withFriends,
+                    //           'description': discriptioncontroller.text,
+                    //           'members': memberCount,
+                    //           'category': selectedCategory,
+                    //           'transport': selectedTransport,
+                    //           'accommodation': selectedAccommodation,
+                    //           'startDate': startDate,
+                    //           'endDate': endDate,
+
+                    //           // 🔥 IMPORTANT
+                    //           'createdAt': FieldValue.serverTimestamp(),
+                    //         });
+
+                    //     Fluttertoast.showToast(msg: "Trip saved successfully");
+
+                    //     // ✅ NAVIGATE AFTER SAVE
+                    //     Navigator.pushReplacement(
+                    //       context,
+                    //       MaterialPageRoute(builder: (_) => const ActiveTrip()),
+                    //     );
+                    //   },
+                    //   child: inter(
+                    //     text: 'Save Trip',
+                    //     fontSize: 16,
+                    //     color: AppColors.white,
+                    //     fw: FontWeight.w500,
+                    //   ),
+                    // ),
+
                     ElevatedButton(
                       style: ButtonStyle(
                         backgroundColor: WidgetStatePropertyAll(
@@ -419,7 +481,7 @@ class _CreatTripState extends State<CreatTrip> {
 
                         String tripId = randomAlphaNumeric(10);
 
-                        await CreatTripRepo().creatTrip({
+                        await CreatTripRepo().createTrip({
                           'tripId': tripId,
                           'userId': user.uid,
                           'withFamily': withFamily,
