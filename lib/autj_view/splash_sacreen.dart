@@ -14,8 +14,6 @@ class SplashSacreen extends StatefulWidget {
 class _SplashSacreenState extends State<SplashSacreen> {
   // ignore: annotate_overrides
   void initState() {
-    // TODO: implement initState
-
     Future.delayed(Duration(seconds: 2), () {
       Navigator.push(
         // ignore: use_build_context_synchronously

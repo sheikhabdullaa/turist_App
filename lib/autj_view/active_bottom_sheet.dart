@@ -26,6 +26,7 @@ class _activeguidebottomsheetState extends State<ActiveBottomSheet> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: _pages[currentIndex],
+      // ignore: sized_box_for_whitespace
       bottomNavigationBar: Container(
         height: 50,
         child: Row(

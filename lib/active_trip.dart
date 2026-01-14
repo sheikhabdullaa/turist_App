@@ -3,7 +3,6 @@ import 'package:turist_app/autj_view/michal_turist_profile.dart';
 import 'package:turist_app/autj_view/notification_page.dart';
 import 'package:turist_app/components/custom_text.dart';
 import 'package:turist_app/components/popin_text.dart';
-import 'package:turist_app/model/trip_model.dart';
 import 'package:turist_app/repository/creat_trip_repo.dart';
 import 'package:turist_app/utils/app_colors.dart';
 
@@ -30,10 +29,8 @@ class _ActiveTripState extends State<ActiveTrip> {
                 MaterialPageRoute(builder: (context) => MichalTuristProfile()),
               );
             },
-            child: Container(
-              child: ClipOval(
-                child: Image.asset('assets/guider.png', fit: BoxFit.cover),
-              ),
+            child: ClipOval(
+              child: Image.asset('assets/guider.png', fit: BoxFit.cover),
             ),
           ),
         ),

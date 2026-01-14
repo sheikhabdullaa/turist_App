@@ -29,7 +29,7 @@ class _guidebottomsheetState extends State<guideBottomSheet> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: _pages[currentIndex],
-      bottomNavigationBar: Container(
+      bottomNavigationBar: SizedBox(
         height: 50,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
