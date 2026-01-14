@@ -317,7 +317,12 @@ class _TripDaetailsState extends State<TripDaetails> {
                   ),
                   SizedBox(height: screenheight * 0.07),
                   ListTile(
-                    leading: popintext(text: 'Members (4)', fontSize: 16, color: AppColors.black , fw: FontWeight.w600),
+                    leading: popintext(
+                      text: 'Members (4)',
+                      fontSize: 16,
+                      color: AppColors.black,
+                      fw: FontWeight.w600,
+                    ),
                     trailing: Row(
                       mainAxisSize: MainAxisSize.min,
                       children: [
