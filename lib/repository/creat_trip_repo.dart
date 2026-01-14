@@ -19,10 +19,10 @@ class CreatTripRepo {
     });
   }
 
-  Stream<QuerySnapshot> activeTripsStream() {
+  Future<Stream<QuerySnapshot>> activeTripsStream() {
     final user = _auth.currentUser;
     if (user == null) {
-      return const Stream.empty(); 
+      return Future.value(const Stream.empty());
     }
 
     return _firestore
@@ -32,6 +32,8 @@ class CreatTripRepo {
         .snapshots();
   }
 }
+
+
 
 // import 'package:cloud_firestore/cloud_firestore.dart';
 // import 'package:firebase_auth/firebase_auth.dart';

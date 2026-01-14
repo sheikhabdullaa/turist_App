@@ -1,5 +1,3 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:turist_app/autj_view/michal_turist_profile.dart';
 import 'package:turist_app/autj_view/notification_page.dart';
@@ -1045,16 +1043,6 @@ class _ActiveTripState extends State<ActiveTrip> {
     );
   }
 }
-
-
-
-
-
-
-
-
-
-
 
 // import 'package:cloud_firestore/cloud_firestore.dart';
 // import 'package:firebase_auth/firebase_auth.dart';

@@ -461,7 +461,6 @@ class _CreatTripState extends State<CreatTrip> {
                     //     fw: FontWeight.w500,
                     //   ),
                     // ),
-
                     ElevatedButton(
                       style: ButtonStyle(
                         backgroundColor: WidgetStatePropertyAll(
