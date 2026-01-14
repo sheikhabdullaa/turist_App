@@ -18,7 +18,7 @@ class RequesttojoinTripDetails extends StatefulWidget {
 class _RequesttojoinTripDetailsState extends State<RequesttojoinTripDetails> {
   final dayClass = DayClasses();
   final degreeClass = DegreeClass();
-  // ignore: strict_top_level_inference
+
   get selectedDayIndex => null;
 
   @override
@@ -47,7 +47,6 @@ class _RequesttojoinTripDetailsState extends State<RequesttojoinTripDetails> {
         child: SingleChildScrollView(
           child: Column(
             children: [
-          
               Card(
                 child: Stack(
                   children: [
@@ -107,7 +106,10 @@ class _RequesttojoinTripDetailsState extends State<RequesttojoinTripDetails> {
                 ),
               ),
               ListTile(
-                leading: Icon(Icons.location_on_outlined , color: AppColors.grey,),
+                leading: Icon(
+                  Icons.location_on_outlined,
+                  color: AppColors.grey,
+                ),
 
                 title: popintext(
                   text: 'Tokyo, Japan',
@@ -148,7 +150,6 @@ class _RequesttojoinTripDetailsState extends State<RequesttojoinTripDetails> {
                 ),
               ),
 
-              
               SizedBox(height: screenheight * 0.07),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -156,7 +157,12 @@ class _RequesttojoinTripDetailsState extends State<RequesttojoinTripDetails> {
                   CustomButton(
                     title: 'Join Trip',
                     onPressed: () {
-                      Navigator.push(context, MaterialPageRoute(builder: (context)=>ActiveBottomSheet()));
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => ActiveBottomSheet(),
+                        ),
+                      );
                     },
                     bgColor: AppColors.blueascent,
                   ),
@@ -187,7 +193,7 @@ class _RequesttojoinTripDetailsState extends State<RequesttojoinTripDetails> {
                   ),
                   SizedBox(height: screenheight * 0.01),
                   ListTile(
-                      leading: ClipOval(
+                    leading: ClipOval(
                       child: SizedBox(
                         width: 40,
                         height: 40,
@@ -235,7 +241,7 @@ class _RequesttojoinTripDetailsState extends State<RequesttojoinTripDetails> {
                     ),
                   ),
                   ListTile(
-                     leading: ClipOval(
+                    leading: ClipOval(
                       child: SizedBox(
                         width: 40,
                         height: 40,
@@ -259,7 +265,7 @@ class _RequesttojoinTripDetailsState extends State<RequesttojoinTripDetails> {
                     ),
                   ),
                   ListTile(
-                     leading: ClipOval(
+                    leading: ClipOval(
                       child: SizedBox(
                         width: 40,
                         height: 40,
@@ -491,7 +497,7 @@ class _RequesttojoinTripDetailsState extends State<RequesttojoinTripDetails> {
                       },
                     ),
                   ),
-                 Padding(
+                  Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 10),
                     child: Row(
                       children: [

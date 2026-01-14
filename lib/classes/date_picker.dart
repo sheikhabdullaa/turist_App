@@ -1,8 +1,6 @@
-// features/traveler/presentation/components/date_picker_field.dart
-
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-// ignore: depend_on_referenced_packages
+
 
 import 'package:turist_app/utils/app_colors.dart';
 
@@ -45,9 +43,9 @@ class _DatePickerFieldState extends State<DatePickerField> {
       _controller.text = widget.selectedDate != null
           ? _dateFormat.format(widget.selectedDate!)
           : '';
-      // _controller.selection = TextSelection.fromPosition(
-      //   TextPosition(offset: _controller.text.length),
-      // );
+      _controller.selection = TextSelection.fromPosition(
+        TextPosition(offset: _controller.text.length),
+      );
     }
   }
 
