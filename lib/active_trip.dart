@@ -211,101 +211,102 @@ class _ActiveTripState extends State<ActiveTrip> {
                             ],
                           ),
 
-                          Padding(
-                            padding: const EdgeInsets.all(8),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Row(
-                                  children: [
-                                    popintext(
-                                      text: trip?.location.toString() ?? '',
-                                      fontSize: 12,
-                                      color: AppColors.black,
-                                      fw: FontWeight.w500,
-                                    ),
-                                    SizedBox(width: screenWidth * 0.13),
-                                    popintext(
-                                      text: trip?.members.toString() ?? '',
-                                      fontSize: 12,
-                                      color: AppColors.grey,
-                                      fw: FontWeight.w400,
-                                    ),
-                                    const SizedBox(width: 4),
-                                    Image.asset(
-                                      'assets/personicon.png',
-                                      color: AppColors.grey,
-                                      height: 14,
-                                    ),
-                                  ],
-                                ),
-
-                                inter(
-                                  text: trip?.startDate.toString() ?? '',
-                                  fontSize: 12,
-                                  color: AppColors.grey,
-                                  fw: FontWeight.w400,
-                                ),
-
-                                Row(
-                                  children: [
-                                    customtext(
-                                      text: trip?.budget.toString() ?? '',
-                                      fontSize: 16,
-                                      color: AppColors.green,
-                                      fw: FontWeight.w600,
-                                    ),
-                                    const SizedBox(width: 6),
-                                    customtext(
-                                      text: 'per person',
-                                      fontSize: 12,
-                                      color: AppColors.grey,
-                                      fw: FontWeight.w400,
-                                    ),
-                                  ],
-                                ),
-
-                                SizedBox(
-                                  width: double.infinity,
-                                  height: 36,
-                                  child: ElevatedButton(
-                                    onPressed: () {
-                                      Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                          builder: (_) =>
-                                              RequesttojoinTripDetails(),
-                                        ),
-                                      );
-                                    },
-                                    style: ElevatedButton.styleFrom(
-                                      backgroundColor: AppColors.blueascent,
-                                      shape: RoundedRectangleBorder(
-                                        borderRadius: BorderRadius.circular(16),
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Row(
+                                children: [
+                                  popintext(
+                                    text: trip?.location.toString() ?? '',
+                                    fontSize: 12,
+                                    color: AppColors.black,
+                                    fw: FontWeight.w500,
+                                  ),
+                                  SizedBox(width: screenWidth * 0.06),
+                                  popintext(
+                                    text: trip?.members.toString() ?? '',
+                                    fontSize: 12,
+                                    color: AppColors.grey,
+                                    fw: FontWeight.w400,
+                                  ),
+                                  const SizedBox(width: 4),
+                                  Image.asset(
+                                    'assets/personicon.png',
+                                    color: AppColors.grey,
+                                    height: 14,
+                                  ),
+                                ],
+                              ),
+                          
+                              customtext(
+                                text: trip?.startDate.toString() ?? '',
+                               
+                                fontSize: 12,
+                                color: AppColors.grey,
+                                fw: FontWeight.w400,
+                              ),
+                          
+                              Row(
+                                children: [
+                                  customtext(
+                                    // text: trip?.budget.toString() ?? '',
+                                    text: '\$49.85',
+                                    fontSize: 16,
+                                    color: AppColors.green,
+                                    fw: FontWeight.w600,
+                                  ),
+                                  const SizedBox(width: 6),
+                                  customtext(
+                                    text: 'per person',
+                                    fontSize: 12,
+                                    color: AppColors.grey,
+                                    fw: FontWeight.w400,
+                                  ),
+                                ],
+                              ),
+                                      SizedBox(height: screenHeight * 0.02),
+                                  
+                              SizedBox(
+                                width: double.infinity,
+                                height: 36,
+                                child: ElevatedButton(
+                                  onPressed: () {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (_) =>
+                                            RequesttojoinTripDetails(),
                                       ),
-                                    ),
-                                    child: Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                      children: [
-                                        inter(
-                                          text: 'Join',
-                                          fontSize: 12,
-                                          color: AppColors.white,
-                                          fw: FontWeight.w500,
-                                        ),
-                                        const SizedBox(width: 6),
-                                        const Icon(
-                                          Icons.arrow_forward,
-                                          color: AppColors.white,
-                                          size: 16,
-                                        ),
-                                      ],
+                                    );
+                                  },
+                                  style: ElevatedButton.styleFrom(
+                                    backgroundColor: AppColors.blueascent,
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(16),
                                     ),
                                   ),
+                          
+                                  child: Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.center,
+                                    children: [
+                                      inter(
+                                        text: 'Join',
+                                        fontSize: 12,
+                                        color: AppColors.white,
+                                        fw: FontWeight.w500,
+                                      ),
+                                      const SizedBox(width: 6),
+                                      const Icon(
+                                        Icons.arrow_forward,
+                                        color: AppColors.white,
+                                        size: 16,
+                                      ),
+                                    ],
+                                  ),
                                 ),
-                              ],
-                            ),
+                              ),
+                            ],
                           ),
                         ],
                       ),

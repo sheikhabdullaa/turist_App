@@ -43,7 +43,8 @@ class _TuristDashbordBottomSheetState extends State<TuristDashbordBottomSheet> {
                 child: Column(
                   
                   children: [
-                    Image.asset('assets/homeicon.png'),
+                    // Image.asset('assets/homeicon.png'),
+                    Icon(Icons.home_outlined, color: AppColors.grey),
                     customtext(
                       text: 'Home',
                       fontSize: 12,
@@ -65,11 +66,12 @@ class _TuristDashbordBottomSheetState extends State<TuristDashbordBottomSheet> {
                 padding: const EdgeInsets.only(top: 15),
                 child: Column(
                   children: [
-                    Image.asset('assets/messegeicon.png'),
+                    // Image.asset('assets/messegeicon.png', color: AppColors.grey),
+                    Icon(Icons.smart_toy, color: AppColors.grey),
                     customtext(
                       text: 'Chat Bot',
                       fontSize: 12,
-                      color: AppColors.black,
+                      color: AppColors.black, 
                       fw: FontWeight.w400,
                     ),
                   ],
@@ -77,7 +79,7 @@ class _TuristDashbordBottomSheetState extends State<TuristDashbordBottomSheet> {
               ),
             ),
             
-
+ 
             InkWell(
               onTap: () {
                 setState(() {
@@ -88,7 +90,8 @@ class _TuristDashbordBottomSheetState extends State<TuristDashbordBottomSheet> {
                 padding: const EdgeInsets.only(top: 15),
                 child: Column(
                   children: [
-                    Image.asset('assets/personicon.png'),
+                    // Image.asset('assets/personicon.png' , color: AppColors.grey,),
+                    Icon(Icons.person_outline, color: AppColors.grey),
                     customtext(
                       text: 'Profile',
                       fontSize: 12,
@@ -109,7 +112,8 @@ class _TuristDashbordBottomSheetState extends State<TuristDashbordBottomSheet> {
                 padding: const EdgeInsets.only(top: 15),
                 child: Column(
                   children: [
-                    Image.asset('assets/chat.png'),
+                    // Image.asset('assets/chat.png'),
+                    Icon(Icons.message, color: AppColors.grey),
                     customtext(
                       text: 'Chats',
                       fontSize: 12,

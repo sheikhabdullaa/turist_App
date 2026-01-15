@@ -40,7 +40,9 @@ class _activeguidebottomsheetState extends State<ActiveBottomSheet> {
               },
               child: Column(
                 children: [
-                  Image.asset('assets/homeicon.png', color: AppColors.grey),
+                  // Image.asset('assets/homeicon.png', color: AppColors.grey),
+                   Icon(Icons.home_outlined, color: AppColors.grey),
+
                   popintext(
                     text: 'Home',
                     fontSize: 12,
@@ -58,7 +60,9 @@ class _activeguidebottomsheetState extends State<ActiveBottomSheet> {
               },
               child: Column(
                 children: [
-                  Image.asset('assets/chat.png', color: AppColors.grey),
+                  // Image.asset('assets/chat.png', color: AppColors.grey),
+                    Icon(Icons.smart_toy, color: AppColors.grey),
+
                   popintext(
                     text: 'Chat Bot',
                     fontSize: 12,
@@ -77,7 +81,9 @@ class _activeguidebottomsheetState extends State<ActiveBottomSheet> {
               },
               child: Column(
                 children: [
-                  Image.asset('assets/personicon.png', color: AppColors.grey),
+                  // Image.asset('assets/personicon.png', color: AppColors.grey),
+                    Icon(Icons.person_outline, color: AppColors.grey),
+
                   popintext(
                     text: 'Profile',
                     fontSize: 12,
@@ -95,7 +101,9 @@ class _activeguidebottomsheetState extends State<ActiveBottomSheet> {
               },
               child: Column(
                 children: [
-                  Image.asset('assets/messegeicon.png', color: AppColors.grey),
+                  // Image.asset('assets/messegeicon.png', color: AppColors.grey),
+                    Icon(Icons.message, color: AppColors.grey),
+
                   popintext(
                     text: 'Chats',
                     fontSize: 12,

@@ -11,7 +11,6 @@ import 'package:turist_app/components/custom_drop_down.dart';
 import 'package:turist_app/components/custom_text_field.dart';
 import 'package:turist_app/components/inter_text.dart';
 import 'package:turist_app/components/popin_text.dart';
-import 'package:turist_app/google_map/google_map.dart';
 import 'package:turist_app/repository/creat_trip_repo.dart';
 import 'package:turist_app/utils/app_colors.dart';
 

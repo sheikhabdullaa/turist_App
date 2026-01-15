@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:turist_app/components/custom_text.dart';
+import 'package:turist_app/components/popin_text.dart';
 import 'package:turist_app/utils/app_colors.dart';
 
 class ChatBort extends StatefulWidget {
@@ -24,7 +24,7 @@ class _ChatBortState extends State<ChatBort> {
           icon: const Icon(Icons.arrow_back),
         ),
         titleSpacing: screenWidth * 0.2,
-        title: customtext(
+        title: popintext(
           text: 'Chat Bot',
           fontSize: 16,
           color: AppColors.black,
@@ -34,37 +34,34 @@ class _ChatBortState extends State<ChatBort> {
       ),
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 20.0),
-        child: Padding(
-          padding: const EdgeInsets.only(top: 440),
-          child: Row(
-            children: [
-              Expanded(
-                child: TextFormField(
-                  controller: chatcontroller,
-                  decoration: InputDecoration(
-                    hintText: 'Ask anything',
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(14),
-                      borderSide: BorderSide(color: AppColors.grey),
-                    ),
+        child: Row(
+          children: [
+            Expanded(
+              child: TextFormField(
+                controller: chatcontroller,
+                decoration: InputDecoration(
+                  hintText: 'Ask anything',
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(14),
+                    borderSide: BorderSide(color: AppColors.grey),
                   ),
                 ),
               ),
-              SizedBox(width: 8),
-              Container(
-                height: screenheight * 0.09,
-                width: screenWidth * 0.17,
-                decoration: BoxDecoration(
-                  color: AppColors.blueascent,
-                  borderRadius: BorderRadius.circular(14),
-                ),
-                child: IconButton(
-                  onPressed: () {},
-                  icon: Icon(Icons.arrow_upward, color: AppColors.white),
-                ),
+            ),
+            SizedBox(width: 8),
+            Container(
+              height: screenheight * 0.09,
+              width: screenWidth * 0.17,
+              decoration: BoxDecoration(
+                color: AppColors.blueascent,
+                borderRadius: BorderRadius.circular(14),
               ),
-            ],
-          ),
+              child: IconButton(
+                onPressed: () {},
+                icon: Icon(Icons.arrow_upward, color: AppColors.white),
+              ),
+            ),
+          ],
         ),
       ),
     );

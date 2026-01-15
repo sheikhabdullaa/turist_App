@@ -264,6 +264,8 @@ class _TouristDashbordState extends State<TouristDashbord> {
                           ),
                         ],
                       ),
+                      SizedBox(width: screenWidth * 0.08),
+
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
@@ -444,7 +446,15 @@ class _TouristDashbordState extends State<TouristDashbord> {
                       color: AppColors.black,
                       fw: .w600,
                     ),
-                    Image.asset('assets/icon.png'),
+                    InkWell(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => ActiveTrip()),
+                        );
+                      },
+                      child: Image.asset('assets/icon.png'),
+                    ),
                   ],
                 ),
               ),
@@ -559,7 +569,7 @@ class _TouristDashbordState extends State<TouristDashbord> {
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                    builder: (context) => ActiveTrip(),
+                                    builder: (context) => guideBottomSheet(),
                                   ),
                                 );
                               },
@@ -699,7 +709,7 @@ class _TouristDashbordState extends State<TouristDashbord> {
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                    builder: (context) => ActiveTrip(),
+                                    builder: (context) => guideBottomSheet(),
                                   ),
                                 );
                               },

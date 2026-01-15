@@ -19,6 +19,7 @@ class _RequesttojoinTripDetailsState extends State<RequesttojoinTripDetails> {
   final dayClass = DayClasses();
   final degreeClass = DegreeClass();
 
+  // ignore: strict_top_level_inference
   get selectedDayIndex => null;
 
   @override

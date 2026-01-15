@@ -42,7 +42,8 @@ class _guidebottomsheetState extends State<guideBottomSheet> {
               },
               child: Column(
                 children: [
-                  Image.asset('assets/homeicon.png', color: AppColors.grey),
+                  // Image.asset('assets/homeicon.png', color: AppColors.grey),
+                   Icon(Icons.home_outlined, color: AppColors.grey),
                   customtext(
                     text: 'Home',
                     fontSize: 12,
@@ -60,7 +61,9 @@ class _guidebottomsheetState extends State<guideBottomSheet> {
               },
               child: Column(
                 children: [
-                  Image.asset('assets/chat.png', color: AppColors.grey),
+                  // Image.asset('assets/chat.png', color: AppColors.grey),
+                    Icon(Icons.smart_toy, color: AppColors.grey),
+
                   customtext(
                     text: 'Chat Bot',
                     fontSize: 12,
@@ -79,7 +82,9 @@ class _guidebottomsheetState extends State<guideBottomSheet> {
               },
               child: Column(
                 children: [
-                  Image.asset('assets/personicon.png', color: AppColors.grey),
+                  // Image.asset('assets/personicon.png', color: AppColors.grey),
+                    Icon(Icons.person_outline, color: AppColors.grey),
+
                   customtext(
                     text: 'Profile',
                     fontSize: 12,
@@ -97,7 +102,9 @@ class _guidebottomsheetState extends State<guideBottomSheet> {
               },
               child: Column(
                 children: [
-                  Image.asset('assets/messegeicon.png', color: AppColors.grey),
+                  // Image.asset('assets/messegeicon.png', color: AppColors.grey),
+                    Icon(Icons.message, color: AppColors.grey),
+
                   customtext(
                     text: 'Chats',
                     fontSize: 12,
