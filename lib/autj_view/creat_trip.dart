@@ -46,8 +46,7 @@ class _CreatTripState extends State<CreatTrip> {
   // controllers
   final TextEditingController discriptioncontroller = TextEditingController();
   final TextEditingController destinationcontroller = TextEditingController();
-  final TextEditingController budgeteastimatecontroller =
-      TextEditingController();
+  final TextEditingController budgetecontroller = TextEditingController();
 
   Future<void> pickImage() async {
     final XFile? pickedImage = await _picker.pickImage(
@@ -140,42 +139,48 @@ class _CreatTripState extends State<CreatTrip> {
                 color: AppColors.black,
                 fw: FontWeight.w400,
               ),
-              InkWell(
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (_) => GoogleMapscreen()),
-                  );
-                },
-                child: Container(
-                  height: screenheight * 0.09,
-                  decoration: BoxDecoration(
-                    // color: AppColors.white,
-                    borderRadius: BorderRadius.circular(14),
-                    border: BoxBorder.all(
-                      color: Color.fromARGB(67, 158, 158, 158),
-                    ),
-                  ),
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 10),
-                    child: Row(
-                      children: [
-                        const Icon(
-                          Icons.location_on_outlined,
-                          color: AppColors.grey,
-                        ),
-                        inter(
-                          text: 'Where are you going?',
-                          fontSize: 16,
-                          color: AppColors.grey,
-                          fw: FontWeight.w400,
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
+              customTextField(
+                hint: 'Where are you going?',
+                icon: Icon(Icons.location_pin),
+                readOnly: true,
+                controller: destinationcontroller,
               ),
 
+              // InkWell(
+              //   onTap: () {
+              //     Navigator.push(
+              //       context,
+              //       MaterialPageRoute(builder: (_) => GoogleMapscreen()),
+              //     );
+              //   },
+              //   child: Container(
+              //     height: screenheight * 0.09,
+              //     decoration: BoxDecoration(
+              //       // color: AppColors.white,
+              //       borderRadius: BorderRadius.circular(14),
+              //       border: BoxBorder.all(
+              //         color: Color.fromARGB(67, 158, 158, 158),
+              //       ),
+              //     ),
+              //     child: Padding(
+              //       padding: const EdgeInsets.symmetric(horizontal: 10),
+              //       child: Row(
+              //         children: [
+              //           const Icon(
+              //             Icons.location_on_outlined,
+              //             color: AppColors.grey,
+              //           ),
+              //           inter(
+              //             text: 'Where are you going?',
+              //             fontSize: 16,
+              //             color: AppColors.grey,
+              //             fw: FontWeight.w400,
+              //           ),
+              //         ],
+              //       ),
+              //     ),
+              //   ),
+              // ),
               SizedBox(height: screenheight * 0.04),
 
               /// IMAGE
@@ -315,7 +320,7 @@ class _CreatTripState extends State<CreatTrip> {
               ),
               customTextField(
                 hint: 'for-example@example.com',
-                controller: budgeteastimatecontroller,
+                controller: budgetecontroller,
                 icon: Icon(
                   Icons.monetization_on_outlined,
                   color: AppColors.grey,
@@ -400,66 +405,6 @@ class _CreatTripState extends State<CreatTrip> {
                         fw: FontWeight.w500,
                       ),
                     ),
-
-                    // ElevatedButton(
-                    //   style: ButtonStyle(
-                    //     backgroundColor: const WidgetStatePropertyAll(
-                    //       AppColors.blueascent,
-                    //     ),
-                    //   ),
-                    //   onPressed: () async {
-                    //     final user = FirebaseAuth.instance.currentUser;
-                    //     if (user == null) {
-                    //       Fluttertoast.showToast(msg: "Please login first");
-                    //       return;
-                    //     }
-
-                    //     String tripId = randomAlphaNumeric(10);
-
-                    //     await FirebaseFirestore.instance
-                    //         .collection('creattripuser')
-                    //         .doc(tripId)
-                    //         .set({
-                    //           'tripId': tripId,
-                    //           'userId': user.uid,
-
-                    //           // 🔥 REQUIRED BY ActiveTrip UI
-                    //           'tripName': selectedCategory ?? 'My Trip',
-                    //           'plannerName': 'Michal',
-                    //           'imageUrl':
-                    //               'https://images.unsplash.com/photo-1501785888041-af3ef285b470',
-                    //           'price': budgeteastimatecontroller.text,
-
-                    //           // EXTRA DATA
-                    //           'withFamily': withFamily,
-                    //           'withFriends': withFriends,
-                    //           'description': discriptioncontroller.text,
-                    //           'members': memberCount,
-                    //           'category': selectedCategory,
-                    //           'transport': selectedTransport,
-                    //           'accommodation': selectedAccommodation,
-                    //           'startDate': startDate,
-                    //           'endDate': endDate,
-
-                    //           // 🔥 IMPORTANT
-                    //           'createdAt': FieldValue.serverTimestamp(),
-                    //         });
-
-                    //     Fluttertoast.showToast(msg: "Trip saved successfully");
-
-                    //     // ✅ NAVIGATE AFTER SAVE
-                    //     Navigator.pushReplacement(
-                    //       context,
-                    //       MaterialPageRoute(builder: (_) => const ActiveTrip()),
-                    //     );
-                    //   },
-                    //   child: inter(
-                    //     text: 'Save Trip',
-                    //     fontSize: 16,
-                    //     color: AppColors.white,
-                    //     fw: FontWeight.w500,
-                    //   ),
-                    // ),
                     ElevatedButton(
                       style: ButtonStyle(
                         backgroundColor: WidgetStatePropertyAll(
@@ -492,7 +437,8 @@ class _CreatTripState extends State<CreatTrip> {
                           'startDate': startDate,
                           'endDate': endDate,
                           'createdAt': DateTime.now(),
-                          'budgeteastimatr': budgeteastimatecontroller.text,
+                          'budgeteastimatr': budgetecontroller.text,
+                          'location': destinationcontroller.text,
                         }, tripId);
 
                         Fluttertoast.showToast(msg: "Trip saved successfully");

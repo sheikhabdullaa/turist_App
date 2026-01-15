@@ -55,21 +55,23 @@ class _DatePickerFieldState extends State<DatePickerField> {
     super.dispose();
   }
 
-  Future<void> _selectDate() async {
-    final DateTime? picked = await showDatePicker(
-      context: context,
-      initialDate: widget.selectedDate ?? DateTime.now(),
-      firstDate: DateTime.now(),
-      lastDate: DateTime(2030),
-      builder: (context, child) {
-        return Theme(data: Theme.of(context).copyWith(), child: child!);
-      },
-    );
+ Future<void> _selectDate() async {
+  final DateTime initial = widget.selectedDate 
+      ?? DateTime.now().copyWith(hour: 0, minute: 0, second: 0);
 
-    if (picked != null) {
-      widget.onDateChanged(picked);
-    }
+  final DateTime? picked = await showDatePicker(
+    context: context,
+    initialDate: initial,
+    firstDate: DateTime.now(),
+    lastDate: DateTime(2030),
+  );
+
+  if (picked != null) {
+    // Always return date without time
+    final DateTime selectedDateOnly = DateTime(picked.year, picked.month, picked.day);
+    widget.onDateChanged(selectedDateOnly);
   }
+}
 
   @override
   Widget build(BuildContext context) {

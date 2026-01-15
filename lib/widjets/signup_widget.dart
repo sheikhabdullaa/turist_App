@@ -41,7 +41,7 @@ class _SignupWidgetState extends State<SignupWidget> {
                     fw: FontWeight.w400,
                   ),
                   customTextField(
-                    hint: 'Alina Zeeshan',
+                    hint: 'Enter your name',
                     icon: Icon(Icons.person_2_outlined, color: AppColors.grey),
                     controller: namecontroller,
                     readOnly: true,
