@@ -57,7 +57,10 @@ class _TouristDashbordState extends State<TouristDashbord> {
                                   ),
                                 );
                               },
-                              child: ClipOval(child: Image.asset('assets/sarah.png'))),
+                              child: ClipOval(
+                                child: Image.asset('assets/sarah.png'),
+                              ),
+                            ),
 
                             customtext(
                               text: 'Hello! Sarah Smith',
@@ -110,7 +113,7 @@ class _TouristDashbordState extends State<TouristDashbord> {
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                    builder: (context) => TuristProfile(),
+                                    builder: (context) => TripDaetails(),
                                   ),
                                 );
                               },

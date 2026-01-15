@@ -77,7 +77,6 @@ class _ActiveTripState extends State<ActiveTrip> {
             ),
           ),
 
-       
           Expanded(
             child: FutureBuilder(
               future: CreatTripRepo().activeTripsGet(),
@@ -101,7 +100,7 @@ class _ActiveTripState extends State<ActiveTrip> {
                   itemCount: trips.length,
                   gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 2,
-                    childAspectRatio: 0.62, 
+                    childAspectRatio: 0.62,
                     crossAxisSpacing: 10,
                     mainAxisSpacing: 10,
                   ),
@@ -115,7 +114,6 @@ class _ActiveTripState extends State<ActiveTrip> {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          
                           Stack(
                             children: [
                               Container(
@@ -124,16 +122,67 @@ class _ActiveTripState extends State<ActiveTrip> {
                                   borderRadius: const BorderRadius.vertical(
                                     top: Radius.circular(12),
                                   ),
-                                  image: const DecorationImage(
-                                    image: AssetImage('assets/swizerland3.png'),
-                                    fit: BoxFit.cover,
-                                  ),
+                                ),
+                                child: Stack(
+                                  children: [
+                                    ClipRRect(
+                                      borderRadius: const BorderRadius.vertical(
+                                        top: Radius.circular(12),
+                                      ),
+                                      child: Image.asset(
+                                        'assets/swizerland3.png',
+                                        fit: BoxFit.cover,
+                                        width: double.infinity,
+                                        height: 120,
+                                      ),
+                                    ),
+
+                                    Padding(
+                                      padding: const EdgeInsets.symmetric(
+                                        vertical: 10,
+                                      ),
+                                      child: Row(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          Padding(
+                                            padding: const EdgeInsets.symmetric(
+                                              horizontal: 10,
+                                            ),
+                                            child: ClipOval(
+                                              child: Image.asset(
+                                                'assets/maria.png',
+                                              ),
+                                            ),
+                                          ),
+                                          Column(
+                                            children: [
+                                              inter(
+                                                text: 'Planned by ',
+                                                fontSize: 12,
+                                                color: AppColors.white,
+                                                fw: FontWeight.w400,
+                                              ),
+                                              inter(
+                                                text:
+                                                    trip?.username.toString() ??
+                                                    '',
+                                                fontSize: 12,
+                                                color: AppColors.white,
+                                                fw: FontWeight.w400,
+                                              ),
+                                            ],
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ],
                                 ),
                               ),
 
                               Positioned(
                                 top: 8,
-                                right: 8,
+                                right: 2,
                                 child: Expanded(
                                   child: IconButton(
                                     onPressed: () {
@@ -147,12 +196,14 @@ class _ActiveTripState extends State<ActiveTrip> {
                                       });
                                     },
                                     icon: Icon(
-                                      (trip?.isfavorite ?? false)
-                                          ? Icons.favorite
-                                          : Icons.favorite_outline,
-                                      color: (trip?.isfavorite ?? true)
-                                          ? Colors.red
-                                          : AppColors.white,
+                                      Icons.favorite_outline,
+                                      color: AppColors.white,
+                                      // (trip?.isfavorite ?? false)
+                                      //     ? Icons.favorite
+                                      //     : Icons.favorite_outline,
+                                      // color: (trip?.isfavorite ?? true)
+                                      //     ? Colors.red
+                                      //     : AppColors.white,
                                     ),
                                   ),
                                 ),
@@ -173,6 +224,7 @@ class _ActiveTripState extends State<ActiveTrip> {
                                       color: AppColors.black,
                                       fw: FontWeight.w500,
                                     ),
+                                    SizedBox(width: screenWidth * 0.13),
                                     popintext(
                                       text: trip?.members.toString() ?? '',
                                       fontSize: 12,
@@ -188,7 +240,6 @@ class _ActiveTripState extends State<ActiveTrip> {
                                   ],
                                 ),
 
-                                
                                 inter(
                                   text: trip?.startDate.toString() ?? '',
                                   fontSize: 12,
@@ -196,7 +247,6 @@ class _ActiveTripState extends State<ActiveTrip> {
                                   fw: FontWeight.w400,
                                 ),
 
-                                
                                 Row(
                                   children: [
                                     customtext(
@@ -235,7 +285,8 @@ class _ActiveTripState extends State<ActiveTrip> {
                                       ),
                                     ),
                                     child: Row(
-                                      mainAxisAlignment: MainAxisAlignment.center,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
                                       children: [
                                         inter(
                                           text: 'Join',
@@ -244,9 +295,13 @@ class _ActiveTripState extends State<ActiveTrip> {
                                           fw: FontWeight.w500,
                                         ),
                                         const SizedBox(width: 6),
-                                        const Icon(Icons.arrow_forward, color: AppColors.white, size: 16),
+                                        const Icon(
+                                          Icons.arrow_forward,
+                                          color: AppColors.white,
+                                          size: 16,
+                                        ),
                                       ],
-                                    )
+                                    ),
                                   ),
                                 ),
                               ],

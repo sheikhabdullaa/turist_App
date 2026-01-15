@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
-
 import 'package:turist_app/utils/app_colors.dart';
 
 class DatePickerField extends StatefulWidget {
@@ -55,23 +54,28 @@ class _DatePickerFieldState extends State<DatePickerField> {
     super.dispose();
   }
 
- Future<void> _selectDate() async {
-  final DateTime initial = widget.selectedDate 
-      ?? DateTime.now().copyWith(hour: 0, minute: 0, second: 0);
+  Future<void> _selectDate() async {
+    final DateTime initial =
+        widget.selectedDate ??
+        DateTime.now().copyWith(hour: 0, minute: 0, second: 0);
 
-  final DateTime? picked = await showDatePicker(
-    context: context,
-    initialDate: initial,
-    firstDate: DateTime.now(),
-    lastDate: DateTime(2030),
-  );
+    final DateTime? picked = await showDatePicker(
+      context: context,
+      initialDate: initial,
+      firstDate: DateTime.now(),
+      lastDate: DateTime(2030),
+    );
 
-  if (picked != null) {
-    // Always return date without time
-    final DateTime selectedDateOnly = DateTime(picked.year, picked.month, picked.day);
-    widget.onDateChanged(selectedDateOnly);
+    if (picked != null) {
+      // Always return date without time
+      final DateTime selectedDateOnly = DateTime(
+        picked.year,
+        picked.month,
+        picked.day,
+      );
+      widget.onDateChanged(selectedDateOnly);
+    }
   }
-}
 
   @override
   Widget build(BuildContext context) {
