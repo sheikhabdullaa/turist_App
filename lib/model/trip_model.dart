@@ -4,7 +4,7 @@ class Trip {
   final String tripId;
   final String userId;
   final String accommodation;
-  final int budget;
+  final int budgeteastimatr;
   final String category;
   final String username;
   final DateTime createdAt;
@@ -24,7 +24,7 @@ bool? isnotfavorite;
     required this.tripId,
     required this.userId,
     required this.accommodation,
-    required this.budget,
+    required this.budgeteastimatr,
     required this.category,
     required this.createdAt,
     required this.description,
@@ -45,7 +45,7 @@ bool? isnotfavorite;
       tripId: json['tripId'] as String? ?? '',
       userId: json['userId'] as String? ?? '',
       accommodation: json['accommodation'] as String? ?? '', 
-      budget: (json['budgetEstimate'] as num?)?.toInt() ?? 0,
+      budgeteastimatr: (json['budgetEstimate'] as num?)?.toInt() ?? 0,
       category: json['category'] as String? ?? '',
       username: json['username'] as String? ?? 'Unknown',
       createdAt: (json['createdAt'] as Timestamp?)?.toDate() ?? DateTime.now(),
@@ -67,7 +67,7 @@ bool? isnotfavorite;
       'tripId': tripId,
       'userId': userId,
       'accommodation': accommodation,
-      'budgetEstimate': budget,
+      'budgetEstimate': budgeteastimatr,
       'category': category,
       'createdAt': Timestamp.fromDate(createdAt),
       'description': description,

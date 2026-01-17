@@ -3,6 +3,7 @@ import 'package:turist_app/autj_view/michal_turist_profile.dart';
 import 'package:turist_app/autj_view/notification_page.dart';
 import 'package:turist_app/autj_view/requesttojoin_trip_details.dart';
 import 'package:turist_app/components/custom_text.dart';
+import 'package:turist_app/components/custom_text_button.dart';
 import 'package:turist_app/components/inter_text.dart';
 import 'package:turist_app/components/popin_text.dart';
 import 'package:turist_app/repository/creat_trip_repo.dart';
@@ -237,75 +238,81 @@ class _ActiveTripState extends State<ActiveTrip> {
                                   ),
                                 ],
                               ),
-                          
-                              customtext(
-                                text: trip?.startDate.toString() ?? '',
-                               
+
+                              inter(
+                                text:
+                                    '${trip!.startDate.day}-${trip.startDate.month}-${trip.startDate.year}',
                                 fontSize: 12,
                                 color: AppColors.grey,
                                 fw: FontWeight.w400,
                               ),
-                          
+
                               Row(
                                 children: [
-                                  customtext(
-                                    // text: trip?.budget.toString() ?? '',
-                                    text: '\$49.85',
+                                  popintext(
+                                    text: '\$${trip.budgeteastimatr}',
+
                                     fontSize: 16,
                                     color: AppColors.green,
                                     fw: FontWeight.w600,
                                   ),
+
                                   const SizedBox(width: 6),
-                                  customtext(
+                                  inter(
                                     text: 'per person',
-                                    fontSize: 12,
+                                    fontSize: 14,
                                     color: AppColors.grey,
                                     fw: FontWeight.w400,
                                   ),
                                 ],
                               ),
-                                      SizedBox(height: screenHeight * 0.02),
-                                  
-                              SizedBox(
-                                width: double.infinity,
-                                height: 36,
-                                child: ElevatedButton(
-                                  onPressed: () {
-                                    Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                        builder: (_) =>
-                                            RequesttojoinTripDetails(),
-                                      ),
-                                    );
-                                  },
-                                  style: ElevatedButton.styleFrom(
-                                    backgroundColor: AppColors.blueascent,
-                                    shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(16),
-                                    ),
-                                  ),
-                          
-                                  child: Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.center,
-                                    children: [
-                                      inter(
-                                        text: 'Join',
-                                        fontSize: 12,
-                                        color: AppColors.white,
-                                        fw: FontWeight.w500,
-                                      ),
-                                      const SizedBox(width: 6),
-                                      const Icon(
-                                        Icons.arrow_forward,
-                                        color: AppColors.white,
-                                        size: 16,
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ),
+                              SizedBox(height: screenHeight * 0.02),
+                              Center(
+                                child: CustomButton(title: 'Join', onPressed: (){
+                                  Navigator.push(context, MaterialPageRoute(builder: (_)=>RequesttojoinTripDetails()));
+                                }, bgColor: AppColors.blueascent),
+                              )
+
+                              // SizedBox(
+                              //   // width: double.infinity,
+                              //   width: screenWidth * 0.4,
+                              //   height: 36,
+                              //   child: ElevatedButton(
+                              //     onPressed: () {
+                              //       Navigator.push(
+                              //         context,
+                              //         MaterialPageRoute(
+                              //           builder: (_) =>
+                              //               RequesttojoinTripDetails(),
+                              //         ),
+                              //       );
+                              //     },
+                              //     style: ElevatedButton.styleFrom(
+                              //       backgroundColor: AppColors.blueascent,
+                              //       shape: RoundedRectangleBorder(
+                              //         borderRadius: BorderRadius.circular(16),
+                              //       ),
+                              //     ),
+                                
+                              //     child: Row(
+                              //       mainAxisAlignment: MainAxisAlignment.center,
+                              //       children: [
+                              //         inter(
+                              //           text: 'Join',
+                              //           fontSize: 12,
+                              //           color: AppColors.white,
+                              //           fw: FontWeight.w500,
+                              //         ),
+                              //         const SizedBox(width: 6),
+                              //         const Icon(
+                              //           Icons.arrow_forward,
+                              //           color: AppColors.white,
+                              //           size: 16,
+                              //         ),
+                              //       ],
+                              //     ),
+                              //   ),
+                              // ),
                             ],
                           ),
                         ],
@@ -321,6 +328,20 @@ class _ActiveTripState extends State<ActiveTrip> {
     );
   }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

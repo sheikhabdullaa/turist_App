@@ -125,6 +125,7 @@ class _SignupWidgetState extends State<SignupWidget> {
                               emailcontroller.text.trim(),
                               passwordcontroller.text.trim(),
                               namecontroller.text.trim(),
+                              int.parse(numbercontroller.text.trim()),
                             );
 
                             // ignore: use_build_context_synchronously

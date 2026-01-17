@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:turist_app/autj_view/active_bottom_sheet.dart';
 import 'package:turist_app/classes/day_classes.dart';
 import 'package:turist_app/classes/degree_class.dart';
-import 'package:turist_app/components/custom_text_button.dart';
 import 'package:turist_app/components/inter_text.dart';
 import 'package:turist_app/components/popin_text.dart';
 import 'package:turist_app/utils/app_colors.dart';
@@ -155,17 +153,28 @@ class _RequesttojoinTripDetailsState extends State<RequesttojoinTripDetails> {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  CustomButton(
-                    title: 'Join Trip',
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => ActiveBottomSheet(),
+                  SizedBox(
+                    width: double.infinity,
+                    height: screenheight * 0.065,
+                    child: ElevatedButton(
+                      onPressed: () {
+                        // Join Trip action
+                      },
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: AppColors.blueascent,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(16),
                         ),
-                      );
-                    },
-                    bgColor: AppColors.blueascent,
+                      ),
+                      child: const Text(
+                        'Join Trip',
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 14,
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
+                    ),
                   ),
 
                   SizedBox(height: screenheight * 0.07),
