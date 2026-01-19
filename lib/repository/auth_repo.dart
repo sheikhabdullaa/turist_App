@@ -47,4 +47,6 @@ class AuthRepo {
   }
 
   Future<void> sendPasswordReset(String trim) async {}
+
+  Future<void> logout() async {}
 }
