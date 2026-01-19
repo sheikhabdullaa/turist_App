@@ -198,77 +198,84 @@ class _ActiveTripState extends State<ActiveTrip> {
                             ],
                           ),
 
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Row(
-                                children: [
-                                  popintext(
-                                    text: trip?.location.toString() ?? '',
-                                    fontSize: 12,
-                                    color: AppColors.black,
-                                    fw: FontWeight.w500,
-                                  ),
-                                  SizedBox(width: screenWidth * 0.06),
-                                  popintext(
-                                    text: trip?.members.toString() ?? '',
-                                    fontSize: 12,
-                                    color: AppColors.grey,
-                                    fw: FontWeight.w400,
-                                  ),
-                                  const SizedBox(width: 4),
-                                  Image.asset(
-                                    'assets/personicon.png',
-                                    color: AppColors.grey,
-                                    height: 14,
-                                  ),
-                                ],
-                              ),
-
-                              inter(
-                                text:
-                                    '${trip!.startDate.day}-${trip.startDate.month}-${trip.startDate.year}',
-                                fontSize: 12,
-                                color: AppColors.grey,
-                                fw: FontWeight.w400,
-                              ),
-
-                              Row(
-                                children: [
-                                  popintext(
-                                    text: '\$${trip.budgeteastimatr}',
-
-                                    fontSize: 16,
-                                    color: AppColors.green,
-                                    fw: FontWeight.w600,
-                                  ),
-
-                                  const SizedBox(width: 6),
-                                  inter(
-                                    text: 'per person',
-                                    fontSize: 14,
-                                    color: AppColors.grey,
-                                    fw: FontWeight.w400,
-                                  ),
-                                ],
-                              ),
-                              SizedBox(height: screenHeight * 0.02),
-                              Center(
-                                child: CustomButton(
-                                  title: 'Join',
-                                  onPressed: () {
-                                    Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                        builder: (_) =>
-                                            RequesttojoinTripDetails(),
-                                      ),
-                                    );
-                                  },
-                                  bgColor: AppColors.blueascent,
+                          Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 10),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Row(
+                                  children: [
+                                    popintext(
+                                      text: trip?.location.toString() ?? '',
+                                      fontSize: 12,
+                                      color: AppColors.black,
+                                      fw: FontWeight.w500,
+                                      maxLines: 1,
+                                      overflow: TextOverflow.ellipsis,
+                                    ),
+                                    SizedBox(width: screenWidth * 0.06),
+                                    popintext(
+                                      text: trip?.members.toString() ?? '',
+                                      fontSize: 12,
+                                      color: AppColors.grey,
+                                      fw: FontWeight.w400,
+                                      maxLines: 1,
+                                      overflow: TextOverflow.ellipsis,
+                                    ),
+                                    const SizedBox(width: 4),
+                                    Image.asset(
+                                      'assets/personicon.png',
+                                      color: AppColors.grey,
+                                      height: 14,
+                                    ),
+                                  ],
                                 ),
-                              ),
-                            ],
+
+                                inter(
+                                  text:
+                                      '${trip!.startDate.day}-${trip.startDate.month}-${trip.startDate.year}',
+                                  fontSize: 12,
+                                  color: AppColors.grey,
+                                  fw: FontWeight.w400,
+                                ),
+
+                                Row(
+                                  children: [
+                                    popintext(
+                                      text: '\$${trip.budgeteastimatr}',
+
+                                      fontSize: 16,
+                                      color: AppColors.green,
+                                      fw: FontWeight.w600,
+                                    ),
+
+                                    const SizedBox(width: 6),
+                                    inter(
+                                      text: 'per person',
+                                      fontSize: 14,
+                                      color: AppColors.grey,
+                                      fw: FontWeight.w400,
+                                    ),
+                                  ],
+                                ),
+                                SizedBox(height: screenHeight * 0.02),
+                                Center(
+                                  child: CustomButton(
+                                    title: 'Join',
+                                    onPressed: () {
+                                      Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (_) =>
+                                              RequesttojoinTripDetails(),
+                                        ),
+                                      );
+                                    },
+                                    bgColor: AppColors.blueascent,
+                                  ),
+                                ),
+                              ],
+                            ),
                           ),
                         ],
                       ),
@@ -278,8 +285,6 @@ class _ActiveTripState extends State<ActiveTrip> {
               },
             ),
           ),
-
-          
         ],
       ),
     );

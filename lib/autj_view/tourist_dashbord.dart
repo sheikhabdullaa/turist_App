@@ -461,9 +461,7 @@ class _TouristDashbordState extends State<TouristDashbord> {
                 ),
               ),
 
-
-
-                   // grid view builder start
+              // grid view builder start
               FutureBuilder(
                 future: CreatTripRepo().activeTripsGet(),
                 builder: (context, snapshot) {
@@ -508,9 +506,8 @@ class _TouristDashbordState extends State<TouristDashbord> {
                                 Stack(
                                   children: [
                                     ClipRRect(
-                                      borderRadius: const BorderRadius.vertical(
-                                        top: Radius.circular(12),
-                                      ),
+                                      borderRadius:
+                                          BorderRadiusGeometry.circular(15),
                                       child: Image.asset(
                                         'assets/swizerland3.png',
                                         fit: BoxFit.cover,
@@ -564,7 +561,7 @@ class _TouristDashbordState extends State<TouristDashbord> {
 
                                 Positioned(
                                   top: 8,
-                                  right: 2,
+                                  right: 8,
                                   child: Expanded(
                                     child: IconButton(
                                       onPressed: () {
@@ -587,77 +584,50 @@ class _TouristDashbordState extends State<TouristDashbord> {
                               ],
                             ),
 
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Row(
-                                  children: [
-                                    popintext(
-                                      text: trip?.location.toString() ?? '',
-                                      fontSize: 12,
-                                      color: AppColors.black,
-                                      fw: FontWeight.w500,
-                                    ),
-                                    SizedBox(width: screenWidth * 0.06),
-                                    popintext(
-                                      text: trip?.members.toString() ?? '',
-                                      fontSize: 12,
-                                      color: AppColors.grey,
-                                      fw: FontWeight.w400,
-                                    ),
-                                    const SizedBox(width: 4),
-                                    Image.asset(
-                                      'assets/personicon.png',
-                                      color: AppColors.grey,
-                                      height: 14,
-                                    ),
-                                  ],
-                                ),
-
-                                inter(
-                                  text:
-                                      '${trip!.startDate.day}-${trip.startDate.month}-${trip.startDate.year}',
-                                  fontSize: 12,
-                                  color: AppColors.grey,
-                                  fw: FontWeight.w400,
-                                ),
-
-                                Row(
-                                  children: [
-                                    popintext(
-                                      text: '\$${trip.budgeteastimatr}',
-
-                                      fontSize: 16,
-                                      color: AppColors.green,
-                                      fw: FontWeight.w600,
-                                    ),
-
-                                    const SizedBox(width: 6),
-                                    inter(
-                                      text: 'per person',
-                                      fontSize: 14,
-                                      color: AppColors.grey,
-                                      fw: FontWeight.w400,
-                                    ),
-                                  ],
-                                ),
-                                SizedBox(height: screenHeight * 0.02),
-                                Center(
-                                  child: CustomButton(
-                                    title: 'Join',
-                                    onPressed: () {
-                                      Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                          builder: (_) =>
-                                              RequesttojoinTripDetails(),
-                                        ),
-                                      );
-                                    },
-                                    bgColor: AppColors.blueascent,
+                            Padding(
+                              padding: const EdgeInsets.symmetric(
+                                horizontal: 15,
+                              ),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Row(
+                                    children: [
+                                      popintext(
+                                        text: trip?.location.toString() ?? '',
+                                        fontSize: 16,
+                                        color: AppColors.black,
+                                        fw: FontWeight.w600,
+                                      ),
+                                    ],
                                   ),
-                                ),
-                              ],
+
+                                  inter(
+                                    text:
+                                        '${trip!.startDate.day}-${trip.startDate.month}-${trip.startDate.year}',
+                                    fontSize: 12,
+                                    color: AppColors.grey,
+                                    fw: FontWeight.w400,
+                                  ),
+
+                                  SizedBox(height: screenHeight * 0.02),
+                                  Center(
+                                    child: CustomButton(
+                                      title: 'Join',
+                                      onPressed: () {
+                                        Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                            builder: (_) =>
+                                                RequesttojoinTripDetails(),
+                                          ),
+                                        );
+                                      },
+                                      bgColor: AppColors.blueascent,
+                                    ),
+                                  ),
+                                ],
+                              ),
                             ),
                           ],
                         ),
