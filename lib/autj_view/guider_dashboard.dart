@@ -319,286 +319,290 @@ class _GuiderDashboardState extends State<GuiderDashboard> {
                 ),
               ),
 
-              Row(
-                children: [
-                  Card(
-                    child: Column(
-                      children: [
-                        Stack(
-                          children: [
-                            Container(
-                              width: 150,
-                              height: 120,
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(10),
-                                image: DecorationImage(
-                                  image: AssetImage('assets/swizerland3.png'),
-                                  fit: BoxFit.cover,
-                                ),
-                              ),
+              // Row(
+              //   children: [
+              //     Card(
+              //       child: Column(
+              //         children: [
+              //           Stack(
+              //             children: [
+              //               Container(
+              //                 width: 150,
+              //                 height: 120,
+              //                 decoration: BoxDecoration(
+              //                   borderRadius: BorderRadius.circular(10),
+              //                   image: DecorationImage(
+              //                     image: AssetImage('assets/swizerland3.png'),
+              //                     fit: BoxFit.cover,
+              //                   ),
+              //                 ),
 
-                              child: Padding(
-                                padding: const EdgeInsets.symmetric(
-                                  vertical: 10,
-                                ),
-                                child: Row(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
+              //                 child: Padding(
+              //                   padding: const EdgeInsets.symmetric(
+              //                     vertical: 10,
+              //                   ),
+              //                   child: Row(
+              //                     crossAxisAlignment: CrossAxisAlignment.start,
 
-                                  children: [
-                                    Padding(
-                                      padding: const EdgeInsets.symmetric(
-                                        horizontal: 10,
-                                      ),
-                                      child: Padding(
-                                        padding: const EdgeInsets.only(top: 10),
-                                        child: ClipOval(
-                                          child: Image.asset(
-                                            'assets/maria.png',
-                                          ),
-                                        ),
-                                      ),
-                                    ),
-                                    Column(
-                                      children: [
-                                        inter(
-                                          text: 'Planned by ',
-                                          fontSize: 10,
+              //                     children: [
+              //                       Padding(
+              //                         padding: const EdgeInsets.symmetric(
+              //                           horizontal: 10,
+              //                         ),
+              //                         child: Padding(
+              //                           padding: const EdgeInsets.only(top: 10),
+              //                           child: ClipOval(
+              //                             child: Image.asset(
+              //                               'assets/maria.png',
+              //                             ),
+              //                           ),
+              //                         ),
+              //                       ),
+              //                       Column(
+              //                         children: [
+              //                           inter(
+              //                             text: 'Planned by ',
+              //                             fontSize: 10,
 
-                                          color: AppColors.white,
-                                          fw: FontWeight.w400,
-                                        ),
-                                        inter(
-                                          text: 'Maria Joe ',
-                                          fontSize: 10,
+              //                             color: AppColors.white,
+              //                             fw: FontWeight.w400,
+              //                           ),
+              //                           inter(
+              //                             text: 'Maria Joe ',
+              //                             fontSize: 10,
 
-                                          color: AppColors.white,
-                                          fw: FontWeight.w400,
-                                        ),
-                                      ],
-                                    ),
+              //                             color: AppColors.white,
+              //                             fw: FontWeight.w400,
+              //                           ),
+              //                         ],
+              //                       ),
 
-                                    Expanded(
-                                      child: IconButton(
-                                        onPressed: () {},
-                                        icon: Icon(
-                                          Icons.favorite_outline,
-                                          color: AppColors.white,
-                                        ),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
+              //                       Expanded(
+              //                         child: IconButton(
+              //                           onPressed: () {},
+              //                           icon: Icon(
+              //                             Icons.favorite_outline,
+              //                             color: AppColors.white,
+              //                           ),
+              //                         ),
+              //                       ),
+              //                     ],
+              //                   ),
+              //                 ),
+              //               ),
+              //             ],
+              //           ),
 
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: [
-                            inter(
-                              text: 'Swiss Alps',
-                              fontSize: 16,
-                              color: AppColors.black,
-                              fw: FontWeight.w600,
-                            ),
-                            SizedBox(width: screenWidth * 0.03),
-                            inter(
-                              text: '12',
-                              fontSize: 14,
-                              color: AppColors.grey,
-                              fw: FontWeight.w400,
-                            ),
-                          ],
-                        ),
-                        inter(
-                          text: '12–15 Jan, 2026',
-                          fontSize: 14,
-                          color: AppColors.grey,
-                          fw: FontWeight.w400,
-                        ),
+              //           Row(
+              //             mainAxisAlignment: MainAxisAlignment.start,
+              //             children: [
+              //               inter(
+              //                 text: 'Swiss Alps',
+              //                 fontSize: 16,
+              //                 color: AppColors.black,
+              //                 fw: FontWeight.w600,
+              //               ),
+              //               SizedBox(width: screenWidth * 0.03),
+              //               inter(
+              //                 text: '12',
+              //                 fontSize: 14,
+              //                 color: AppColors.grey,
+              //                 fw: FontWeight.w400,
+              //               ),
+              //             ],
+              //           ),
+              //           inter(
+              //             text: '12–15 Jan, 2026',
+              //             fontSize: 14,
+              //             color: AppColors.grey,
+              //             fw: FontWeight.w400,
+              //           ),
 
-                        SizedBox(height: screenHeight * 0.02),
-                        SizedBox(
-                          height: screenHeight * 0.055,
-                          width: screenWidth * 0.4,
-                          child: ElevatedButton(
-                            onPressed: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => ActiveTrip(),
-                                ),
-                              );
-                            },
-                            style: ElevatedButton.styleFrom(
-                              backgroundColor: AppColors.blueascent,
-                              foregroundColor: AppColors.white,
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(17),
-                              ),
-                              elevation: 0,
-                            ),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                inter(
-                                  text: 'Join',
-                                  fontSize: 12,
-                                  color: AppColors.white,
-                                  fw: .w500,
-                                ),
-                                SizedBox(width: 6),
-                                Icon(Icons.arrow_forward),
-                              ],
-                            ),
-                          ),
-                        ),
-                        Container(height: screenHeight * 0.02),
-                      ],
-                    ),
-                  ),
+              //           SizedBox(height: screenHeight * 0.02),
+              //           SizedBox(
+              //             height: screenHeight * 0.055,
+              //             width: screenWidth * 0.4,
+              //             child: ElevatedButton(
+              //               onPressed: () {
+              //                 Navigator.push(
+              //                   context,
+              //                   MaterialPageRoute(
+              //                     builder: (context) => ActiveTrip(),
+              //                   ),
+              //                 );
+              //               },
+              //               style: ElevatedButton.styleFrom(
+              //                 backgroundColor: AppColors.blueascent,
+              //                 foregroundColor: AppColors.white,
+              //                 shape: RoundedRectangleBorder(
+              //                   borderRadius: BorderRadius.circular(17),
+              //                 ),
+              //                 elevation: 0,
+              //               ),
+              //               child: Row(
+              //                 mainAxisAlignment: MainAxisAlignment.center,
+              //                 children: [
+              //                   inter(
+              //                     text: 'Join',
+              //                     fontSize: 12,
+              //                     color: AppColors.white,
+              //                     fw: .w500,
+              //                   ),
+              //                   SizedBox(width: 6),
+              //                   Icon(Icons.arrow_forward),
+              //                 ],
+              //               ),
+              //             ),
+              //           ),
+              //           Container(height: screenHeight * 0.02),
+              //         ],
+              //       ),
+              //     ),
 
-                  SizedBox(width: screenWidth * 0.01),
-                  Card(
-                    child: Column(
-                      children: [
-                        Stack(
-                          children: [
-                            Container(
-                              width: 150,
-                              height: 120,
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(10),
-                                image: DecorationImage(
-                                  image: AssetImage('assets/swiiss.png'),
-                                  fit: BoxFit.cover,
-                                ),
-                              ),
+              //     SizedBox(width: screenWidth * 0.01),
+              //     Card(
+              //       child: Column(
+              //         children: [
+              //           Stack(
+              //             children: [
+              //               Container(
+              //                 width: 150,
+              //                 height: 120,
+              //                 decoration: BoxDecoration(
+              //                   borderRadius: BorderRadius.circular(10),
+              //                   image: DecorationImage(
+              //                     image: AssetImage('assets/swiiss.png'),
+              //                     fit: BoxFit.cover,
+              //                   ),
+              //                 ),
 
-                              child: Padding(
-                                padding: const EdgeInsets.symmetric(
-                                  vertical: 10,
-                                ),
-                                child: Row(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
+              //                 child: Padding(
+              //                   padding: const EdgeInsets.symmetric(
+              //                     vertical: 10,
+              //                   ),
+              //                   child: Row(
+              //                     crossAxisAlignment: CrossAxisAlignment.start,
 
-                                  children: [
-                                    Padding(
-                                      padding: const EdgeInsets.symmetric(
-                                        horizontal: 10,
-                                      ),
-                                      child: Padding(
-                                        padding: const EdgeInsets.only(top: 10),
-                                        child: ClipOval(
-                                          child: Image.asset(
-                                            'assets/maria.png',
-                                          ),
-                                        ),
-                                      ),
-                                    ),
-                                    Column(
-                                      children: [
-                                        inter(
-                                          text: 'Planned by ',
-                                          fontSize: 10,
+              //                     children: [
+              //                       Padding(
+              //                         padding: const EdgeInsets.symmetric(
+              //                           horizontal: 10,
+              //                         ),
+              //                         child: Padding(
+              //                           padding: const EdgeInsets.only(top: 10),
+              //                           child: ClipOval(
+              //                             child: Image.asset(
+              //                               'assets/maria.png',
+              //                             ),
+              //                           ),
+              //                         ),
+              //                       ),
+              //                       Column(
+              //                         children: [
+              //                           inter(
+              //                             text: 'Planned by ',
+              //                             fontSize: 10,
 
-                                          color: AppColors.white,
-                                          fw: FontWeight.w400,
-                                        ),
-                                        inter(
-                                          text: 'Maria Joe ',
-                                          fontSize: 10,
+              //                             color: AppColors.white,
+              //                             fw: FontWeight.w400,
+              //                           ),
+              //                           inter(
+              //                             text: 'Maria Joe ',
+              //                             fontSize: 10,
 
-                                          color: AppColors.white,
-                                          fw: FontWeight.w400,
-                                        ),
-                                      ],
-                                    ),
+              //                             color: AppColors.white,
+              //                             fw: FontWeight.w400,
+              //                           ),
+              //                         ],
+              //                       ),
 
-                                    Expanded(
-                                      child: IconButton(
-                                        onPressed: () {},
-                                        icon: Icon(
-                                          Icons.favorite_outline,
-                                          color: AppColors.white,
-                                        ),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
+              //                       Expanded(
+              //                         child: IconButton(
+              //                           onPressed: () {},
+              //                           icon: Icon(
+              //                             Icons.favorite_outline,
+              //                             color: AppColors.white,
+              //                           ),
+              //                         ),
+              //                       ),
+              //                     ],
+              //                   ),
+              //                 ),
+              //               ),
+              //             ],
+              //           ),
 
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: [
-                            popintext(
-                              text: 'Swiss Alps',
-                              fontSize: 16,
-                              color: AppColors.black,
-                              fw: FontWeight.w600,
-                            ),
-                            SizedBox(width: screenWidth * 0.03),
-                            popintext(
-                              text: '12',
-                              fontSize: 14,
-                              color: AppColors.grey,
-                              fw: FontWeight.w400,
-                            ),
-                          ],
-                        ),
-                        popintext(
-                          text: '12–15 Jan, 2026',
-                          fontSize: 14,
-                          color: AppColors.grey,
-                          fw: FontWeight.w400,
-                        ),
+              //           Row(
+              //             mainAxisAlignment: MainAxisAlignment.start,
+              //             children: [
+              //               popintext(
+              //                 text: 'Swiss Alps',
+              //                 fontSize: 16,
+              //                 color: AppColors.black,
+              //                 fw: FontWeight.w600,
+              //               ),
+              //               SizedBox(width: screenWidth * 0.03),
+              //               popintext(
+              //                 text: '12',
+              //                 fontSize: 14,
+              //                 color: AppColors.grey,
+              //                 fw: FontWeight.w400,
+              //               ),
+              //             ],
+              //           ),
+              //           popintext(
+              //             text: '12–15 Jan, 2026',
+              //             fontSize: 14,
+              //             color: AppColors.grey,
+              //             fw: FontWeight.w400,
+              //           ),
 
-                        SizedBox(height: screenHeight * 0.02),
-                        SizedBox(
-                          height: screenHeight * 0.055,
-                          width: screenWidth * 0.4,
-                          child: ElevatedButton(
-                            onPressed: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => ActiveTrip(),
-                                ),
-                              );
-                            },
-                            style: ElevatedButton.styleFrom(
-                              backgroundColor: AppColors.blueascent,
-                              foregroundColor: AppColors.white,
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(17),
-                              ),
-                              elevation: 0,
-                            ),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                popintext(
-                                  text: 'Join',
-                                  fontSize: 12,
-                                  color: AppColors.white,
-                                  fw: .w500,
-                                ),
-                                SizedBox(width: 6),
-                                Icon(Icons.arrow_forward),
-                              ],
-                            ),
-                          ),
-                        ),
-                        Container(height: screenHeight * 0.02),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
+              //           SizedBox(height: screenHeight * 0.02),
+              //           SizedBox(
+              //             height: screenHeight * 0.055,
+              //             width: screenWidth * 0.4,
+              //             child: ElevatedButton(
+              //               onPressed: () {
+              //                 Navigator.push(
+              //                   context,
+              //                   MaterialPageRoute(
+              //                     builder: (context) => ActiveTrip(),
+              //                   ),
+              //                 );
+              //               },
+              //               style: ElevatedButton.styleFrom(
+              //                 backgroundColor: AppColors.blueascent,
+              //                 foregroundColor: AppColors.white,
+              //                 shape: RoundedRectangleBorder(
+              //                   borderRadius: BorderRadius.circular(17),
+              //                 ),
+              //                 elevation: 0,
+              //               ),
+              //               child: Row(
+              //                 mainAxisAlignment: MainAxisAlignment.center,
+              //                 children: [
+              //                   popintext(
+              //                     text: 'Join',
+              //                     fontSize: 12,
+              //                     color: AppColors.white,
+              //                     fw: .w500,
+              //                   ),
+              //                   SizedBox(width: 6),
+              //                   Icon(Icons.arrow_forward),
+              //                 ],
+              //               ),
+              //             ),
+              //           ),
+              //           Container(height: screenHeight * 0.02),
+              //         ],
+              //       ),
+              //     ),
+              //   ],
+              // ),
+
+
+
+
               Row(
                 children: [
                   Card(

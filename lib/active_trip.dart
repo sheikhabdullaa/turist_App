@@ -278,6 +278,8 @@ class _ActiveTripState extends State<ActiveTrip> {
               },
             ),
           ),
+
+          
         ],
       ),
     );
