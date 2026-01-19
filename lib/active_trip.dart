@@ -59,7 +59,6 @@ class _ActiveTripState extends State<ActiveTrip> {
         ],
       ),
 
-      // 🔥 IMPORTANT: NO SingleChildScrollView
       body: Column(
         children: [
           Padding(
@@ -117,68 +116,61 @@ class _ActiveTripState extends State<ActiveTrip> {
                         children: [
                           Stack(
                             children: [
-                              Container(
-                                height: 120,
-                                decoration: BoxDecoration(
-                                  borderRadius: const BorderRadius.vertical(
-                                    top: Radius.circular(12),
+                              Stack(
+                                children: [
+                                  ClipRRect(
+                                    borderRadius: const BorderRadius.vertical(
+                                      top: Radius.circular(12),
+                                    ),
+                                    child: Image.asset(
+                                      'assets/swizerland3.png',
+                                      fit: BoxFit.cover,
+                                      width: double.infinity,
+                                      height: 120,
+                                    ),
                                   ),
-                                ),
-                                child: Stack(
-                                  children: [
-                                    ClipRRect(
-                                      borderRadius: const BorderRadius.vertical(
-                                        top: Radius.circular(12),
-                                      ),
-                                      child: Image.asset(
-                                        'assets/swizerland3.png',
-                                        fit: BoxFit.cover,
-                                        width: double.infinity,
-                                        height: 120,
-                                      ),
-                                    ),
 
-                                    Padding(
-                                      padding: const EdgeInsets.symmetric(
-                                        vertical: 10,
-                                      ),
-                                      child: Row(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
-                                          Padding(
-                                            padding: const EdgeInsets.symmetric(
-                                              horizontal: 10,
-                                            ),
-                                            child: ClipOval(
-                                              child: Image.asset(
-                                                'assets/maria.png',
-                                              ),
-                                            ),
-                                          ),
-                                          Column(
-                                            children: [
-                                              inter(
-                                                text: 'Planned by ',
-                                                fontSize: 12,
-                                                color: AppColors.white,
-                                                fw: FontWeight.w400,
-                                              ),
-                                              inter(
-                                                text:
-                                                    trip?.username.toString() ??
-                                                    '',
-                                                fontSize: 12,
-                                                color: AppColors.white,
-                                                fw: FontWeight.w400,
-                                              ),
-                                            ],
-                                          ),
-                                        ],
-                                      ),
+                                  Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                      vertical: 10,
                                     ),
-                                  ],
-                                ),
+                                    child: Row(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Padding(
+                                          padding: const EdgeInsets.symmetric(
+                                            horizontal: 10,
+                                          ),
+                                          child: ClipOval(
+                                            child: Image.asset(
+                                              'assets/maria.png',
+                                            ),
+                                          ),
+                                        ),
+                                        Column(
+                                          children: [
+                                            inter(
+                                              text: 'Planned by ',
+                                              fontSize: 12,
+                                              color: AppColors.white,
+                                              fw: FontWeight.w400,
+                                            ),
+
+                                            inter(
+                                              text:
+                                                  trip?.username.toString() ??
+                                                  '',
+                                              fontSize: 12,
+                                              color: AppColors.white,
+                                              fw: FontWeight.w400,
+                                            ),
+                                          ],
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ],
                               ),
 
                               Positioned(
@@ -199,12 +191,6 @@ class _ActiveTripState extends State<ActiveTrip> {
                                     icon: Icon(
                                       Icons.favorite_outline,
                                       color: AppColors.white,
-                                      // (trip?.isfavorite ?? false)
-                                      //     ? Icons.favorite
-                                      //     : Icons.favorite_outline,
-                                      // color: (trip?.isfavorite ?? true)
-                                      //     ? Colors.red
-                                      //     : AppColors.white,
                                     ),
                                   ),
                                 ),
@@ -268,51 +254,20 @@ class _ActiveTripState extends State<ActiveTrip> {
                               ),
                               SizedBox(height: screenHeight * 0.02),
                               Center(
-                                child: CustomButton(title: 'Join', onPressed: (){
-                                  Navigator.push(context, MaterialPageRoute(builder: (_)=>RequesttojoinTripDetails()));
-                                }, bgColor: AppColors.blueascent),
-                              )
-
-                              // SizedBox(
-                              //   // width: double.infinity,
-                              //   width: screenWidth * 0.4,
-                              //   height: 36,
-                              //   child: ElevatedButton(
-                              //     onPressed: () {
-                              //       Navigator.push(
-                              //         context,
-                              //         MaterialPageRoute(
-                              //           builder: (_) =>
-                              //               RequesttojoinTripDetails(),
-                              //         ),
-                              //       );
-                              //     },
-                              //     style: ElevatedButton.styleFrom(
-                              //       backgroundColor: AppColors.blueascent,
-                              //       shape: RoundedRectangleBorder(
-                              //         borderRadius: BorderRadius.circular(16),
-                              //       ),
-                              //     ),
-                                
-                              //     child: Row(
-                              //       mainAxisAlignment: MainAxisAlignment.center,
-                              //       children: [
-                              //         inter(
-                              //           text: 'Join',
-                              //           fontSize: 12,
-                              //           color: AppColors.white,
-                              //           fw: FontWeight.w500,
-                              //         ),
-                              //         const SizedBox(width: 6),
-                              //         const Icon(
-                              //           Icons.arrow_forward,
-                              //           color: AppColors.white,
-                              //           size: 16,
-                              //         ),
-                              //       ],
-                              //     ),
-                              //   ),
-                              // ),
+                                child: CustomButton(
+                                  title: 'Join',
+                                  onPressed: () {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (_) =>
+                                            RequesttojoinTripDetails(),
+                                      ),
+                                    );
+                                  },
+                                  bgColor: AppColors.blueascent,
+                                ),
+                              ),
                             ],
                           ),
                         ],
