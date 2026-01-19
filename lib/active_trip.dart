@@ -108,6 +108,7 @@ class _ActiveTripState extends State<ActiveTrip> {
                     final trip = trips[index];
 
                     return Card(
+                      
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(12),
                       ),
