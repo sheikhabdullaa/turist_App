@@ -125,11 +125,6 @@ class _GuiderDashboardState extends State<GuiderDashboard> {
                                 color: AppColors.white,
                                 fw: FontWeight.w400,
                               ),
-                              SizedBox(width: screenWidth * 0.27),
-                              InkWell(
-                                onTap: () {},
-                                child: Image.asset('assets/dropdown.png'),
-                              ),
                             ],
                           ),
                           inter(
@@ -339,267 +334,242 @@ class _GuiderDashboardState extends State<GuiderDashboard> {
 
                   final trips = snapshot.data!;
 
-                  return GridView.builder(
-                    shrinkWrap: true,
-                    physics: NeverScrollableScrollPhysics(),
-                    padding: const EdgeInsets.symmetric(horizontal: 10),
-                    itemCount: trips.length,
-                    gridDelegate:
-                        const SliverGridDelegateWithFixedCrossAxisCount(
-                          crossAxisCount: 2,
-                          childAspectRatio: 0.62,
-                          crossAxisSpacing: 10,
-                          mainAxisSpacing: 10,
-                        ),
-                    itemBuilder: (context, index) {
-                      final trip = trips[index];
-
-                      return Flexible(
-                        child: Card(
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(12),
+                  return RefreshIndicator(
+                    onRefresh: () async {
+                      setState(() {});
+                    },
+                    child: GridView.builder(
+                      shrinkWrap: true,
+                      physics: NeverScrollableScrollPhysics(),
+                      padding: const EdgeInsets.symmetric(horizontal: 10),
+                      itemCount: trips.length,
+                      gridDelegate:
+                          const SliverGridDelegateWithFixedCrossAxisCount(
+                            crossAxisCount: 2,
+                            childAspectRatio: 0.62,
+                            crossAxisSpacing: 10,
+                            mainAxisSpacing: 10,
                           ),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Stack(
-                                children: [
-                                  Stack(
-                                    children: [
-                                      ClipRRect(
-                                        borderRadius:
-                                            const BorderRadius.vertical(
-                                              top: Radius.circular(12),
-                                            ),
-                                        child: Image.asset(
-                                          'assets/swizerland3.png',
-                                          fit: BoxFit.cover,
-                                          width: double.infinity,
-                                          height: 120,
-                                        ),
-                                      ),
-
-                                      Positioned(
-                                        top: 10,
-                                        left: 10,
-                                        child: Row(
-                                          children: [
-                                            ClipOval(
-                                              child: Image.asset(
-                                                'assets/maria.png',
-                                                height: 28,
-                                                width: 28,
-                                              ),
-                                            ),
-                                            const SizedBox(width: 6),
-
-                                            Column(
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.start,
-                                              children: [
-                                                inter(
-                                                  text: 'Planned by',
-                                                  fontSize: 10,
-                                                  color: Colors.white,
-                                                ),
-
-                                                SizedBox(
-                                                  width: 90,
-                                                  child: inter(
-                                                    text: trip?.username ?? '',
-                                                    fontSize: 12,
-                                                    color: Colors.white,
-                                                    maxLines: 1,
-                                                    overflow:
-                                                        TextOverflow.ellipsis,
-                                                  ),
-                                                ),
-                                              ],
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-
-                                      Positioned(
-                                        top: 8,
-                                        right: 8,
-                                        child: Icon(
-                                          Icons.favorite_outline,
-                                          color: Colors.white,
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                  Stack(
-                                    children: [
-                                      ClipRRect(
-                                        borderRadius:
-                                            const BorderRadius.vertical(
-                                              top: Radius.circular(12),
-                                            ),
-                                        child: Image.asset(
-                                          'assets/swizerland3.png',
-                                          fit: BoxFit.cover,
-                                          width: double.infinity,
-                                          height: 120,
-                                        ),
-                                      ),
-
-                                      Positioned(
-                                        top: 10,
-                                        left: 10,
-                                        child: Row(
-                                          children: [
-                                            ClipOval(
-                                              child: Image.asset(
-                                                'assets/maria.png',
-                                                height: 28,
-                                                width: 28,
-                                              ),
-                                            ),
-                                            const SizedBox(width: 6),
-
-                                            Column(
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.start,
-                                              children: [
-                                                inter(
-                                                  text: 'Planned by',
-                                                  fontSize: 10,
-                                                  color: Colors.white,
-                                                ),
-
-                                                SizedBox(
-                                                  width: 90,
-                                                  child: inter(
-                                                    text: trip?.username ?? '',
-                                                    fontSize: 12,
-                                                    color: Colors.white,
-                                                    maxLines: 1,
-                                                    overflow:
-                                                        TextOverflow.ellipsis,
-                                                  ),
-                                                ),
-                                              ],
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-
-                                      Positioned(
-                                        top: 8,
-                                        right: 8,
-                                        child: IconButton(
-                                          onPressed: () {
-                                            if (trip == null) return;
-
-                                            setState(() {
-                                              trip.isfavorite =
-                                                  !(trip.isfavorite ?? false);
-                                              trip.isnotfavorite =
-                                                  !(trip.isfavorite ?? true);
-                                            });
-                                          },
-                                          icon: Icon(
-                                            Icons.favorite_outline,
-                                            color: AppColors.white,
+                      itemBuilder: (context, index) {
+                        final trip = trips[index];
+                    
+                        return Flexible(
+                          child: Card(
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(12),
+                            ),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Stack(
+                                  children: [
+                                    Stack(
+                                      children: [
+                                        ClipRRect(
+                                          borderRadius:
+                                           BorderRadiusGeometry.circular(12),
+                                          child: Image.asset(
+                                            'assets/swizerland3.png',
+                                            fit: BoxFit.cover,
+                                            width: double.infinity,
+                                            height: 120,
                                           ),
                                         ),
-                                      ),
-                                    ],
-                                  ),
-                                ],
-                              ),
-
-                              Padding(
-                                padding: const EdgeInsets.symmetric(
-                                  horizontal: 8.0,
-                                ),
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Row(
-                                      children: [
-                                        popintext(
-                                          text: trip?.location.toString() ?? '',
-                                          fontSize: 12,
-                                          color: AppColors.black,
-                                          fw: FontWeight.w500,
-                                          maxLines: 1,
-                                          overflow: TextOverflow.ellipsis,
+                    
+                                        Positioned(
+                                          top: 10,
+                                          left: 10,
+                                          child: Row(
+                                            children: [
+                                              ClipOval(
+                                                child: Image.asset(
+                                                  'assets/maria.png',
+                                                  height: 28,
+                                                  width: 28,
+                                                ),
+                                              ),
+                                              const SizedBox(width: 6),
+                    
+                                              Column(
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.start,
+                                                children: [
+                                                  inter(
+                                                    text: 'Planned by',
+                                                    fontSize: 10,
+                                                    color: Colors.white,
+                                                  ),
+                    
+                                                  SizedBox(
+                                                    width: 90,
+                                                    child: inter(
+                                                      text: trip?.username ?? '',
+                                                      fontSize: 12,
+                                                      color: Colors.white,
+                                                      maxLines: 1,
+                                                      overflow:
+                                                          TextOverflow.ellipsis,
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                            ],
+                                          ),
                                         ),
-                                        SizedBox(width: screenWidth * 0.06),
-                                        popintext(
-                                          text: trip?.members.toString() ?? '',
-                                          fontSize: 12,
-                                          color: AppColors.grey,
-                                          fw: FontWeight.w400,
-                                        ),
-                                        const SizedBox(width: 4),
-                                        Image.asset(
-                                          'assets/personicon.png',
-                                          color: AppColors.grey,
-                                          height: 14,
-                                        ),
-                                      ],
-                                    ),
-
-                                    inter(
-                                      text:
-                                          '${trip!.startDate.day}-${trip.startDate.month}-${trip.startDate.year}',
-                                      fontSize: 12,
-                                      color: AppColors.grey,
-                                      fw: FontWeight.w400,
-                                    ),
-
-                                    Row(
-                                      children: [
-                                        popintext(
-                                          // text: '\$${trip.budgeteastimatr}',
-                                          text: '560',
-
-                                          fontSize: 16,
-                                          color: AppColors.green,
-                                          fw: FontWeight.w600,
-                                          maxLines: 1,
-                                          overflow: TextOverflow.ellipsis,
-                                        ),
-
-                                        const SizedBox(width: 6),
-                                        inter(
-                                          text: 'per person',
-                                          maxLines: 1,
-                                          overflow: TextOverflow.ellipsis,
-                                          fontSize: 14,
-                                          color: AppColors.grey,
-                                          fw: FontWeight.w400,
+                    
+                                        Positioned(
+                                          top: 8,
+                                          right: 8,
+                                          child: Icon(
+                                            Icons.favorite_outline,
+                                            color: Colors.white,
+                                          ),
                                         ),
                                       ],
                                     ),
-                                    SizedBox(height: screenHeight * 0.01),
-                                    Center(
-                                      child: CustomButton(
-                                        title: 'Join',
-                                        onPressed: () {
-                                          Navigator.push(
-                                            context,
-                                            MaterialPageRoute(
-                                              builder: (_) =>
-                                                  RequesttojoinTripDetails(),
+                                    Stack(
+                                      children: [
+                                        ClipRRect(
+                                          borderRadius:
+                                              const BorderRadius.vertical(
+                                                top: Radius.circular(12),
+                                              ),
+                                          child: Image.asset(
+                                            'assets/swizerland3.png',
+                                            fit: BoxFit.cover,
+                                            width: double.infinity,
+                                            height: 120,
+                                          ),
+                                        ),
+                    
+                                        Positioned(
+                                          top: 10,
+                                          left: 10,
+                                          child: Row(
+                                            children: [
+                                              ClipOval(
+                                                child: Image.asset(
+                                                  'assets/maria.png',
+                                                  height: 28,
+                                                  width: 28,
+                                                ),
+                                              ),
+                                              const SizedBox(width: 6),
+                    
+                                              Column(
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.start,
+                                                children: [
+                                                  inter(
+                                                    text: 'Planned by',
+                                                    fontSize: 10,
+                                                    color: Colors.white,
+                                                  ),
+                    
+                                                  SizedBox(
+                                                    width: 90,
+                                                    child: inter(
+                                                      text: trip?.username ?? '',
+                                                      fontSize: 12,
+                                                      color: Colors.white,
+                                                      maxLines: 1,
+                                                      overflow:
+                                                          TextOverflow.ellipsis,
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                    
+                                        Positioned(
+                                          top: 8,
+                                          right: 8,
+                                          child: IconButton(
+                                            onPressed: () {
+                                              
+                    
+                                              (){};
+                                            },
+                                            icon: Icon(
+                                              Icons.favorite_outline,
+                                              color: AppColors.white,
                                             ),
-                                          );
-                                        },
-                                        bgColor: AppColors.blueascent,
-                                      ),
+                                          ),
+                                        ),
+                                      ],
                                     ),
                                   ],
                                 ),
-                              ),
-                            ],
+                    
+                                Padding(
+                                  padding: const EdgeInsets.symmetric(
+                                    horizontal: 8.0,
+                                  ),
+                                  child: Column(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      Row(
+                                        children: [
+                                          popintext(
+                                            text: trip?.location.toString() ?? '',
+                                            fontSize: 12,
+                                            color: AppColors.black,
+                                            fw: FontWeight.w500,
+                                            maxLines: 1,
+                                            overflow: TextOverflow.ellipsis,
+                                          ),
+                                          SizedBox(width: screenWidth * 0.06),
+                                          popintext(
+                                            text: trip?.members.toString() ?? '',
+                                            fontSize: 12,
+                                            color: AppColors.grey,
+                                            fw: FontWeight.w400,
+                                          ),
+                                          const SizedBox(width: 4),
+                                          Image.asset(
+                                            'assets/personicon.png',
+                                            color: AppColors.grey,
+                                            height: 14,
+                                          ),
+                                        ],
+                                      ),
+                    
+                                      inter(
+                                        text:
+                                            '${trip!.startDate.day}-${trip.startDate.month}-${trip.startDate.year}',
+                                        fontSize: 12,
+                                        color: AppColors.grey,
+                                        fw: FontWeight.w400,
+                                      ),
+                    
+                                  
+                                      SizedBox(height: screenHeight * 0.01),
+                                      Center(
+                                        child: CustomButton(
+                                          title: 'Join',
+                                          onPressed: () {
+                                            Navigator.push(
+                                              context,
+                                              MaterialPageRoute(
+                                                builder: (_) =>
+                                                    RequesttojoinTripDetails(),
+                                              ),
+                                            );
+                                          },
+                                          bgColor: AppColors.blueascent,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ],
+                            ),
                           ),
-                        ),
-                      );
-                    },
+                        );
+                      },
+                    ),
                   );
                 },
               ),

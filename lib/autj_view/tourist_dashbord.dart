@@ -564,16 +564,7 @@ class _TouristDashbordState extends State<TouristDashbord> {
                                   right: 8,
                                   child: Expanded(
                                     child: IconButton(
-                                      onPressed: () {
-                                        if (trip == null) return;
-
-                                        setState(() {
-                                          trip.isfavorite =
-                                              !(trip.isfavorite ?? false);
-                                          trip.isnotfavorite =
-                                              !(trip.isfavorite ?? true);
-                                        });
-                                      },
+                                      onPressed: () {},
                                       icon: Icon(
                                         Icons.favorite_outline,
                                         color: AppColors.white,

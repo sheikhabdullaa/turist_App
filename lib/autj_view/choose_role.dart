@@ -66,7 +66,7 @@ class _ChooseRoleState extends State<ChooseRole> {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (_) => const TuristDashbordBottomSheet(),
+                              builder: (_) => const guideBottomSheet(),
                             ),
                           );
                         },
@@ -134,7 +134,7 @@ class _ChooseRoleState extends State<ChooseRole> {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (_) => const guideBottomSheet(),
+                            builder: (_) => const TuristDashbordBottomSheet(),
                           ),
                         );
                       },
@@ -209,7 +209,7 @@ class _ChooseRoleState extends State<ChooseRole> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (_) => const TuristDashbordBottomSheet(),
+                        builder: (_) => const guideBottomSheet(),
                       ),
                     );
                   },

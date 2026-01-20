@@ -441,7 +441,7 @@ class _CreatTripState extends State<CreatTrip> {
               ),
               /// SAVE BUTTON (FINAL & WORKING)
               SizedBox(height: screenheight * 0.04),
-              /// 
+             
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 20),
                 child: Row(

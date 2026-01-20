@@ -180,13 +180,13 @@ class _ActiveTripState extends State<ActiveTrip> {
                                   child: IconButton(
                                     onPressed: () {
                                       if (trip == null) return;
-
-                                      setState(() {
-                                        trip.isfavorite =
-                                            !(trip.isfavorite ?? false);
-                                        trip.isnotfavorite =
-                                            !(trip.isfavorite ?? true);
-                                      });
+                                            
+                                      // setState(() {
+                                      //   trip.isfavorite =
+                                      //       !(trip.isfavorite ?? false);
+                                      //   trip.isnotfavorite =
+                                      //       !(trip.isfavorite ?? true);
+                                      // });
                                     },
                                     icon: Icon(
                                       Icons.favorite_outline,
@@ -242,7 +242,7 @@ class _ActiveTripState extends State<ActiveTrip> {
                                 Row(
                                   children: [
                                     popintext(
-                                      text: '\$${trip.budgeteastimatr}',
+                                      text: '\$${trip.budgetEstimate}',
 
                                       fontSize: 16,
                                       color: AppColors.green,

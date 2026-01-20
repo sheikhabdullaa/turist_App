@@ -69,7 +69,7 @@ class _TuristDashbordBottomSheetState extends State<TuristDashbordBottomSheet> {
           ),
           BottomBarItem(
             inActiveItem: Icon(Icons.smart_toy, color: AppColors.grey),
-            activeItem: Icon(Icons.smart_toy, color: Colors.white),
+            activeItem: Icon(Icons.smart_toy, color: Colors.black),
             itemLabel: 'Chat Bot',
           ),
            BottomBarItem(
