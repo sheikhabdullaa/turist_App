@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:turist_app/autj_view/splash_sacreen.dart';
+import 'package:turist_app/autj_view/trip_details.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -13,9 +13,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: SplashSacreen(),
-    );
+    return MaterialApp(debugShowCheckedModeBanner: false, 
+    home: TripDaetails());
   }
 }

@@ -1,8 +1,7 @@
 // ignore: file_names
 import 'package:flutter/material.dart';
-import 'package:turist_app/autj_view/requesttojoin_trip_details.dart';
-import 'package:turist_app/classes/day_classes.dart';
-import 'package:turist_app/components/custom_text_button.dart';
+import 'package:turist_app/autj_view/creat_trip.dart';
+import 'package:turist_app/autj_view/notification_page.dart';
 import 'package:turist_app/components/inter_text.dart';
 import 'package:turist_app/components/popin_text.dart';
 import 'package:turist_app/repository/creat_trip_repo.dart';
@@ -21,6 +20,38 @@ class _TripDaetailsState extends State<TripDaetails> {
     final screenWidth = MediaQuery.of(context).size.width;
     final screenheight = MediaQuery.of(context).size.height;
     return Scaffold(
+      appBar: AppBar(
+        
+        elevation: 0,
+        leading: IconButton(
+          onPressed: () {
+            Navigator.pop(context);
+          },
+          icon: Icon(
+            Icons.arrow_back,
+            color: AppColors.black,
+          ),
+        ),
+        title: Padding(
+          padding: const EdgeInsets.only(left: 40),
+          child: popintext(
+            text: 'Trip Details',
+            fontSize: 20,
+            color: AppColors.black,
+            fw: FontWeight.w600,
+          ),
+        ),
+        actions: [
+          IconButton(
+            onPressed: () {},
+            icon: Icon(
+              Icons.more_vert,
+              color: AppColors.black,
+            ),
+          ),
+        ],
+      
+      ),
       body: Column(
         children: [
           Expanded(
@@ -88,13 +119,7 @@ class _TripDaetailsState extends State<TripDaetails> {
                                           fw: FontWeight.w400,
                                         ),
 
-                                        SizedBox(width: screenWidth * 0.3),
-                                        InkWell(
-                                          onTap: () {},
-                                          child: Image.asset(
-                                            'assets/dropdown.png',
-                                          ),
-                                        ),
+                                        
                                       ],
                                     ),
                                     Padding(
@@ -367,7 +392,9 @@ class _TripDaetailsState extends State<TripDaetails> {
                                 mainAxisSize: MainAxisSize.min,
                                 children: [
                                   IconButton(
-                                    onPressed: () {},
+                                    onPressed: () {
+                                      Navigator.push(context, MaterialPageRoute(builder: (context) =>  NotificationPage()));
+                                    },
                                     icon: Icon(
                                       Icons.add,
                                       color: AppColors.blueascent,
@@ -476,7 +503,9 @@ class _TripDaetailsState extends State<TripDaetails> {
                                 mainAxisSize: MainAxisSize.min,
                                 children: [
                                   IconButton(
-                                    onPressed: () {},
+                                    onPressed: () {
+                                      Navigator.push(context, MaterialPageRoute(builder: (context) =>  CreatTrip()));
+                                    },
                                     icon: Icon(
                                       Icons.add,
                                       color: AppColors.blueascent,

@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:turist_app/active_trip.dart';
-import 'package:turist_app/autj_view/Trip_daetails.dart';
+import 'package:turist_app/autj_view/trip_details.dart';
 import 'package:turist_app/autj_view/active_bottom_sheet.dart';
 import 'package:turist_app/autj_view/bottom_sheet.dart';
 import 'package:turist_app/autj_view/creat_trip.dart';
 import 'package:turist_app/autj_view/guider_dashboard.dart';
 import 'package:turist_app/autj_view/notification_page.dart';
-import 'package:turist_app/autj_view/requesttojoin_trip_details.dart';
+import 'package:turist_app/autj_view/request_to_join.dart';
 import 'package:turist_app/autj_view/turist_profile.dart';
 import 'package:turist_app/classes/action_button.dart';
 import 'package:turist_app/components/custom_text.dart';

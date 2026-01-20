@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:turist_app/autj_view/michal_turist_profile.dart';
 import 'package:turist_app/autj_view/notification_page.dart';
-import 'package:turist_app/autj_view/requesttojoin_trip_details.dart';
+import 'package:turist_app/autj_view/request_to_join.dart';
 import 'package:turist_app/components/custom_text.dart';
 import 'package:turist_app/components/custom_text_button.dart';
 import 'package:turist_app/components/inter_text.dart';
@@ -287,7 +287,7 @@ class _ActiveTripState extends State<ActiveTrip> {
           ),
 
 
-          
+
         ],
       ),
     );

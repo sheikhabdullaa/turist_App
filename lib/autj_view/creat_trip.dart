@@ -49,6 +49,8 @@ class _CreatTripState extends State<CreatTrip> {
   TextEditingController hotelbookingcontroller = TextEditingController();
   TextEditingController transportcontroller = TextEditingController();
   TextEditingController dinnercontroller = TextEditingController();
+   TextEditingController totalspendcontroller = TextEditingController();  
+   TextEditingController perpersoncontroller = TextEditingController();  
 
   Future<void> pickImage() async {
     final XFile? pickedImage = await _picker.pickImage(
@@ -415,8 +417,31 @@ class _CreatTripState extends State<CreatTrip> {
                 readOnly: true,
                 hintStyle: TextStyle(color: AppColors.grey),
               ),
-
+              SizedBox(height: screenheight * 0.04),
+              customTextField(
+                hint: 'Total Spend Expence',
+                controller: totalspendcontroller,
+                icon: Icon(
+                  Icons.attach_money,
+                  color: AppColors.grey,
+                ),
+                readOnly: true,
+                hintStyle: TextStyle(color: AppColors.grey),
+              ),
+              SizedBox(height: screenheight * 0.04),
+              customTextField(
+                hint: 'Per Person Expence',
+                controller: perpersoncontroller,
+                icon: Icon(
+                  Icons.person,
+                  color: AppColors.grey,
+                ),
+                readOnly: true,
+                hintStyle: TextStyle(color: AppColors.grey),
+              ),
               /// SAVE BUTTON (FINAL & WORKING)
+              SizedBox(height: screenheight * 0.04),
+              /// 
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 20),
                 child: Row(
@@ -468,6 +493,8 @@ class _CreatTripState extends State<CreatTrip> {
                           'hotel expence': hotelbookingcontroller.text,
                           'transportation': transportcontroller.text,
                           'dinner expence': dinnercontroller.text,
+                          'perperson expence': perpersoncontroller.text,
+                          'total spend expence': totalspendcontroller.text,
                         }, tripId);
 
                         Fluttertoast.showToast(msg: "Trip saved successfully");
