@@ -46,6 +46,9 @@ class _CreatTripState extends State<CreatTrip> {
   final TextEditingController discriptioncontroller = TextEditingController();
   final TextEditingController destinationcontroller = TextEditingController();
   final TextEditingController budgetecontroller = TextEditingController();
+  TextEditingController hotelbookingcontroller = TextEditingController();
+  TextEditingController transportcontroller = TextEditingController();
+  TextEditingController dinnercontroller = TextEditingController();
 
   Future<void> pickImage() async {
     final XFile? pickedImage = await _picker.pickImage(
@@ -386,8 +389,32 @@ class _CreatTripState extends State<CreatTrip> {
                 ],
                 onChanged: (v) => selectedAccommodation = v,
               ),
+              SizedBox(height: screenheight * 0.04),
+              customTextField(
+                hint: 'hotel booking expence',
+                controller: hotelbookingcontroller,
+                icon: Icon(Icons.hotel, color: AppColors.grey),
+                readOnly: true,
+                hintStyle: TextStyle(color: AppColors.grey),
+              ),
+              SizedBox(height: screenheight * 0.04),
 
-              SizedBox(height: screenheight * 0.06),
+              customTextField(
+                hint: 'transportation expence',
+                controller: transportcontroller,
+                icon: Icon(Icons.hotel, color: AppColors.grey),
+                readOnly: true,
+                hintStyle: TextStyle(color: AppColors.grey),
+              ),
+              SizedBox(height: screenheight * 0.04),
+
+              customTextField(
+                hint: 'dinner expence',
+                controller: dinnercontroller,
+                icon: Icon(Icons.dinner_dining, color: AppColors.grey),
+                readOnly: true,
+                hintStyle: TextStyle(color: AppColors.grey),
+              ),
 
               /// SAVE BUTTON (FINAL & WORKING)
               Padding(
@@ -438,6 +465,9 @@ class _CreatTripState extends State<CreatTrip> {
                           'createdAt': DateTime.now(),
                           'budgeteastimatr': budgetecontroller.text,
                           'location': destinationcontroller.text,
+                          'hotel expence': hotelbookingcontroller.text,
+                          'transportation': transportcontroller.text,
+                          'dinner expence': dinnercontroller.text,
                         }, tripId);
 
                         Fluttertoast.showToast(msg: "Trip saved successfully");
@@ -453,7 +483,7 @@ class _CreatTripState extends State<CreatTrip> {
                 ),
               ),
 
-              const SizedBox(height: 40),
+              const SizedBox(height: 80),
             ],
           ),
         ),
