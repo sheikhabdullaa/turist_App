@@ -719,6 +719,9 @@ class _TripDaetailsState extends State<TripDaetails> {
                             fw: .w300,
                           ),
                         ),
+                        SizedBox(
+                          height: screenheight * 0.1,
+                        )
                       ],
                     ),
                   ],

@@ -49,8 +49,8 @@ class _CreatTripState extends State<CreatTrip> {
   TextEditingController hotelbookingcontroller = TextEditingController();
   TextEditingController transportcontroller = TextEditingController();
   TextEditingController dinnercontroller = TextEditingController();
-   TextEditingController totalspendcontroller = TextEditingController();  
-   TextEditingController perpersoncontroller = TextEditingController();  
+  TextEditingController totalspendcontroller = TextEditingController();
+  TextEditingController perpersoncontroller = TextEditingController();
 
   Future<void> pickImage() async {
     final XFile? pickedImage = await _picker.pickImage(
@@ -421,10 +421,7 @@ class _CreatTripState extends State<CreatTrip> {
               customTextField(
                 hint: 'Total Spend Expence',
                 controller: totalspendcontroller,
-                icon: Icon(
-                  Icons.attach_money,
-                  color: AppColors.grey,
-                ),
+                icon: Icon(Icons.attach_money, color: AppColors.grey),
                 readOnly: true,
                 hintStyle: TextStyle(color: AppColors.grey),
               ),
@@ -432,16 +429,14 @@ class _CreatTripState extends State<CreatTrip> {
               customTextField(
                 hint: 'Per Person Expence',
                 controller: perpersoncontroller,
-                icon: Icon(
-                  Icons.person,
-                  color: AppColors.grey,
-                ),
+                icon: Icon(Icons.person, color: AppColors.grey),
                 readOnly: true,
                 hintStyle: TextStyle(color: AppColors.grey),
               ),
+
               /// SAVE BUTTON (FINAL & WORKING)
               SizedBox(height: screenheight * 0.04),
-             
+
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 20),
                 child: Row(

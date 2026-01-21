@@ -100,18 +100,22 @@ class _SarahEditProfileState extends State<SarahEditProfile> {
             'phoneNumber': phoneController.text.trim(),
           });
 
+      // ignore: use_build_context_synchronously
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(content: Text('Profile updated successfully')),
       );
 
+      // ignore: use_build_context_synchronously
       Navigator.pop(context); // go back after saving
     } on FirebaseAuthException catch (e) {
       // Firebase auth errors
       ScaffoldMessenger.of(
+        // ignore: use_build_context_synchronously
         context,
       ).showSnackBar(SnackBar(content: Text(e.message ?? "Auth error")));
     } catch (e) {
       ScaffoldMessenger.of(
+        // ignore: use_build_context_synchronously
         context,
       ).showSnackBar(SnackBar(content: Text(e.toString())));
     } finally {
