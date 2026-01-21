@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:turist_app/autj_view/sarah_edit_profile.dart';
 import 'package:turist_app/autj_view/tourist_dashbord.dart';
+import 'package:turist_app/autj_view/view_history.dart';
+import 'package:turist_app/classes/edit_profile.dart';
 import 'package:turist_app/components/inter_text.dart';
 import 'package:turist_app/components/popin_text.dart';
 import 'package:turist_app/repository/auth_repo.dart';
@@ -71,7 +73,7 @@ class _TuristProfilePageState extends State<TuristProfile> {
                       SizedBox(height: screenHeight * 0.02),
                       ElevatedButton(
                         onPressed: () {
-                          Navigator.push(context, MaterialPageRoute(builder: (context) => SarahEditProfile()));
+                          Navigator.push(context, MaterialPageRoute(builder: (context) => SarahEditProfile(uid: '', name: '', email: '', phoneNumber: '', user: appUser ,)));
                         },
                         style: ElevatedButton.styleFrom(
                           fixedSize: Size(196, 58),
@@ -174,7 +176,14 @@ class _TuristProfilePageState extends State<TuristProfile> {
               SizedBox(height: screenHeight * 0.02),
 
               TextButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => ViewHistory(),
+                    ),
+                  );
+                },
                 child: inter(
                   text: 'View History',
                   fontSize: 18,

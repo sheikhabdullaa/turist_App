@@ -10,6 +10,7 @@
 analyzer:
   errors:
     must_call_super: ignore
+    non_constant_identifier_names: ignore
 include: package:flutter_lints/flutter.yaml
 
 linter:
