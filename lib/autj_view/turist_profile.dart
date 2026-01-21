@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:turist_app/autj_view/sarah_edit_profile.dart';
 import 'package:turist_app/autj_view/tourist_dashbord.dart';
 import 'package:turist_app/components/inter_text.dart';
 import 'package:turist_app/components/popin_text.dart';
@@ -69,7 +70,9 @@ class _TuristProfilePageState extends State<TuristProfile> {
                       ),
                       SizedBox(height: screenHeight * 0.02),
                       ElevatedButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.push(context, MaterialPageRoute(builder: (context) => SarahEditProfile()));
+                        },
                         style: ElevatedButton.styleFrom(
                           fixedSize: Size(196, 58),
                           backgroundColor: AppColors.white,
@@ -86,7 +89,9 @@ class _TuristProfilePageState extends State<TuristProfile> {
                         child: Row(
                           children: [
                             IconButton(
-                              onPressed: () {},
+                              onPressed: () {
+                                
+                              },
                               icon: Icon(
                                 Icons.edit_outlined,
                                 color: AppColors.blueascent,

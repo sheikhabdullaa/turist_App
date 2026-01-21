@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:turist_app/autj_view/splash_sacreen.dart';
+import 'package:turist_app/autj_view/turist_profile.dart';
 
 
 void main() async {
@@ -15,6 +15,6 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(debugShowCheckedModeBanner: false, 
-    home: SplashSacreen());
+    home: TuristProfile());
   }
 }
