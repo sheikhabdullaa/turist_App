@@ -175,8 +175,24 @@ class _TouristDashbordState extends State<TouristDashbord> {
                 ),
               ),
 
-              //tokyo image
-              Padding(
+                   
+                                 FutureBuilder(
+                future: CreatTripRepo().activeTripsGet(),
+                builder: (context, snapshot) {
+                  if (snapshot.connectionState == ConnectionState.waiting) {
+                    return const Center(child: CircularProgressIndicator());
+                  }
+
+                  if (snapshot.hasError) {
+                    return Center(child: Text('Error: ${snapshot.error}'));
+                  }
+
+                  if (!snapshot.hasData || snapshot.data!.isEmpty) {
+                    return const Center(child: Text('No active trips found'));
+                  }
+
+                  final trips = snapshot.data!;
+                    return Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 10),
                 child: SingleChildScrollView(
                   scrollDirection: Axis.horizontal,
@@ -346,7 +362,332 @@ class _TouristDashbordState extends State<TouristDashbord> {
                     ],
                   ),
                 ),
+              );
+
+
+                  // return GridView.builder(
+                  //   shrinkWrap: true,
+                  //   physics: NeverScrollableScrollPhysics(),
+                  //   padding: const EdgeInsets.symmetric(horizontal: 10),
+                  //   itemCount: trips.length,
+                  //   gridDelegate:
+                  //       const SliverGridDelegateWithFixedCrossAxisCount(
+                  //         crossAxisCount: 2,
+                  //         childAspectRatio: 0.62,
+                  //         crossAxisSpacing: 10,
+                  //         mainAxisSpacing: 10,
+                  //       ),
+                  //   itemBuilder: (context, index) {
+                  //     final trip = trips[index];
+
+                  //     return Card(
+                  //       shape: RoundedRectangleBorder(
+                  //         borderRadius: BorderRadius.circular(12),
+                  //       ),
+                  //       child: Column(
+                  //         crossAxisAlignment: CrossAxisAlignment.start,
+                  //         children: [
+                  //           Stack(
+                  //             children: [
+                  //               Stack(
+                  //                 children: [
+                  //                   ClipRRect(
+                  //                     borderRadius:
+                  //                         BorderRadiusGeometry.circular(15),
+                  //                     child: Image.asset(
+                  //                       'assets/swizerland3.png',
+                  //                       fit: BoxFit.cover,
+                  //                       width: double.infinity,
+                  //                       height: 120,
+                  //                     ),
+                  //                   ),
+
+                  //                   Padding(
+                  //                     padding: const EdgeInsets.symmetric(
+                  //                       vertical: 10,
+                  //                     ),
+                  //                     child: Row(
+                  //                       crossAxisAlignment:
+                  //                           CrossAxisAlignment.start,
+                  //                       children: [
+                  //                         Padding(
+                  //                           padding: const EdgeInsets.symmetric(
+                  //                             horizontal: 10,
+                  //                           ),
+                  //                           child: ClipOval(
+                  //                             child: Image.asset(
+                  //                               'assets/maria.png',
+                  //                             ),
+                  //                           ),
+                  //                         ),
+                  //                         Column(
+                  //                           children: [
+                  //                             inter(
+                  //                               text: 'Planned by ',
+                  //                               fontSize: 12,
+                  //                               color: AppColors.white,
+                  //                               fw: FontWeight.w400,
+                  //                             ),
+
+                  //                             inter(
+                  //                               text:
+                  //                                   trip?.username.toString() ??
+                  //                                   '',
+                  //                               fontSize: 12,
+                  //                               color: AppColors.white,
+                  //                               fw: FontWeight.w400,
+                  //                             ),
+                  //                           ],
+                  //                         ),
+                  //                       ],
+                  //                     ),
+                  //                   ),
+                  //                 ],
+                  //               ),
+
+                  //               // Positioned(
+                  //               //   top: 8,
+                  //               //   right: 8,
+                  //               //   child: Expanded(
+                  //               //     child: IconButton(
+                  //               //       onPressed: () {},
+                  //               //       icon: Icon(
+                  //               //         Icons.favorite_outline,
+                  //               //         color: AppColors.white,
+                  //               //       ),
+                  //               //     ),
+                  //               //   ),
+                  //               // ),
+                  //             ],
+                  //           ),
+
+                  //           Padding(
+                  //             padding: const EdgeInsets.symmetric(
+                  //               horizontal: 15,
+                  //             ),
+                  //             child: Column(
+                  //               crossAxisAlignment: CrossAxisAlignment.start,
+                  //               children: [
+                  //                 Row(
+                  //                   children: [
+                  //                     popintext(
+                  //                       text: trip?.location.toString() ?? '',
+                  //                       fontSize: 16,
+                  //                       color: AppColors.black,
+                  //                       fw: FontWeight.w600,
+                  //                     ),
+                  //                   ],
+                  //                 ),
+
+                  //                 inter(
+                  //                   text:
+                  //                       '${trip!.startDate.day} to ${trip.endDate.day}-${trip.endDate.month}-${trip.endDate.year}',
+
+                  //                   fontSize: 12,
+                  //                   color: AppColors.grey,
+                  //                   fw: FontWeight.w400,
+                  //                 ),
+
+                  //                 SizedBox(height: screenHeight * 0.02),
+                  //                 Center(
+                  //                   child: CustomButton(
+                  //                     title: 'Join',
+                  //                     onPressed: () {
+                  //                       Navigator.push(
+                  //                         context,
+                  //                         MaterialPageRoute(
+                  //                           builder: (_) =>
+                  //                               RequesttojoinTripDetails(),
+                  //                         ),
+                  //                       );
+                  //                     },
+                  //                     bgColor: AppColors.blueascent,
+                  //                   ),
+                  //                 ),
+                  //               ],
+                  //             ),
+                  //           ),
+                  //         ],
+                  //       ),
+                  //     );
+                  //   },
+                  // );
+                },
               ),
+
+
+              //tokyo image
+              // Padding(
+              //   padding: const EdgeInsets.symmetric(horizontal: 10),
+              //   child: SingleChildScrollView(
+              //     scrollDirection: Axis.horizontal,
+
+              //     child: Row(
+              //       children: [
+              //         Column(
+              //           crossAxisAlignment: CrossAxisAlignment.start,
+
+              //           children: [
+              //             InkWell(
+              //               onTap: () {
+              //                 Navigator.push(
+              //                   context,
+              //                   MaterialPageRoute(
+              //                     builder: (context) => TripDaetails(),
+              //                   ),
+              //                 );
+              //               },
+              //               child: Container(
+              //                 height: screenHeight * 0.2,
+              //                 width: screenWidth * 0.6,
+              //                 decoration: BoxDecoration(
+              //                   borderRadius: BorderRadius.circular(14),
+              //                   image: DecorationImage(
+              //                     image: AssetImage('assets/tokyo.png'),
+              //                     fit: BoxFit.cover,
+              //                   ),
+              //                 ),
+              //               ),
+              //             ),
+              //             popintext(
+              //               text: 'Tokyo, Japan',
+              //               fontSize: 16,
+              //               color: AppColors.black,
+              //               fw: FontWeight.w600,
+              //             ),
+              //             Row(
+              //               children: [
+              //                 Padding(
+              //                   padding: const EdgeInsets.only(right: 20),
+              //                   child: popintext(
+              //                     text: '12–15 March, 2025',
+              //                     fontSize: 14,
+              //                     color: AppColors.grey,
+              //                   ),
+              //                 ),
+              //                 // SizedBox(width: screenWidth * 0.02),
+              //                 popintext(
+              //                   text: '26℃',
+              //                   fontSize: 14,
+              //                   color: AppColors.grey,
+              //                 ),
+              //                 Image.asset('assets/cloud.png'),
+              //               ],
+              //             ),
+              //             Row(
+              //               children: [
+              //                 popintext(
+              //                   text: 'Planned by ',
+              //                   fontSize: 14,
+              //                   color: AppColors.grey,
+              //                   fw: FontWeight.w400,
+              //                 ),
+              //                 Padding(
+              //                   padding: const EdgeInsets.only(right: 10),
+              //                   child: customtext(
+              //                     text: ' Mr. john Smith ',
+              //                     fontSize: 14,
+              //                     color: AppColors.grey,
+              //                     fw: FontWeight.w600,
+              //                   ),
+              //                 ),
+              //                 SizedBox(width: screenWidth * 0.0001),
+
+              //                 popintext(
+              //                   text: '12 ',
+              //                   fontSize: 14,
+              //                   color: AppColors.grey,
+              //                   fw: FontWeight.w400,
+              //                 ),
+              //                 Image.asset(
+              //                   'assets/personicon.png',
+              //                   color: AppColors.grey,
+              //                 ),
+              //               ],
+              //             ),
+              //           ],
+              //         ),
+              //         SizedBox(width: screenWidth * 0.08),
+
+              //         Column(
+              //           crossAxisAlignment: CrossAxisAlignment.start,
+              //           children: [
+              //             InkWell(
+              //               onTap: () {
+              //                 Navigator.push(
+              //                   context,
+              //                   MaterialPageRoute(
+              //                     builder: (context) => TripDaetails(),
+              //                   ),
+              //                 );
+              //               },
+              //               child: Container(
+              //                 height: screenHeight * 0.2,
+              //                 width: screenWidth * 0.6,
+              //                 decoration: BoxDecoration(
+              //                   borderRadius: BorderRadius.circular(14),
+              //                   image: DecorationImage(
+              //                     image: AssetImage('assets/bali.png'),
+              //                     fit: BoxFit.cover,
+              //                   ),
+              //                 ),
+              //               ),
+              //             ),
+              //             customtext(
+              //               text: 'Bali, Indonesia',
+              //               fontSize: 16,
+              //               color: AppColors.black,
+              //               fw: FontWeight.w600,
+              //             ),
+              //             Row(
+              //               children: [
+              //                 customtext(
+              //                   text: '12–15 March, 2025',
+              //                   fontSize: 14,
+              //                   color: AppColors.grey,
+              //                 ),
+              //                 SizedBox(width: screenWidth * 0.04),
+              //                 customtext(
+              //                   text: '26℃',
+              //                   fontSize: 14,
+              //                   color: AppColors.grey,
+              //                 ),
+              //                 Image.asset('assets/cloud.png'),
+              //               ],
+              //             ),
+              //             Row(
+              //               children: [
+              //                 customtext(
+              //                   text: 'Planned by ',
+              //                   fontSize: 14,
+              //                   color: AppColors.grey,
+              //                   fw: FontWeight.w400,
+              //                 ),
+              //                 customtext(
+              //                   text: ' Mr. john Smith ',
+              //                   fontSize: 14,
+              //                   color: AppColors.grey,
+              //                   fw: FontWeight.w600,
+              //                 ),
+
+              //                 customtext(
+              //                   text: '12 ',
+              //                   fontSize: 14,
+              //                   color: AppColors.grey,
+              //                   fw: FontWeight.w400,
+              //                 ),
+              //                 Image.asset(
+              //                   'assets/personicon.png',
+              //                   color: AppColors.grey,
+              //                 ),
+              //               ],
+              //             ),
+              //           ],
+              //         ),
+              //       ],
+              //     ),
+              //   ),
+              // ),
 
               //quick action start
               Padding(
@@ -453,6 +794,7 @@ class _TouristDashbordState extends State<TouristDashbord> {
                     ),
                     InkWell(
                       onTap: () {
+                        setState(() {});
                         Navigator.push(
                           context,
                           MaterialPageRoute(builder: (context) => ActiveTrip()),
@@ -562,19 +904,19 @@ class _TouristDashbordState extends State<TouristDashbord> {
                                   ],
                                 ),
 
-                                Positioned(
-                                  top: 8,
-                                  right: 8,
-                                  child: Expanded(
-                                    child: IconButton(
-                                      onPressed: () {},
-                                      icon: Icon(
-                                        Icons.favorite_outline,
-                                        color: AppColors.white,
-                                      ),
-                                    ),
-                                  ),
-                                ),
+                                // Positioned(
+                                //   top: 8,
+                                //   right: 8,
+                                //   child: Expanded(
+                                //     child: IconButton(
+                                //       onPressed: () {},
+                                //       icon: Icon(
+                                //         Icons.favorite_outline,
+                                //         color: AppColors.white,
+                                //       ),
+                                //     ),
+                                //   ),
+                                // ),
                               ],
                             ),
 
@@ -598,7 +940,8 @@ class _TouristDashbordState extends State<TouristDashbord> {
 
                                   inter(
                                     text:
-                                        '${trip!.startDate.day}-${trip.startDate.month}-${trip.startDate.year}',
+                                        '${trip!.startDate.day} to ${trip.endDate.day}-${trip.endDate.month}-${trip.endDate.year}',
+
                                     fontSize: 12,
                                     color: AppColors.grey,
                                     fw: FontWeight.w400,

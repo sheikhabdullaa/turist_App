@@ -258,7 +258,9 @@ class _GuiderDashboardState extends State<GuiderDashboard> {
                                 child: Row(
                                   children: [
                                     IconButton(
-                                      onPressed: () {},
+                                      onPressed: () {
+                                        setState(() {});
+                                      },
                                       icon: Icon(
                                         Icons.keyboard_arrow_down_sharp,
                                         size: 30,
@@ -346,13 +348,13 @@ class _GuiderDashboardState extends State<GuiderDashboard> {
                       gridDelegate:
                           const SliverGridDelegateWithFixedCrossAxisCount(
                             crossAxisCount: 2,
-                            childAspectRatio: 0.62,
+                            childAspectRatio: 0.7,
                             crossAxisSpacing: 10,
                             mainAxisSpacing: 10,
                           ),
                       itemBuilder: (context, index) {
                         final trip = trips[index];
-                    
+
                         return Flexible(
                           child: Card(
                             shape: RoundedRectangleBorder(
@@ -367,7 +369,7 @@ class _GuiderDashboardState extends State<GuiderDashboard> {
                                       children: [
                                         ClipRRect(
                                           borderRadius:
-                                           BorderRadiusGeometry.circular(12),
+                                              BorderRadiusGeometry.circular(12),
                                           child: Image.asset(
                                             'assets/swizerland3.png',
                                             fit: BoxFit.cover,
@@ -375,7 +377,7 @@ class _GuiderDashboardState extends State<GuiderDashboard> {
                                             height: 120,
                                           ),
                                         ),
-                    
+
                                         Positioned(
                                           top: 10,
                                           left: 10,
@@ -389,7 +391,7 @@ class _GuiderDashboardState extends State<GuiderDashboard> {
                                                 ),
                                               ),
                                               const SizedBox(width: 6),
-                    
+
                                               Column(
                                                 crossAxisAlignment:
                                                     CrossAxisAlignment.start,
@@ -399,11 +401,12 @@ class _GuiderDashboardState extends State<GuiderDashboard> {
                                                     fontSize: 10,
                                                     color: Colors.white,
                                                   ),
-                    
+
                                                   SizedBox(
                                                     width: 90,
                                                     child: inter(
-                                                      text: trip?.username ?? '',
+                                                      text:
+                                                          trip?.username ?? '',
                                                       fontSize: 12,
                                                       color: Colors.white,
                                                       maxLines: 1,
@@ -416,7 +419,7 @@ class _GuiderDashboardState extends State<GuiderDashboard> {
                                             ],
                                           ),
                                         ),
-                    
+
                                         Positioned(
                                           top: 8,
                                           right: 8,
@@ -441,7 +444,7 @@ class _GuiderDashboardState extends State<GuiderDashboard> {
                                             height: 120,
                                           ),
                                         ),
-                    
+
                                         Positioned(
                                           top: 10,
                                           left: 10,
@@ -455,7 +458,7 @@ class _GuiderDashboardState extends State<GuiderDashboard> {
                                                 ),
                                               ),
                                               const SizedBox(width: 6),
-                    
+
                                               Column(
                                                 crossAxisAlignment:
                                                     CrossAxisAlignment.start,
@@ -465,11 +468,12 @@ class _GuiderDashboardState extends State<GuiderDashboard> {
                                                     fontSize: 10,
                                                     color: Colors.white,
                                                   ),
-                    
+
                                                   SizedBox(
                                                     width: 90,
                                                     child: inter(
-                                                      text: trip?.username ?? '',
+                                                      text:
+                                                          trip?.username ?? '',
                                                       fontSize: 12,
                                                       color: Colors.white,
                                                       maxLines: 1,
@@ -482,38 +486,38 @@ class _GuiderDashboardState extends State<GuiderDashboard> {
                                             ],
                                           ),
                                         ),
-                    
-                                        Positioned(
-                                          top: 8,
-                                          right: 8,
-                                          child: IconButton(
-                                            onPressed: () {
-                                              
-                    
-                                              (){};
-                                            },
-                                            icon: Icon(
-                                              Icons.favorite_outline,
-                                              color: AppColors.white,
-                                            ),
-                                          ),
-                                        ),
+
+                                        // Positioned(
+                                        //   top: 8,
+                                        //   right: 8,
+                                        //   child: IconButton(
+                                        //     onPressed: () {
+                                        //       () {};
+                                        //     },
+                                        //     icon: Icon(
+                                        //       Icons.favorite_outline,
+                                        //       color: AppColors.white,
+                                        //     ),
+                                        //   ),
+                                        // ),
                                       ],
                                     ),
                                   ],
                                 ),
-                    
+
                                 Padding(
                                   padding: const EdgeInsets.symmetric(
                                     horizontal: 8.0,
                                   ),
                                   child: Column(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
                                     children: [
                                       Row(
                                         children: [
                                           popintext(
-                                            text: trip?.location.toString() ?? '',
+                                            text:
+                                                trip?.location.toString() ?? '',
                                             fontSize: 12,
                                             color: AppColors.black,
                                             fw: FontWeight.w500,
@@ -522,7 +526,8 @@ class _GuiderDashboardState extends State<GuiderDashboard> {
                                           ),
                                           SizedBox(width: screenWidth * 0.06),
                                           popintext(
-                                            text: trip?.members.toString() ?? '',
+                                            text:
+                                                trip?.members.toString() ?? '',
                                             fontSize: 12,
                                             color: AppColors.grey,
                                             fw: FontWeight.w400,
@@ -535,7 +540,7 @@ class _GuiderDashboardState extends State<GuiderDashboard> {
                                           ),
                                         ],
                                       ),
-                    
+
                                       inter(
                                         text:
                                             '${trip!.startDate.day}-${trip.startDate.month}-${trip.startDate.year}',
@@ -543,8 +548,7 @@ class _GuiderDashboardState extends State<GuiderDashboard> {
                                         color: AppColors.grey,
                                         fw: FontWeight.w400,
                                       ),
-                    
-                                  
+
                                       SizedBox(height: screenHeight * 0.01),
                                       Center(
                                         child: CustomButton(

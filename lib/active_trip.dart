@@ -62,7 +62,7 @@ class _ActiveTripState extends State<ActiveTrip> {
       body: Column(
         children: [
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+            padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -72,7 +72,10 @@ class _ActiveTripState extends State<ActiveTrip> {
                   color: AppColors.black,
                   fw: FontWeight.w600,
                 ),
-                Image.asset('assets/icon.png'),
+                InkWell(
+                  onTap: () => {setState(() {})},
+                  child: Image.asset('assets/icon.png'),
+                ),
               ],
             ),
           ),
@@ -145,27 +148,36 @@ class _ActiveTripState extends State<ActiveTrip> {
                                           child: ClipOval(
                                             child: Image.asset(
                                               'assets/maria.png',
+                                              width: 36,
+                                              height: 36,
+                                              fit: BoxFit.cover,
                                             ),
                                           ),
                                         ),
-                                        Column(
-                                          children: [
-                                            inter(
-                                              text: 'Planned by ',
-                                              fontSize: 12,
-                                              color: AppColors.white,
-                                              fw: FontWeight.w400,
-                                            ),
 
-                                            inter(
-                                              text:
-                                                  trip?.username.toString() ??
-                                                  '',
-                                              fontSize: 12,
-                                              color: AppColors.white,
-                                              fw: FontWeight.w400,
-                                            ),
-                                          ],
+                                        Expanded(
+                                          child: Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                              inter(
+                                                text: 'Planned by',
+                                                fontSize: 12,
+                                                color: AppColors.white,
+                                                fw: FontWeight.w400,
+                                                maxLines: 1,
+                                                overflow: TextOverflow.ellipsis,
+                                              ),
+                                              inter(
+                                                text: trip?.username ?? '',
+                                                fontSize: 12,
+                                                color: AppColors.white,
+                                                fw: FontWeight.w400,
+                                                maxLines: 1,
+                                                overflow: TextOverflow.ellipsis,
+                                              ),
+                                            ],
+                                          ),
                                         ),
                                       ],
                                     ),
@@ -173,28 +185,21 @@ class _ActiveTripState extends State<ActiveTrip> {
                                 ],
                               ),
 
-                              Positioned(
-                                top: 8,
-                                right: 2,
-                                child: Expanded(
-                                  child: IconButton(
-                                    onPressed: () {
-                                      if (trip == null) return;
-                                            
-                                      // setState(() {
-                                      //   trip.isfavorite =
-                                      //       !(trip.isfavorite ?? false);
-                                      //   trip.isnotfavorite =
-                                      //       !(trip.isfavorite ?? true);
-                                      // });
-                                    },
-                                    icon: Icon(
-                                      Icons.favorite_outline,
-                                      color: AppColors.white,
-                                    ),
-                                  ),
-                                ),
-                              ),
+                              // Positioned(
+                              //   top: 3,
+                              //   right: 1,
+                              //   child: IconButton(
+                              //     // constraints: const BoxConstraints(),
+                              //     onPressed: () {
+                              //       if (trip == null) return;
+                              //     },
+                              //     icon: Icon(
+                              //       Icons.favorite_outline,
+                              //       color: AppColors.white,
+                              //       size: 22,
+                              //     ),
+                              //   ),
+                              // ),
                             ],
                           ),
 
@@ -204,6 +209,7 @@ class _ActiveTripState extends State<ActiveTrip> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Row(
+                                  // mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                   children: [
                                     popintext(
                                       text: trip?.location.toString() ?? '',
@@ -233,7 +239,7 @@ class _ActiveTripState extends State<ActiveTrip> {
 
                                 inter(
                                   text:
-                                      '${trip!.startDate.day}-${trip.startDate.month}-${trip.startDate.year}',
+                                      '${trip!.startDate.day} to ${trip.endDate.day}-${trip.endDate.month}-${trip.endDate.year}',
                                   fontSize: 12,
                                   color: AppColors.grey,
                                   fw: FontWeight.w400,
@@ -242,7 +248,7 @@ class _ActiveTripState extends State<ActiveTrip> {
                                 Row(
                                   children: [
                                     popintext(
-                                      text: '\$${trip.budgetEstimate}',
+                                      text: '${trip.perPersonExpense}',
 
                                       fontSize: 16,
                                       color: AppColors.green,
@@ -251,7 +257,7 @@ class _ActiveTripState extends State<ActiveTrip> {
 
                                     const SizedBox(width: 6),
                                     inter(
-                                      text: 'per person',
+                                      text: 'per per..',
                                       fontSize: 14,
                                       color: AppColors.grey,
                                       fw: FontWeight.w400,
@@ -285,9 +291,6 @@ class _ActiveTripState extends State<ActiveTrip> {
               },
             ),
           ),
-
-
-
         ],
       ),
     );
