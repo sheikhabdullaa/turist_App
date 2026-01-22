@@ -2,7 +2,6 @@
 import 'package:flutter/material.dart';
 import 'package:turist_app/autj_view/creat_trip.dart';
 import 'package:turist_app/autj_view/notification_page.dart';
-import 'package:turist_app/components/custom_text.dart';
 import 'package:turist_app/components/inter_text.dart';
 import 'package:turist_app/components/popin_text.dart';
 import 'package:turist_app/repository/creat_trip_repo.dart';
@@ -73,7 +72,6 @@ class _TripDaetailsState extends State<TripDaetails> {
                     final trip = trips[index];
 
                     return Column(
-                      
                       children: [
                         popintext(
                           text: 'Active Trips',
