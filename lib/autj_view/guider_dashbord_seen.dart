@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:turist_app/autj_view/edit_trip_screen.dart';
 import 'package:turist_app/autj_view/notification_page.dart';
 import 'package:turist_app/autj_view/request_to_join.dart';
 import 'package:turist_app/autj_view/tourist_dashbord.dart';
 import 'package:turist_app/components/custom_text_button.dart';
 import 'package:turist_app/components/inter_text.dart';
 import 'package:turist_app/components/popin_text.dart';
+import 'package:turist_app/model/trip_model.dart';
 import 'package:turist_app/repository/creat_trip_repo.dart';
 import 'package:turist_app/utils/app_colors.dart';
 
@@ -16,19 +19,46 @@ class GuiderDashbordSeen extends StatefulWidget {
 }
 
 class _GuiderDashbordSeenState extends State<GuiderDashbordSeen> {
+  final currentUserId = FirebaseAuth.instance.currentUser!.uid;
+  final CreatTripRepo _tripRepo = CreatTripRepo();
+
+  // ------------------ Delete Function ------------------
+  Future<void> deleteTrip(String tripId) async {
+    try {
+      await _tripRepo.deleteTrip(tripId);
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Trip deleted successfully')),
+      );
+      setState(() {}); // refresh UI
+    } catch (e) {
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(SnackBar(content: Text('Error deleting trip: $e')));
+    }
+  }
+
+  // ------------------ Edit Function ------------------
+  void editTrip(Trip trip) async {
+    final result = await Navigator.push(
+      context,
+      MaterialPageRoute(builder: (_) => EditTripScreen(trip: trip)),
+    );
+
+    if (result == true) {
+      setState(() {}); // refresh after edit
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     final screenHeight = MediaQuery.of(context).size.height;
-    final screenWidth = MediaQuery.of(context).size.width;
+
     return Scaffold(
       appBar: AppBar(
         leading: Padding(
           padding: const EdgeInsets.all(8.0),
-          // ignore: avoid_unnecessary_containers
-          child: Container(
-            child: ClipOval(
-              child: Image.asset('assets/guider.png', fit: BoxFit.cover),
-            ),
+          child: ClipOval(
+            child: Image.asset('assets/guider.png', fit: BoxFit.cover),
           ),
         ),
         title: Center(
@@ -47,11 +77,10 @@ class _GuiderDashbordSeenState extends State<GuiderDashbordSeen> {
                 MaterialPageRoute(builder: (context) => NotificationPage()),
               );
             },
-            icon: Icon(Icons.notifications_none_rounded),
+            icon: const Icon(Icons.notifications_none_rounded),
           ),
         ],
       ),
-
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 20),
         child: SingleChildScrollView(
@@ -67,7 +96,6 @@ class _GuiderDashbordSeenState extends State<GuiderDashbordSeen> {
                     color: AppColors.black,
                     fw: FontWeight.w600,
                   ),
-
                   IconButton(
                     onPressed: () {
                       Navigator.push(
@@ -81,220 +109,6 @@ class _GuiderDashbordSeenState extends State<GuiderDashbordSeen> {
                   ),
                 ],
               ),
-              Card(
-                child: Stack(
-                  children: [
-                    ClipRRect(
-                      borderRadius: BorderRadius.circular(15),
-                      child: Image.asset(
-                        'assets/swizerland.png',
-                        width: screenWidth * 1,
-                        fit: BoxFit.cover,
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 20,
-                        vertical: 10,
-                      ),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Row(
-                            children: [
-                              ClipRRect(
-                                borderRadius: BorderRadius.circular(12),
-                                child: Image.asset(
-                                  'assets/maria.png',
-                                  fit: BoxFit.cover,
-                                ),
-                              ),
-                              SizedBox(width: screenWidth * 0.02),
-                              inter(
-                                text: 'Maria Joe',
-                                fontSize: 16,
-                                color: AppColors.white,
-                                fw: FontWeight.w400,
-                              ),
-                              SizedBox(width: screenWidth * 0.01),
-                              inter(
-                                text: '2d left',
-                                fontSize: 12,
-                                color: AppColors.white,
-                                fw: FontWeight.w400,
-                              ),
-                            ],
-                          ),
-                          inter(
-                            text: 'Swiss Alps, Switzerland',
-                            fontSize: 16,
-                            color: AppColors.white,
-                            fw: FontWeight.w600,
-                          ),
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              SizedBox(height: screenHeight * 0.01),
-              SingleChildScrollView(
-                scrollDirection: Axis.horizontal,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Card(
-                      child: Column(
-                        children: [
-                          Stack(
-                            children: [
-                              Image.asset('assets/swizerland1.png'),
-                              Padding(
-                                padding: const EdgeInsets.only(left: 80),
-                                child: Row(
-                                  children: [
-                                    IconButton(
-                                      onPressed: () {},
-                                      icon: Icon(
-                                        Icons.keyboard_arrow_down_sharp,
-                                        size: 30,
-                                        color: AppColors.white,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ],
-                          ),
-                          inter(
-                            text: 'Switzerland',
-                            fontSize: 14,
-                            color: AppColors.black,
-                            fw: FontWeight.w500,
-                          ),
-                          inter(
-                            text: '12–15 Jan, 2026',
-                            fontSize: 12,
-                            color: AppColors.grey,
-                            fw: FontWeight.w400,
-                          ),
-                          inter(
-                            text: '2d left',
-                            fontSize: 12,
-                            color: AppColors.grey,
-                            fw: FontWeight.w400,
-                          ),
-                          Container(height: screenHeight * 0.02),
-                        ],
-                      ),
-                    ),
-                    Card(
-                      child: Column(
-                        children: [
-                          Stack(
-                            children: [
-                              ClipRRect(
-                                borderRadius: BorderRadius.circular(12),
-                                child: Image.asset(
-                                  'assets/swizerland2.png',
-                                  fit: BoxFit.cover,
-                                ),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.only(left: 80),
-                                child: Row(
-                                  children: [
-                                    IconButton(
-                                      onPressed: () {},
-                                      icon: Icon(
-                                        Icons.keyboard_arrow_down_sharp,
-                                        size: 30,
-                                        color: AppColors.white,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ],
-                          ),
-                          inter(
-                            text: 'Switzerland',
-                            fontSize: 14,
-                            color: AppColors.black,
-                            fw: FontWeight.w500,
-                          ),
-                          inter(
-                            text: '12–15 Jan, 2026',
-                            fontSize: 12,
-                            color: AppColors.grey,
-                            fw: FontWeight.w400,
-                          ),
-                          inter(
-                            text: '2d left',
-                            fontSize: 12,
-                            color: AppColors.grey,
-                            fw: FontWeight.w400,
-                          ),
-                          Container(height: screenHeight * 0.02),
-                        ],
-                      ),
-                    ),
-                    Card(
-                      child: Column(
-                        children: [
-                          Stack(
-                            children: [
-                              ClipRRect(
-                                borderRadius: BorderRadius.circular(12),
-                                child: Image.asset(
-                                  'assets/swizerland3.png',
-                                  fit: BoxFit.cover,
-                                ),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.only(left: 80),
-                                child: Row(
-                                  children: [
-                                    IconButton(
-                                      onPressed: () {
-                                        setState(() {});
-                                      },
-                                      icon: Icon(
-                                        Icons.keyboard_arrow_down_sharp,
-                                        size: 30,
-                                        color: AppColors.white,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ],
-                          ),
-                          inter(
-                            text: 'Switzerland',
-                            fontSize: 14,
-                            color: AppColors.black,
-                            fw: FontWeight.w500,
-                          ),
-                          inter(
-                            text: '12–15 Jan, 2026',
-                            fontSize: 12,
-                            color: AppColors.grey,
-                            fw: FontWeight.w400,
-                          ),
-                          inter(
-                            text: '2d left',
-                            fontSize: 12,
-                            color: AppColors.grey,
-                            fw: FontWeight.w400,
-                          ),
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              SizedBox(height: screenHeight * 0.02),
 
               Padding(
                 padding: const EdgeInsets.symmetric(
@@ -303,22 +117,21 @@ class _GuiderDashbordSeenState extends State<GuiderDashbordSeen> {
                 ),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-
                   children: [
                     popintext(
                       text: 'Active Trips',
                       fontSize: 24,
                       color: AppColors.black,
-                      fw: .w600,
+                      fw: FontWeight.w600,
                     ),
                     Image.asset('assets/icon.png'),
                   ],
                 ),
               ),
 
-              //grid view builder start
-              FutureBuilder(
-                future: CreatTripRepo().activeTripsGet(),
+              // ------------------ Active Trips Grid ------------------
+              FutureBuilder<List<Trip>>(
+                future: _tripRepo.activeTripsGet(),
                 builder: (context, snapshot) {
                   if (snapshot.connectionState == ConnectionState.waiting) {
                     return const Center(child: CircularProgressIndicator());
@@ -336,238 +149,156 @@ class _GuiderDashbordSeenState extends State<GuiderDashbordSeen> {
 
                   return RefreshIndicator(
                     onRefresh: () async {
-                      setState(() {});
+                      setState(() {}); // reload FutureBuilder
                     },
                     child: GridView.builder(
                       shrinkWrap: true,
-                      physics: NeverScrollableScrollPhysics(),
+                      physics: const NeverScrollableScrollPhysics(),
                       padding: const EdgeInsets.symmetric(horizontal: 10),
                       itemCount: trips.length,
                       gridDelegate:
                           const SliverGridDelegateWithFixedCrossAxisCount(
                             crossAxisCount: 2,
-                            childAspectRatio: 0.7,
+                            childAspectRatio: 0.3,
                             crossAxisSpacing: 10,
                             mainAxisSpacing: 10,
                           ),
                       itemBuilder: (context, index) {
                         final trip = trips[index];
 
-                        return Flexible(
-                          child: Card(
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(12),
-                            ),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Stack(
+                        return Card(
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(12),
+                          ),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              // Image at top
+                              ClipRRect(
+                                borderRadius: const BorderRadius.only(
+                                  topLeft: Radius.circular(12),
+                                  topRight: Radius.circular(12),
+                                ),
+                                child: Image.asset(
+                                  'assets/swizerland3.png',
+                                  fit: BoxFit.cover,
+                                  width: double.infinity,
+                                  height: 120,
+                                ),
+                              ),
+
+                              // Trip info
+                              Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    Stack(
-                                      children: [
-                                        ClipRRect(
-                                          borderRadius:
-                                              BorderRadiusGeometry.circular(12),
-                                          child: Image.asset(
-                                            'assets/swizerland3.png',
-                                            fit: BoxFit.cover,
-                                            width: double.infinity,
-                                            height: 120,
-                                          ),
-                                        ),
-
-                                        Positioned(
-                                          top: 10,
-                                          left: 10,
-                                          child: Row(
-                                            children: [
-                                              ClipOval(
-                                                child: Image.asset(
-                                                  'assets/maria.png',
-                                                  height: 28,
-                                                  width: 28,
-                                                ),
-                                              ),
-                                              const SizedBox(width: 6),
-
-                                              Column(
-                                                crossAxisAlignment:
-                                                    CrossAxisAlignment.start,
-                                                children: [
-                                                  inter(
-                                                    text: 'Planned by',
-                                                    fontSize: 10,
-                                                    color: Colors.white,
-                                                  ),
-
-                                                  SizedBox(
-                                                    width: 90,
-                                                    child: inter(
-                                                      text:
-                                                          trip?.username ?? '',
-                                                      fontSize: 12,
-                                                      color: Colors.white,
-                                                      maxLines: 1,
-                                                      overflow:
-                                                          TextOverflow.ellipsis,
-                                                    ),
-                                                  ),
-                                                ],
-                                              ),
-                                            ],
-                                          ),
-                                        ),
-
-                                        Positioned(
-                                          top: 8,
-                                          right: 8,
-                                          child: Icon(
-                                            Icons.favorite_outline,
-                                            color: Colors.white,
-                                          ),
-                                        ),
-                                      ],
+                                    popintext(
+                                      text: trip.location,
+                                      fontSize: 12,
+                                      color: AppColors.black,
+                                      fw: .w900,
                                     ),
-                                    Stack(
+                                    inter(
+                                      text:
+                                          '${trip.startDate.day}-${trip.startDate.month}-${trip.startDate.year}',
+                                      fontSize: 12,
+                                      color: AppColors.grey,
+                                      fw: FontWeight.w400,
+                                    ),
+                                    const SizedBox(height: 8),
+
+                                    // Join button
+                                    Center(
+                                      child: CustomButton(
+                                        title: 'Join',
+                                        onPressed: () {
+                                          Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                              builder: (_) =>
+                                                  RequesttojoinTripDetails(),
+                                            ),
+                                          );
+                                        },
+                                        bgColor: AppColors.blueascent,
+                                      ),
+                                    ),
+
+                                    const SizedBox(height: 8),
+
+                                    // ------------------ EDIT & DELETE BUTTONS ------------------
+                                    Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceEvenly,
                                       children: [
-                                        ClipRRect(
-                                          borderRadius:
-                                              const BorderRadius.vertical(
-                                                top: Radius.circular(12),
-                                              ),
-                                          child: Image.asset(
-                                            'assets/swizerland3.png',
-                                            fit: BoxFit.cover,
-                                            width: double.infinity,
-                                            height: 120,
+                                        ElevatedButton.icon(
+                                          onPressed: () => editTrip(trip),
+                                          icon: const Icon(
+                                            Icons.edit,
+                                            size: 18,
+                                          ),
+                                          label: const Text('Edit'),
+                                          style: ElevatedButton.styleFrom(
+                                            backgroundColor:
+                                                AppColors.blueascent,
                                           ),
                                         ),
-
-                                        Positioned(
-                                          top: 10,
-                                          left: 10,
-                                          child: Row(
-                                            children: [
-                                              ClipOval(
-                                                child: Image.asset(
-                                                  'assets/maria.png',
-                                                  height: 28,
-                                                  width: 28,
+                                        ElevatedButton.icon(
+                                          onPressed: () async {
+                                            final confirm = await showDialog<bool>(
+                                              context: context,
+                                              builder: (context) => AlertDialog(
+                                                title: const Text(
+                                                  'Delete Trip',
                                                 ),
-                                              ),
-                                              const SizedBox(width: 6),
-
-                                              Column(
-                                                crossAxisAlignment:
-                                                    CrossAxisAlignment.start,
-                                                children: [
-                                                  inter(
-                                                    text: 'Planned by',
-                                                    fontSize: 10,
-                                                    color: Colors.white,
+                                                content: const Text(
+                                                  'Are you sure you want to delete this trip?',
+                                                ),
+                                                actions: [
+                                                  TextButton(
+                                                    onPressed: () =>
+                                                        Navigator.pop(
+                                                          context,
+                                                          false,
+                                                        ),
+                                                    child: const Text('Cancel'),
                                                   ),
-
-                                                  SizedBox(
-                                                    width: 90,
-                                                    child: inter(
-                                                      text:
-                                                          trip?.username ?? '',
-                                                      fontSize: 12,
-                                                      color: Colors.white,
-                                                      maxLines: 1,
-                                                      overflow:
-                                                          TextOverflow.ellipsis,
+                                                  TextButton(
+                                                    onPressed: () =>
+                                                        Navigator.pop(
+                                                          context,
+                                                          true,
+                                                        ),
+                                                    child: const Text(
+                                                      'Delete',
+                                                      style: TextStyle(
+                                                        color: Colors.red,
+                                                      ),
                                                     ),
                                                   ),
                                                 ],
                                               ),
-                                            ],
+                                            );
+                                            if (confirm == true) {
+                                              await deleteTrip(trip.tripId);
+                                            }
+                                          },
+                                          icon: const Icon(
+                                            Icons.delete,
+                                            size: 18,
+                                          ),
+                                          label: const Text('Delete'),
+                                          style: ElevatedButton.styleFrom(
+                                            backgroundColor: Colors.redAccent,
                                           ),
                                         ),
-
-                                        // Positioned(
-                                        //   top: 8,
-                                        //   right: 8,
-                                        //   child: IconButton(
-                                        //     onPressed: () {
-                                        //       () {};
-                                        //     },
-                                        //     icon: Icon(
-                                        //       Icons.favorite_outline,
-                                        //       color: AppColors.white,
-                                        //     ),
-                                        //   ),
-                                        // ),
                                       ],
                                     ),
                                   ],
                                 ),
-
-                                Padding(
-                                  padding: const EdgeInsets.symmetric(
-                                    horizontal: 8.0,
-                                  ),
-                                  child: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Row(
-                                        children: [
-                                          popintext(
-                                            text:
-                                                trip?.location.toString() ?? '',
-                                            fontSize: 12,
-                                            color: AppColors.black,
-                                            fw: FontWeight.w500,
-                                            maxLines: 1,
-                                            overflow: TextOverflow.ellipsis,
-                                          ),
-                                          SizedBox(width: screenWidth * 0.06),
-                                          popintext(
-                                            text:
-                                                trip?.members.toString() ?? '',
-                                            fontSize: 12,
-                                            color: AppColors.grey,
-                                            fw: FontWeight.w400,
-                                          ),
-                                          const SizedBox(width: 4),
-                                          Image.asset(
-                                            'assets/personicon.png',
-                                            color: AppColors.grey,
-                                            height: 14,
-                                          ),
-                                        ],
-                                      ),
-
-                                      inter(
-                                        text:
-                                            '${trip!.startDate.day}-${trip.startDate.month}-${trip.startDate.year}',
-                                        fontSize: 12,
-                                        color: AppColors.grey,
-                                        fw: FontWeight.w400,
-                                      ),
-
-                                      SizedBox(height: screenHeight * 0.01),
-                                      Center(
-                                        child: CustomButton(
-                                          title: 'Join',
-                                          onPressed: () {
-                                            Navigator.push(
-                                              context,
-                                              MaterialPageRoute(
-                                                builder: (_) =>
-                                                    RequesttojoinTripDetails(),
-                                              ),
-                                            );
-                                          },
-                                          bgColor: AppColors.blueascent,
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ],
-                            ),
+                              ),
+                            ],
                           ),
                         );
                       },
@@ -575,8 +306,6 @@ class _GuiderDashbordSeenState extends State<GuiderDashbordSeen> {
                   );
                 },
               ),
-
-              
             ],
           ),
         ),
