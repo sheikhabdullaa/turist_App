@@ -16,14 +16,14 @@ import 'package:turist_app/components/popin_text.dart';
 import 'package:turist_app/repository/creat_trip_repo.dart';
 import 'package:turist_app/utils/app_colors.dart';
 
-class TouristDashbord extends StatefulWidget {
-  const TouristDashbord({super.key});
+class TravellerDashbord extends StatefulWidget {
+  const TravellerDashbord({super.key});
 
   @override
-  State<TouristDashbord> createState() => _TouristDashbordState();
+  State<TravellerDashbord> createState() => TravellerDashbordState();
 }
 
-class _TouristDashbordState extends State<TouristDashbord> {
+class TravellerDashbordState extends State<TravellerDashbord> {
   @override
   Widget build(BuildContext context) {
     final screenHeight = MediaQuery.of(context).size.height;
@@ -754,7 +754,7 @@ class _TouristDashbordState extends State<TouristDashbord> {
                                   Row(
                                     children: [
                                       popintext(
-                                        text: trip.location.toString(),
+                                        text: trip?.location.toString() ?? '',
                                         fontSize: 16,
                                         color: AppColors.black,
                                         fw: FontWeight.w600,

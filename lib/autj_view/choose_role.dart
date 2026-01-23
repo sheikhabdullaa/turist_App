@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:turist_app/auth/traveller_dashbord.dart';
 import 'package:turist_app/autj_view/bottom_sheet.dart';
 import 'package:turist_app/autj_view/turist_dashbord_bottom_sheet.dart';
 import 'package:turist_app/components/custom_text.dart';
@@ -66,7 +67,7 @@ class _ChooseRoleState extends State<ChooseRole> {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (_) => const guideBottomSheet(),
+                              builder: (_) => const TravellerDashbord(),
                             ),
                           );
                         },

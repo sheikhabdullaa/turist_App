@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:turist_app/autj_view/notification_page.dart';
+import 'package:turist_app/autj_view/edit_trip_screen.dart';
 import 'package:turist_app/autj_view/request_to_join.dart';
 import 'package:turist_app/autj_view/tourist_dashbord.dart';
 import 'package:turist_app/components/custom_text_button.dart';
@@ -8,52 +8,19 @@ import 'package:turist_app/components/popin_text.dart';
 import 'package:turist_app/repository/creat_trip_repo.dart';
 import 'package:turist_app/utils/app_colors.dart';
 
-class GuiderDashboard extends StatefulWidget {
-  const GuiderDashboard({super.key});
+class SeenGuider extends StatefulWidget {
+  const SeenGuider({super.key});
 
   @override
-  State<GuiderDashboard> createState() => _GuiderDashboardState();
+  State<SeenGuider> createState() => _SeenGuiderState();
 }
 
-bool isFavorite = false;
-
-class _GuiderDashboardState extends State<GuiderDashboard> {
+class _SeenGuiderState extends State<SeenGuider> {
   @override
   Widget build(BuildContext context) {
     final screenHeight = MediaQuery.of(context).size.height;
     final screenWidth = MediaQuery.of(context).size.width;
     return Scaffold(
-      appBar: AppBar(
-        leading: Padding(
-          padding: const EdgeInsets.all(8.0),
-          // ignore: avoid_unnecessary_containers
-          child: Container(
-            child: ClipOval(
-              child: Image.asset('assets/guider.png', fit: BoxFit.cover),
-            ),
-          ),
-        ),
-        title: Center(
-          child: popintext(
-            text: 'Hello! Michal',
-            fontSize: 16,
-            color: AppColors.black,
-            fw: FontWeight.w600,
-          ),
-        ),
-        actions: [
-          IconButton(
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => NotificationPage()),
-              );
-            },
-            icon: Icon(Icons.notifications_none_rounded),
-          ),
-        ],
-      ),
-
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 20),
         child: SingleChildScrollView(
@@ -348,7 +315,7 @@ class _GuiderDashboardState extends State<GuiderDashboard> {
                       gridDelegate:
                           const SliverGridDelegateWithFixedCrossAxisCount(
                             crossAxisCount: 2,
-                            childAspectRatio: 0.7,
+                            childAspectRatio: 0.5,
                             crossAxisSpacing: 10,
                             mainAxisSpacing: 10,
                           ),
@@ -486,20 +453,6 @@ class _GuiderDashboardState extends State<GuiderDashboard> {
                                             ],
                                           ),
                                         ),
-
-                                        // Positioned(
-                                        //   top: 8,
-                                        //   right: 8,
-                                        //   child: IconButton(
-                                        //     onPressed: () {
-                                        //       () {};
-                                        //     },
-                                        //     icon: Icon(
-                                        //       Icons.favorite_outline,
-                                        //       color: AppColors.white,
-                                        //     ),
-                                        //   ),
-                                        // ),
                                       ],
                                     ),
                                   ],
@@ -565,6 +518,41 @@ class _GuiderDashboardState extends State<GuiderDashboard> {
                                           bgColor: AppColors.blueascent,
                                         ),
                                       ),
+                                      Row(
+                                        children: [
+                                          IconButton(
+                                            onPressed: () {
+                                              Navigator.push(
+                                                context,
+                                                MaterialPageRoute(
+                                                  builder: (context) =>
+                                                      EditTripScreen(
+                                                        tripId: '',
+                                                        tripData: {},
+                                                      ),
+                                                ),
+                                              );
+                                            },
+                                            icon: Icon(
+                                              Icons.edit,
+                                              color: AppColors.green,
+                                            ),
+                                          ),
+
+                                          IconButton(
+                                            onPressed: () {
+                                              Navigator.push(context, MaterialPageRoute(builder: (context)=>EditTripScreen(
+                                                        tripId: '',
+                                                        tripData: {},
+                                                      ),));
+                                            },
+                                            icon: Icon(
+                                              Icons.delete,
+                                              color: AppColors.red,
+                                            ),
+                                          ),
+                                        ],
+                                      ),
                                     ],
                                   ),
                                 ),
@@ -581,8 +569,6 @@ class _GuiderDashboardState extends State<GuiderDashboard> {
           ),
         ),
       ),
-
-      
     );
   }
 }
