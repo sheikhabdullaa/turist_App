@@ -1,24 +1,23 @@
 import 'package:flutter/material.dart';
-import 'package:turist_app/active_trip.dart';
+import 'package:turist_app/auth/traveller_dashbord.dart';
 import 'package:turist_app/autj_view/chat_bort.dart';
-import 'package:turist_app/autj_view/michal_turist_profile.dart';
 import 'package:turist_app/autj_view/notification_page.dart';
+import 'package:turist_app/autj_view/turist_profile.dart';
 import 'package:turist_app/components/popin_text.dart';
 import 'package:turist_app/utils/app_colors.dart';
 
-class ActiveBottomSheet extends StatefulWidget {
-  const ActiveBottomSheet({super.key});
+class TravellerBottomSheet extends StatefulWidget {
+  const TravellerBottomSheet({super.key});
 
   @override
-  State<ActiveBottomSheet> createState() => _activeguidebottomsheetState();
+  State<TravellerBottomSheet> createState() => _TravellerBottomSheetState();
 }
 
-// ignore: camel_case_types
-class _activeguidebottomsheetState extends State<ActiveBottomSheet> {
+class _TravellerBottomSheetState extends State<TravellerBottomSheet> {
   final List _pages = [
-    ActiveTrip(),
+    TravellerDashbord(),
     ChatBort(),
-    MichalTuristProfile(),
+    TuristProfile(),
     NotificationPage(),
   ];
   int currentIndex = 0;
