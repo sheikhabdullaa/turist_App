@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class EditTripScreen extends StatefulWidget {
-  final String tripId; // MUST be doc.id
+  final String tripId;
   final Map<String, dynamic> tripData;
 
   const EditTripScreen({
@@ -26,17 +26,19 @@ class _EditTripScreenState extends State<EditTripScreen> {
   void initState() {
     super.initState();
 
-    /// Safety check (prevents empty id crash)
     if (widget.tripId.isEmpty) {
-      throw Exception("Trip ID is empty. Pass doc.id from previous screen.");
+      throw Exception("Trip ID is empty. Pass doc.id");
     }
 
-    titleController =
-        TextEditingController(text: widget.tripData['title'] ?? '');
-    locationController =
-        TextEditingController(text: widget.tripData['location'] ?? '');
-    descriptionController =
-        TextEditingController(text: widget.tripData['description'] ?? '');
+    titleController = TextEditingController(
+      text: widget.tripData['title'] ?? '',
+    );
+    locationController = TextEditingController(
+      text: widget.tripData['location'] ?? '',
+    );
+    descriptionController = TextEditingController(
+      text: widget.tripData['description'] ?? '',
+    );
   }
 
   @override
@@ -52,7 +54,6 @@ class _EditTripScreenState extends State<EditTripScreen> {
     return Scaffold(
       appBar: AppBar(
         title: const Text("Edit Trip"),
-        centerTitle: true,
         actions: [
           IconButton(
             icon: const Icon(Icons.delete, color: Colors.red),
@@ -62,65 +63,42 @@ class _EditTripScreenState extends State<EditTripScreen> {
       ),
       body: Stack(
         children: [
-          SingleChildScrollView(
+          Padding(
             padding: const EdgeInsets.all(16),
             child: Column(
               children: [
-                _inputField(
-                  label: "Trip Title",
-                  controller: titleController,
-                ),
+                _field("Title", titleController),
                 const SizedBox(height: 12),
-                _inputField(
-                  label: "Location",
-                  controller: locationController,
-                ),
+                _field("Location", locationController),
                 const SizedBox(height: 12),
-                _inputField(
-                  label: "Description",
-                  controller: descriptionController,
-                  maxLines: 4,
-                ),
+                _field("Description", descriptionController, maxLines: 4),
                 const SizedBox(height: 30),
 
-                /// UPDATE BUTTON
                 SizedBox(
                   width: double.infinity,
                   height: 50,
                   child: ElevatedButton(
                     onPressed: isLoading ? null : _updateTrip,
-                    style: ElevatedButton.styleFrom(
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(14),
-                      ),
-                    ),
-                    child: const Text(
-                      "Update Trip",
-                      style: TextStyle(fontSize: 16),
-                    ),
+                    child: const Text("Update Trip"),
                   ),
                 ),
               ],
             ),
           ),
 
-          /// LOADING OVERLAY
           if (isLoading)
             Container(
               color: Colors.black26,
-              child: const Center(
-                child: CircularProgressIndicator(),
-              ),
+              child: const Center(child: CircularProgressIndicator()),
             ),
         ],
       ),
     );
   }
 
-  /// ---------- UI FIELD ----------
-  Widget _inputField({
-    required String label,
-    required TextEditingController controller,
+  Widget _field(
+    String label,
+    TextEditingController controller, {
     int maxLines = 1,
   }) {
     return TextField(
@@ -128,20 +106,16 @@ class _EditTripScreenState extends State<EditTripScreen> {
       maxLines: maxLines,
       decoration: InputDecoration(
         labelText: label,
-        filled: true,
-        fillColor: Colors.grey.shade100,
-        border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(14),
-        ),
+        border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
       ),
     );
   }
 
-  /// ---------- UPDATE ----------
+  /// 🔄 UPDATE
   Future<void> _updateTrip() async {
     if (titleController.text.trim().isEmpty ||
         locationController.text.trim().isEmpty) {
-      _showMessage("Title and Location cannot be empty");
+      _msg("Title & Location required");
       return;
     }
 
@@ -152,56 +126,22 @@ class _EditTripScreenState extends State<EditTripScreen> {
           .collection('trips')
           .doc(widget.tripId)
           .update({
-        'title': titleController.text.trim(),
-        'location': locationController.text.trim(),
-        'description': descriptionController.text.trim(),
-        'updatedAt': FieldValue.serverTimestamp(),
-      });
+            'title': titleController.text.trim(),
+            'location': locationController.text.trim(),
+            'description': descriptionController.text.trim(),
+            'updatedAt': FieldValue.serverTimestamp(),
+          });
 
       if (!mounted) return;
-
-      _showMessage("Trip updated successfully");
       Navigator.pop(context, true);
     } catch (e) {
-      _showMessage("Update failed: $e");
+      _msg("Update failed: $e");
     } finally {
       if (mounted) setState(() => isLoading = false);
     }
   }
 
-  /// ---------- CONFIRM DELETE ----------
-  void _confirmDelete() {
-    showDialog(
-      context: context,
-      builder: (_) => AlertDialog(
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(12),
-        ),
-        title: const Text("Delete Trip"),
-        content: const Text(
-          "Are you sure you want to delete this trip?",
-        ),
-        actions: [
-          TextButton(
-            onPressed: () => Navigator.pop(context),
-            child: const Text("Cancel"),
-          ),
-          TextButton(
-            onPressed: () {
-              Navigator.pop(context);
-              _deleteTrip();
-            },
-            child: const Text(
-              "Delete",
-              style: TextStyle(color: Colors.red),
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-
-  /// ---------- DELETE ----------
+  /// ❌ DELETE
   Future<void> _deleteTrip() async {
     setState(() => isLoading = true);
 
@@ -212,20 +152,38 @@ class _EditTripScreenState extends State<EditTripScreen> {
           .delete();
 
       if (!mounted) return;
-
-      _showMessage("Trip deleted");
       Navigator.pop(context, true);
     } catch (e) {
-      _showMessage("Delete failed: $e");
+      _msg("Delete failed: $e");
     } finally {
       if (mounted) setState(() => isLoading = false);
     }
   }
 
-  /// ---------- SNACKBAR ----------
-  void _showMessage(String msg) {
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(content: Text(msg)),
+  void _confirmDelete() {
+    showDialog(
+      context: context,
+      builder: (_) => AlertDialog(
+        title: const Text("Delete Trip"),
+        content: const Text("Are you sure?"),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(context),
+            child: const Text("Cancel"),
+          ),
+          TextButton(
+            onPressed: () {
+              Navigator.pop(context);
+              _deleteTrip();
+            },
+            child: const Text("Delete", style: TextStyle(color: Colors.red)),
+          ),
+        ],
+      ),
     );
+  }
+
+  void _msg(String text) {
+    ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(text)));
   }
 }

@@ -2,6 +2,8 @@
 import 'package:flutter/material.dart';
 import 'package:turist_app/autj_view/creat_trip.dart';
 import 'package:turist_app/autj_view/notification_page.dart';
+import 'package:turist_app/classes/day_classes.dart' show DayClasses;
+import 'package:turist_app/classes/degree_class.dart';
 import 'package:turist_app/components/inter_text.dart';
 import 'package:turist_app/components/popin_text.dart';
 import 'package:turist_app/repository/creat_trip_repo.dart';
@@ -14,7 +16,13 @@ class TripDaetails extends StatefulWidget {
   State<TripDaetails> createState() => _TripDaetailsState();
 }
 
+final dayClass = DayClasses();
+final degreeClass = DegreeClass();
+
 class _TripDaetailsState extends State<TripDaetails> {
+  // ignore: strict_top_level_inference
+  get selectedDayIndex => null;
+
   @override
   Widget build(BuildContext context) {
     final screenWidth = MediaQuery.of(context).size.width;
@@ -121,7 +129,7 @@ class _TripDaetailsState extends State<TripDaetails> {
                                     Padding(
                                       padding: const EdgeInsets.only(left: 30),
                                       child: inter(
-                                        text: trip?.username.toString() ?? '',
+                                        text: trip.username.toString() ,
                                         fontSize: 12,
                                         color: AppColors.white,
                                         fw: FontWeight.w400,
@@ -136,7 +144,7 @@ class _TripDaetailsState extends State<TripDaetails> {
                         ListTile(
                           leading: Icon(Icons.location_on_outlined),
                           title: popintext(
-                            text: trip?.location.toString() ?? '',
+                            text: trip.location.toString() ,
                             fontSize: 16,
                             color: AppColors.black,
                             fw: FontWeight.w600,
@@ -163,7 +171,7 @@ class _TripDaetailsState extends State<TripDaetails> {
                           leading: Icon(Icons.calendar_month_outlined),
                           title: inter(
                             text:
-                                '${trip!.startDate.day} to ${trip.endDate.day}-${trip.endDate.month}-${trip.endDate.year}',
+                                '${trip.startDate.day} to ${trip.endDate.day}-${trip.endDate.month}-${trip.endDate.year}',
                             fontSize: 14,
                             color: AppColors.grey,
                             fw: FontWeight.w400,
@@ -665,6 +673,43 @@ class _TripDaetailsState extends State<TripDaetails> {
                               ),
                             ),
                             SizedBox(height: screenheight * 0.02),
+
+                            SizedBox(
+                              height: screenheight * 0.1,
+                              child: ListView.builder(
+                                scrollDirection: Axis.horizontal,
+                                itemCount: dayClass.days.length,
+                                itemBuilder: (context, index) {
+                                  final isSelected = selectedDayIndex == index;
+                                  return GestureDetector(
+                                    onTap: () {
+                                      setState(() {});
+                                    },
+                                    child: Padding(
+                                      padding: const EdgeInsets.symmetric(
+                                        horizontal: 10,
+                                      ),
+                                      // ignore: avoid_unnecessary_containers
+                                      child: Container(
+                                        child: Center(
+                                          child: Text(
+                                            dayClass.days[index],
+                                            style: TextStyle(
+                                              fontSize: 12,
+                                              color: isSelected
+                                                  ? AppColors.white
+                                                  : AppColors.grey,
+                                              fontWeight: FontWeight.w500,
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  );
+                                },
+                              ),
+                            ),
+
                             Padding(
                               padding: const EdgeInsets.symmetric(
                                 horizontal: 10,
@@ -683,6 +728,42 @@ class _TripDaetailsState extends State<TripDaetails> {
                                   SizedBox(width: 25),
                                   Image.asset('assets/friday.png'),
                                 ],
+                              ),
+                            ),
+
+                            SizedBox(
+                              height: screenheight * 0.1,
+                              child: ListView.builder(
+                                scrollDirection: Axis.horizontal,
+                                itemCount: dayClass.days.length,
+                                itemBuilder: (context, index) {
+                                  final isSelected = selectedDayIndex == index;
+                                  return GestureDetector(
+                                    onTap: () {
+                                      setState(() {});
+                                    },
+                                    child: Padding(
+                                      padding: const EdgeInsets.symmetric(
+                                        horizontal: 10,
+                                      ),
+                                      // ignore: avoid_unnecessary_containers
+                                      child: Container(
+                                        child: Center(
+                                          child: Text(
+                                            degreeClass.degree[index],
+                                            style: TextStyle(
+                                              fontSize: 12,
+                                              color: isSelected
+                                                  ? AppColors.white
+                                                  : AppColors.grey,
+                                              fontWeight: FontWeight.w500,
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  );
+                                },
                               ),
                             ),
 

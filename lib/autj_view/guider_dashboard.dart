@@ -406,7 +406,7 @@ class _GuiderDashboardState extends State<GuiderDashboard> {
                                                     width: 90,
                                                     child: inter(
                                                       text:
-                                                          trip?.username ?? '',
+                                                          trip.username ,
                                                       fontSize: 12,
                                                       color: Colors.white,
                                                       maxLines: 1,
@@ -473,7 +473,7 @@ class _GuiderDashboardState extends State<GuiderDashboard> {
                                                     width: 90,
                                                     child: inter(
                                                       text:
-                                                          trip?.username ?? '',
+                                                          trip.username ,
                                                       fontSize: 12,
                                                       color: Colors.white,
                                                       maxLines: 1,
@@ -517,7 +517,7 @@ class _GuiderDashboardState extends State<GuiderDashboard> {
                                         children: [
                                           popintext(
                                             text:
-                                                trip?.location.toString() ?? '',
+                                                trip.location.toString() ,
                                             fontSize: 12,
                                             color: AppColors.black,
                                             fw: FontWeight.w500,
@@ -527,7 +527,7 @@ class _GuiderDashboardState extends State<GuiderDashboard> {
                                           SizedBox(width: screenWidth * 0.06),
                                           popintext(
                                             text:
-                                                trip?.members.toString() ?? '',
+                                                trip.members.toString() ,
                                             fontSize: 12,
                                             color: AppColors.grey,
                                             fw: FontWeight.w400,
@@ -543,7 +543,7 @@ class _GuiderDashboardState extends State<GuiderDashboard> {
 
                                       inter(
                                         text:
-                                            '${trip!.startDate.day}-${trip.startDate.month}-${trip.startDate.year}',
+                                            '${trip.startDate.day}-${trip.startDate.month}-${trip.startDate.year}',
                                         fontSize: 12,
                                         color: AppColors.grey,
                                         fw: FontWeight.w400,

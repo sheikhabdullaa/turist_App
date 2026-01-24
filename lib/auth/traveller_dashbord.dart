@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:turist_app/active_trip.dart';
+import 'package:turist_app/auth/empty_creat_trip.dart';
 import 'package:turist_app/autj_view/trip_details.dart';
 import 'package:turist_app/autj_view/active_bottom_sheet.dart';
 import 'package:turist_app/autj_view/bottom_sheet.dart';
-import 'package:turist_app/autj_view/creat_trip.dart';
 import 'package:turist_app/autj_view/guider_dashboard.dart';
 import 'package:turist_app/autj_view/notification_page.dart';
 import 'package:turist_app/autj_view/request_to_join.dart';
@@ -539,7 +539,9 @@ class TravellerDashbordState extends State<TravellerDashbord> {
                     onTap: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => CreatTrip()),
+                        MaterialPageRoute(
+                          builder: (context) => EmptyCreatTrip(),
+                        ),
                       );
                     },
                     child: actionButton(
@@ -562,7 +564,7 @@ class TravellerDashbordState extends State<TravellerDashbord> {
                     onTap: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => TripDaetails()),
+                        MaterialPageRoute(builder: (context) => RequesttojoinTripDetails()),
                       );
                     },
                     child: actionButton(Icons.credit_card, 'Expenses'),
@@ -582,7 +584,7 @@ class TravellerDashbordState extends State<TravellerDashbord> {
                     onTap: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => TripDaetails()),
+                        MaterialPageRoute(builder: (context) => RequesttojoinTripDetails()),
                       );
                     },
                     child: actionButton(Icons.cloud_outlined, 'Weather'),
@@ -713,9 +715,8 @@ class TravellerDashbordState extends State<TravellerDashbord> {
                                               ),
 
                                               inter(
-                                                text:
-                                                    trip?.username.toString() ??
-                                                    '',
+                                                text: trip.username.toString(),
+
                                                 fontSize: 12,
                                                 color: AppColors.white,
                                                 fw: FontWeight.w400,
@@ -754,7 +755,7 @@ class TravellerDashbordState extends State<TravellerDashbord> {
                                   Row(
                                     children: [
                                       popintext(
-                                        text: trip?.location.toString() ?? '',
+                                        text: trip.location.toString(),
                                         fontSize: 16,
                                         color: AppColors.black,
                                         fw: FontWeight.w600,
@@ -764,7 +765,7 @@ class TravellerDashbordState extends State<TravellerDashbord> {
 
                                   inter(
                                     text:
-                                        '${trip!.startDate.day} to ${trip.endDate.day}-${trip.endDate.month}-${trip.endDate.year}',
+                                        '${trip.startDate.day} to ${trip.endDate.day}-${trip.endDate.month}-${trip.endDate.year}',
 
                                     fontSize: 12,
                                     color: AppColors.grey,

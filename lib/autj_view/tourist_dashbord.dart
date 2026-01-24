@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:turist_app/active_trip.dart';
+import 'package:turist_app/autj_view/seen_guider.dart';
 import 'package:turist_app/autj_view/trip_details.dart';
-import 'package:turist_app/autj_view/active_bottom_sheet.dart';
 import 'package:turist_app/autj_view/bottom_sheet.dart';
 import 'package:turist_app/autj_view/creat_trip.dart';
 import 'package:turist_app/autj_view/guider_dashboard.dart';
@@ -164,7 +164,7 @@ class _TouristDashbordState extends State<TouristDashbord> {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => TuristProfile(),
+                              builder: (context) => GuiderDashboard(),
                             ),
                           );
                         },
@@ -362,154 +362,6 @@ class _TouristDashbordState extends State<TouristDashbord> {
                       ),
                     ),
                   );
-
-                  // return GridView.builder(
-                  //   shrinkWrap: true,
-                  //   physics: NeverScrollableScrollPhysics(),
-                  //   padding: const EdgeInsets.symmetric(horizontal: 10),
-                  //   itemCount: trips.length,
-                  //   gridDelegate:
-                  //       const SliverGridDelegateWithFixedCrossAxisCount(
-                  //         crossAxisCount: 2,
-                  //         childAspectRatio: 0.62,
-                  //         crossAxisSpacing: 10,
-                  //         mainAxisSpacing: 10,
-                  //       ),
-                  //   itemBuilder: (context, index) {
-                  //     final trip = trips[index];
-
-                  //     return Card(
-                  //       shape: RoundedRectangleBorder(
-                  //         borderRadius: BorderRadius.circular(12),
-                  //       ),
-                  //       child: Column(
-                  //         crossAxisAlignment: CrossAxisAlignment.start,
-                  //         children: [
-                  //           Stack(
-                  //             children: [
-                  //               Stack(
-                  //                 children: [
-                  //                   ClipRRect(
-                  //                     borderRadius:
-                  //                         BorderRadiusGeometry.circular(15),
-                  //                     child: Image.asset(
-                  //                       'assets/swizerland3.png',
-                  //                       fit: BoxFit.cover,
-                  //                       width: double.infinity,
-                  //                       height: 120,
-                  //                     ),
-                  //                   ),
-
-                  //                   Padding(
-                  //                     padding: const EdgeInsets.symmetric(
-                  //                       vertical: 10,
-                  //                     ),
-                  //                     child: Row(
-                  //                       crossAxisAlignment:
-                  //                           CrossAxisAlignment.start,
-                  //                       children: [
-                  //                         Padding(
-                  //                           padding: const EdgeInsets.symmetric(
-                  //                             horizontal: 10,
-                  //                           ),
-                  //                           child: ClipOval(
-                  //                             child: Image.asset(
-                  //                               'assets/maria.png',
-                  //                             ),
-                  //                           ),
-                  //                         ),
-                  //                         Column(
-                  //                           children: [
-                  //                             inter(
-                  //                               text: 'Planned by ',
-                  //                               fontSize: 12,
-                  //                               color: AppColors.white,
-                  //                               fw: FontWeight.w400,
-                  //                             ),
-
-                  //                             inter(
-                  //                               text:
-                  //                                   trip?.username.toString() ??
-                  //                                   '',
-                  //                               fontSize: 12,
-                  //                               color: AppColors.white,
-                  //                               fw: FontWeight.w400,
-                  //                             ),
-                  //                           ],
-                  //                         ),
-                  //                       ],
-                  //                     ),
-                  //                   ),
-                  //                 ],
-                  //               ),
-
-                  //               // Positioned(
-                  //               //   top: 8,
-                  //               //   right: 8,
-                  //               //   child: Expanded(
-                  //               //     child: IconButton(
-                  //               //       onPressed: () {},
-                  //               //       icon: Icon(
-                  //               //         Icons.favorite_outline,
-                  //               //         color: AppColors.white,
-                  //               //       ),
-                  //               //     ),
-                  //               //   ),
-                  //               // ),
-                  //             ],
-                  //           ),
-
-                  //           Padding(
-                  //             padding: const EdgeInsets.symmetric(
-                  //               horizontal: 15,
-                  //             ),
-                  //             child: Column(
-                  //               crossAxisAlignment: CrossAxisAlignment.start,
-                  //               children: [
-                  //                 Row(
-                  //                   children: [
-                  //                     popintext(
-                  //                       text: trip?.location.toString() ?? '',
-                  //                       fontSize: 16,
-                  //                       color: AppColors.black,
-                  //                       fw: FontWeight.w600,
-                  //                     ),
-                  //                   ],
-                  //                 ),
-
-                  //                 inter(
-                  //                   text:
-                  //                       '${trip!.startDate.day} to ${trip.endDate.day}-${trip.endDate.month}-${trip.endDate.year}',
-
-                  //                   fontSize: 12,
-                  //                   color: AppColors.grey,
-                  //                   fw: FontWeight.w400,
-                  //                 ),
-
-                  //                 SizedBox(height: screenHeight * 0.02),
-                  //                 Center(
-                  //                   child: CustomButton(
-                  //                     title: 'Join',
-                  //                     onPressed: () {
-                  //                       Navigator.push(
-                  //                         context,
-                  //                         MaterialPageRoute(
-                  //                           builder: (_) =>
-                  //                               RequesttojoinTripDetails(),
-                  //                         ),
-                  //                       );
-                  //                     },
-                  //                     bgColor: AppColors.blueascent,
-                  //                   ),
-                  //                 ),
-                  //               ],
-                  //             ),
-                  //           ),
-                  //         ],
-                  //       ),
-                  //     );
-                  //   },
-                  // );
                 },
               ),
 
@@ -551,9 +403,7 @@ class _TouristDashbordState extends State<TouristDashbord> {
                     onTap: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(
-                          builder: (context) => RequesttojoinTripDetails(),
-                        ),
+                        MaterialPageRoute(builder: (context) => ActiveTrip()),
                       );
                     },
                     child: actionButton(Icons.group_outlined, 'Join Trip'),
@@ -572,7 +422,7 @@ class _TouristDashbordState extends State<TouristDashbord> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => ActiveBottomSheet(),
+                          builder: (context) => guideBottomSheet(),
                         ),
                       );
                     },
@@ -591,9 +441,7 @@ class _TouristDashbordState extends State<TouristDashbord> {
                     onTap: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(
-                          builder: (context) => guideBottomSheet(),
-                        ),
+                        MaterialPageRoute(builder: (context) => SeenGuider()),
                       );
                     },
                     child: actionButton(Icons.menu_book, 'Guides'),
@@ -713,9 +561,8 @@ class _TouristDashbordState extends State<TouristDashbord> {
                                               ),
 
                                               inter(
-                                                text:
-                                                    trip?.username.toString() ??
-                                                    '',
+                                                text: trip.username.toString(),
+
                                                 fontSize: 12,
                                                 color: AppColors.white,
                                                 fw: FontWeight.w400,
@@ -764,7 +611,7 @@ class _TouristDashbordState extends State<TouristDashbord> {
 
                                   inter(
                                     text:
-                                        '${trip!.startDate.day} to ${trip.endDate.day}-${trip.endDate.month}-${trip.endDate.year}',
+                                        '${trip.startDate.day} to ${trip.endDate.day}-${trip.endDate.month}-${trip.endDate.year}',
 
                                     fontSize: 12,
                                     color: AppColors.grey,
@@ -798,290 +645,6 @@ class _TouristDashbordState extends State<TouristDashbord> {
                 },
               ),
 
-              // Padding(
-              //   padding: const EdgeInsets.symmetric(horizontal: 20),
-              //   child: Row(
-              //     children: [
-              //       Card(
-              //         child: Column(
-              //           children: [
-              //             Stack(
-              //               children: [
-              //                 Container(
-              //                   width: 150,
-              //                   height: 120,
-              //                   decoration: BoxDecoration(
-              //                     borderRadius: BorderRadius.circular(10),
-              //                     image: DecorationImage(
-              //                       image: AssetImage('assets/swizerland3.png'),
-              //                       fit: BoxFit.cover,
-              //                     ),
-              //                   ),
-
-              //                   child: Padding(
-              //                     padding: const EdgeInsets.symmetric(
-              //                       vertical: 10,
-              //                     ),
-              //                     child: Row(
-              //                       crossAxisAlignment:
-              //                           CrossAxisAlignment.start,
-
-              //                       children: [
-              //                         Padding(
-              //                           padding: const EdgeInsets.symmetric(
-              //                             horizontal: 10,
-              //                           ),
-              //                           child: Padding(
-              //                             padding: const EdgeInsets.only(
-              //                               top: 10,
-              //                             ),
-              //                             child: ClipOval(
-              //                               child: Image.asset(
-              //                                 'assets/maria.png',
-              //                               ),
-              //                             ),
-              //                           ),
-              //                         ),
-              //                         Column(
-              //                           children: [
-              //                             customtext(
-              //                               text: 'Planned by ',
-              //                               fontSize: 12,
-              //                               color: AppColors.white,
-              //                               fw: FontWeight.w400,
-              //                             ),
-              //                             customtext(
-              //                               text: 'Maria Joe ',
-              //                               fontSize: 12,
-              //                               color: AppColors.white,
-              //                               fw: FontWeight.w400,
-              //                             ),
-              //                           ],
-              //                         ),
-              //                         Expanded(
-              //                           child: IconButton(
-              //                             onPressed: () {},
-              //                             icon: Icon(
-              //                               Icons.favorite_outline,
-              //                               color: AppColors.white,
-              //                             ),
-              //                           ),
-              //                         ),
-              //                       ],
-              //                     ),
-              //                   ),
-              //                 ),
-              //               ],
-              //             ),
-
-              //             Row(
-              //               mainAxisAlignment: MainAxisAlignment.start,
-              //               children: [
-              //                 popintext(
-              //                   text: 'Swiss Alps',
-              //                   fontSize: 16,
-              //                   color: AppColors.black,
-              //                   fw: FontWeight.w600,
-              //                 ),
-              //                 SizedBox(width: screenWidth * 0.03),
-              //                 popintext(
-              //                   text: '12',
-              //                   fontSize: 14,
-              //                   color: AppColors.grey,
-              //                   fw: FontWeight.w400,
-              //                 ),
-              //               ],
-              //             ),
-              //             popintext(
-              //               text: '12–15 Jan, 2026',
-              //               fontSize: 14,
-              //               color: AppColors.grey,
-              //               fw: FontWeight.w400,
-              //             ),
-
-              //             SizedBox(height: screenHeight * 0.02),
-              //             SizedBox(
-              //               height: screenHeight * 0.055,
-              //               width: screenWidth * 0.4,
-              //               child: ElevatedButton(
-              //                 onPressed: () {
-              //                   Navigator.push(
-              //                     context,
-              //                     MaterialPageRoute(
-              //                       builder: (context) => guideBottomSheet(),
-              //                     ),
-              //                   );
-              //                 },
-              //                 style: ElevatedButton.styleFrom(
-              //                   backgroundColor: AppColors.blueascent,
-              //                   foregroundColor: AppColors.white,
-              //                   shape: RoundedRectangleBorder(
-              //                     borderRadius: BorderRadius.circular(17),
-              //                   ),
-              //                   elevation: 0,
-              //                 ),
-              //                 child: Row(
-              //                   mainAxisAlignment: MainAxisAlignment.center,
-              //                   children: [
-              //                     popintext(
-              //                       text: 'Join',
-              //                       fontSize: 12,
-              //                       color: AppColors.white,
-              //                       fw: .w500,
-              //                     ),
-              //                     SizedBox(width: 6),
-              //                     Icon(Icons.arrow_forward),
-              //                   ],
-              //                 ),
-              //               ),
-              //             ),
-              //             Container(height: screenHeight * 0.02),
-              //           ],
-              //         ),
-              //       ),
-
-              //       SizedBox(width: screenWidth * 0.01),
-              //       Card(
-              //         child: Column(
-              //           children: [
-              //             Stack(
-              //               children: [
-              //                 Container(
-              //                   width: 150,
-              //                   height: 120,
-              //                   decoration: BoxDecoration(
-              //                     borderRadius: BorderRadius.circular(10),
-              //                     image: DecorationImage(
-              //                       image: AssetImage('assets/swiiss.png'),
-              //                       fit: BoxFit.cover,
-              //                     ),
-              //                   ),
-
-              //                   child: Padding(
-              //                     padding: const EdgeInsets.symmetric(
-              //                       vertical: 10,
-              //                     ),
-              //                     child: Row(
-              //                       crossAxisAlignment:
-              //                           CrossAxisAlignment.start,
-
-              //                       children: [
-              //                         Padding(
-              //                           padding: const EdgeInsets.symmetric(
-              //                             horizontal: 10,
-              //                           ),
-              //                           child: Padding(
-              //                             padding: const EdgeInsets.only(
-              //                               top: 10,
-              //                             ),
-              //                             child: ClipOval(
-              //                               child: Image.asset(
-              //                                 'assets/maria.png',
-              //                               ),
-              //                             ),
-              //                           ),
-              //                         ),
-              //                         Column(
-              //                           children: [
-              //                             customtext(
-              //                               text: 'Planned by ',
-              //                               fontSize: 12,
-              //                               color: AppColors.white,
-              //                               fw: FontWeight.w400,
-              //                             ),
-              //                             customtext(
-              //                               text: 'Maria Joe ',
-              //                               fontSize: 12,
-              //                               color: AppColors.white,
-              //                               fw: FontWeight.w400,
-              //                             ),
-              //                           ],
-              //                         ),
-              //                         // SizedBox(width: screenWidth * 0.012),
-              //                         Expanded(
-              //                           child: IconButton(
-              //                             onPressed: () {},
-              //                             icon: Icon(
-              //                               Icons.favorite_outline,
-              //                               color: AppColors.white,
-              //                             ),
-              //                           ),
-              //                         ),
-              //                       ],
-              //                     ),
-              //                   ),
-              //                 ),
-              //               ],
-              //             ),
-
-              //             Row(
-              //               mainAxisAlignment: MainAxisAlignment.start,
-              //               children: [
-              //                 popintext(
-              //                   text: 'Swiss Alps',
-              //                   fontSize: 16,
-              //                   color: AppColors.black,
-              //                   fw: FontWeight.w600,
-              //                 ),
-              //                 SizedBox(width: screenWidth * 0.03),
-              //                 popintext(
-              //                   text: '12',
-              //                   fontSize: 14,
-              //                   color: AppColors.grey,
-              //                   fw: FontWeight.w400,
-              //                 ),
-              //               ],
-              //             ),
-              //             popintext(
-              //               text: '12–15 Jan, 2026',
-              //               fontSize: 14,
-              //               color: AppColors.grey,
-              //               fw: FontWeight.w400,
-              //             ),
-
-              //             SizedBox(height: screenHeight * 0.02),
-              //             SizedBox(
-              //               height: screenHeight * 0.055,
-              //               width: screenWidth * 0.4,
-              //               child: ElevatedButton(
-              //                 onPressed: () {
-              //                   Navigator.push(
-              //                     context,
-              //                     MaterialPageRoute(
-              //                       builder: (context) => guideBottomSheet(),
-              //                     ),
-              //                   );
-              //                 },
-              //                 style: ElevatedButton.styleFrom(
-              //                   backgroundColor: AppColors.blueascent,
-              //                   foregroundColor: AppColors.white,
-              //                   shape: RoundedRectangleBorder(
-              //                     borderRadius: BorderRadius.circular(17),
-              //                   ),
-              //                   elevation: 0,
-              //                 ),
-              //                 child: Row(
-              //                   mainAxisAlignment: MainAxisAlignment.center,
-              //                   children: [
-              //                     popintext(
-              //                       text: 'Join',
-              //                       fontSize: 12,
-              //                       color: AppColors.white,
-              //                       fw: .w500,
-              //                     ),
-              //                     SizedBox(width: 6),
-              //                     Icon(Icons.arrow_forward),
-              //                   ],
-              //                 ),
-              //               ),
-              //             ),
-              //             Container(height: screenHeight * 0.02),
-              //           ],
-              //         ),
-              //       ),
-              //     ],
-              //   ),
-              // ),
               Container(height: screenHeight * 0.04),
             ],
           ),

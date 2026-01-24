@@ -373,7 +373,7 @@ class _SeenGuiderState extends State<SeenGuider> {
                                                     width: 90,
                                                     child: inter(
                                                       text:
-                                                          trip?.username ?? '',
+                                                          trip.username ,
                                                       fontSize: 12,
                                                       color: Colors.white,
                                                       maxLines: 1,
@@ -440,7 +440,7 @@ class _SeenGuiderState extends State<SeenGuider> {
                                                     width: 90,
                                                     child: inter(
                                                       text:
-                                                          trip?.username ?? '',
+                                                          trip.username,
                                                       fontSize: 12,
                                                       color: Colors.white,
                                                       maxLines: 1,
@@ -470,7 +470,7 @@ class _SeenGuiderState extends State<SeenGuider> {
                                         children: [
                                           popintext(
                                             text:
-                                                trip?.location.toString() ?? '',
+                                                trip.location.toString() ,
                                             fontSize: 12,
                                             color: AppColors.black,
                                             fw: FontWeight.w500,
@@ -480,7 +480,7 @@ class _SeenGuiderState extends State<SeenGuider> {
                                           SizedBox(width: screenWidth * 0.06),
                                           popintext(
                                             text:
-                                                trip?.members.toString() ?? '',
+                                                trip.members.toString() ,
                                             fontSize: 12,
                                             color: AppColors.grey,
                                             fw: FontWeight.w400,
@@ -496,7 +496,7 @@ class _SeenGuiderState extends State<SeenGuider> {
 
                                       inter(
                                         text:
-                                            '${trip!.startDate.day}-${trip.startDate.month}-${trip.startDate.year}',
+                                            '${trip.startDate.day}-${trip.startDate.month}-${trip.startDate.year}',
                                         fontSize: 12,
                                         color: AppColors.grey,
                                         fw: FontWeight.w400,
