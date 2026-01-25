@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:turist_app/autj_view/sarah_edit_profile.dart';
 import 'package:turist_app/autj_view/tourist_dashbord.dart';
-import 'package:turist_app/autj_view/turist_view_history.dart';
 import 'package:turist_app/classes/edit_profile.dart';
 import 'package:turist_app/components/inter_text.dart';
 import 'package:turist_app/components/popin_text.dart';
@@ -186,10 +185,10 @@ class _TuristProfilePageState extends State<TuristProfile> {
 
               TextButton(
                 onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => TuristViewHistory()),
-                  );
+                  // Navigator.push(
+                  //   context,
+                  //   MaterialPageRoute(builder: (context) => TuristViewHistory()),
+                  // );
                 },
                 child: inter(
                   text: 'View History',
@@ -234,6 +233,33 @@ class _TuristProfilePageState extends State<TuristProfile> {
                 ),
               ),
               SizedBox(height: screenHeight * 0.05),
+              TextButton(
+                onPressed: () async {
+                  await AuthRepo().logout();
+
+                  Navigator.pushAndRemoveUntil(
+                    // ignore: use_build_context_synchronously
+                    context,
+                    MaterialPageRoute(builder: (_) => const LoginWidget()),
+                    (route) => false,
+                  );
+                },
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Transform.rotate(
+                      angle: 3.1416,
+                      child: Icon(Icons.logout, color: Colors.red, size: 26),
+                    ),
+                    inter(
+                      text: 'Logout',
+                      fontSize: 18,
+                      color: AppColors.red,
+                      fw: FontWeight.w500,
+                    ),
+                  ],
+                ),
+              ),
               ElevatedButton(
                 onPressed: () async {
                   await AuthRepo().logout();

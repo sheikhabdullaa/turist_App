@@ -113,58 +113,147 @@ class _SignupWidgetState extends State<SignupWidget> {
               ),
               const SizedBox(height: 30),
 
-              SizedBox(
-                width: double.infinity,
-                height: 48,
-                child: ElevatedButton(
-                  onPressed: loading
-                      ? null
-                      : () async {
-                          try {
-                            await AuthRepo().signup(
-                              emailcontroller.text.trim(),
-                              passwordcontroller.text.trim(),
-                              namecontroller.text.trim(),
-                              int.parse(numbercontroller.text.trim()),
-                            );
+              ElevatedButton(
+                onPressed: loading
+                    ? null
+                    : () async {
+                        String name = namecontroller.text.trim();
+                        String email = emailcontroller.text.trim();
+                        String password = passwordcontroller.text.trim();
+                        String phone = numbercontroller.text.trim();
 
-                            // ignore: use_build_context_synchronously
-                            ScaffoldMessenger.of(context).showSnackBar(
-                              const SnackBar(
-                                content: Text("Signup Successful"),
-                              ),
-                            );
+                        // Phone number validation
+                        RegExp phoneRegEx = RegExp(r'^\+?\d{10,15}$');
+                        // Explanation:
+                        // ^ = start, \+? = optional plus, \d{10,15} = 10 to 15 digits, $ = end
 
-                            Navigator.push(
-                              // ignore: use_build_context_synchronously
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => ChooseRole(),
-                              ),
-                            );
-                          } catch (e) {
+                        if (name.isEmpty ||
+                            email.isEmpty ||
+                            password.isEmpty ||
+                            phone.isEmpty) {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            const SnackBar(
+                              content: Text("All fields are required"),
+                            ),
+                          );
+                          return;
+                        }
+
+                        if (!phoneRegEx.hasMatch(phone)) {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            const SnackBar(
+                              content: Text("Enter a valid phone number"),
+                            ),
+                          );
+                          return;
+                        }
+
+                        try {
+                          setState(() {
+                            loading = true;
+                          });
+
+                          await AuthRepo().signup(
+                            email,
+                            password,
+                            name,
+                            int.parse(
+                              phone.replaceAll(RegExp(r'\D'), ''),
+                            ), // remove non-digit
+                          );
+
+                          // ignore: use_build_context_synchronously
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            const SnackBar(content: Text("Signup Successful")),
+                          );
+
+                          // ignore: use_build_context_synchronously
+                          Navigator.push(
                             // ignore: use_build_context_synchronously
-                            ScaffoldMessenger.of(context).showSnackBar(
-                              SnackBar(content: Text("signout failed")),
-                            );
-                          }
-                        },
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: AppColors.blueascent,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(14),
-                    ),
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const ChooseRole(),
+                            ),
+                          );
+                        } catch (e) {
+                          // ignore: use_build_context_synchronously
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(content: Text("Signup failed: $e")),
+                          );
+                        } finally {
+                          setState(() {
+                            loading = false;
+                          });
+                        }
+                      },
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: AppColors.blueascent,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(14),
                   ),
-                  child: loading
-                      ? const CircularProgressIndicator()
-                      : inter(
-                          text: 'Signup',
-                          fontSize: 16,
-                          color: AppColors.white,
-                          fw: FontWeight.w500,
-                        ),
                 ),
+                child: loading
+                    ? const CircularProgressIndicator()
+                    : inter(
+                        text: 'Signup',
+                        fontSize: 16,
+                        color: AppColors.white,
+                        fw: FontWeight.w500,
+                      ),
               ),
+
+              // SizedBox(
+              //   width: double.infinity,
+              //   height: 48,
+              //   child: ElevatedButton(
+              //     onPressed: loading
+              //         ? null
+              //         : () async {
+              //             try {
+              //               await AuthRepo().signup(
+              //                 emailcontroller.text.trim(),
+              //                 passwordcontroller.text.trim(),
+              //                 namecontroller.text.trim(),
+              //                 int.parse(numbercontroller.text.trim()),
+              //               );
+
+              //               // ignore: use_build_context_synchronously
+              //               ScaffoldMessenger.of(context).showSnackBar(
+              //                 const SnackBar(
+              //                   content: Text("Signup Successful"),
+              //                 ),
+              //               );
+
+              //               Navigator.push(
+              //                 // ignore: use_build_context_synchronously
+              //                 context,
+              //                 MaterialPageRoute(
+              //                   builder: (context) => ChooseRole(),
+              //                 ),
+              //               );
+              //             } catch (e) {
+              //               // ignore: use_build_context_synchronously
+              //               ScaffoldMessenger.of(context).showSnackBar(
+              //                 SnackBar(content: Text("signout failed")),
+              //               );
+              //             }
+              //           },
+              //     style: ElevatedButton.styleFrom(
+              //       backgroundColor: AppColors.blueascent,
+              //       shape: RoundedRectangleBorder(
+              //         borderRadius: BorderRadius.circular(14),
+              //       ),
+              //     ),
+              //     child: loading
+              //         ? const CircularProgressIndicator()
+              //         : inter(
+              //             text: 'Signup',
+              //             fontSize: 16,
+              //             color: AppColors.white,
+              //             fw: FontWeight.w500,
+              //           ),
+              //   ),
+              // ),
             ],
           ),
         ),

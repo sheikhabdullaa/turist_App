@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:turist_app/autj_view/edit_trip_screen.dart';
 import 'package:turist_app/autj_view/request_to_join.dart';
 import 'package:turist_app/autj_view/tourist_dashbord.dart';
 import 'package:turist_app/components/custom_text_button.dart';
@@ -315,7 +314,7 @@ class _SeenGuiderState extends State<SeenGuider> {
                       gridDelegate:
                           const SliverGridDelegateWithFixedCrossAxisCount(
                             crossAxisCount: 2,
-                            childAspectRatio: 0.5,
+                            childAspectRatio: 0.7,
                             crossAxisSpacing: 10,
                             mainAxisSpacing: 10,
                           ),
@@ -372,8 +371,7 @@ class _SeenGuiderState extends State<SeenGuider> {
                                                   SizedBox(
                                                     width: 90,
                                                     child: inter(
-                                                      text:
-                                                          trip.username ,
+                                                      text: trip.username,
                                                       fontSize: 12,
                                                       color: Colors.white,
                                                       maxLines: 1,
@@ -439,8 +437,7 @@ class _SeenGuiderState extends State<SeenGuider> {
                                                   SizedBox(
                                                     width: 90,
                                                     child: inter(
-                                                      text:
-                                                          trip.username,
+                                                      text: trip.username,
                                                       fontSize: 12,
                                                       color: Colors.white,
                                                       maxLines: 1,
@@ -469,8 +466,7 @@ class _SeenGuiderState extends State<SeenGuider> {
                                       Row(
                                         children: [
                                           popintext(
-                                            text:
-                                                trip.location.toString() ,
+                                            text: trip.location.toString(),
                                             fontSize: 12,
                                             color: AppColors.black,
                                             fw: FontWeight.w500,
@@ -479,8 +475,7 @@ class _SeenGuiderState extends State<SeenGuider> {
                                           ),
                                           SizedBox(width: screenWidth * 0.06),
                                           popintext(
-                                            text:
-                                                trip.members.toString() ,
+                                            text: trip.members.toString(),
                                             fontSize: 12,
                                             color: AppColors.grey,
                                             fw: FontWeight.w400,
@@ -517,41 +512,6 @@ class _SeenGuiderState extends State<SeenGuider> {
                                           },
                                           bgColor: AppColors.blueascent,
                                         ),
-                                      ),
-                                      Row(
-                                        children: [
-                                          IconButton(
-                                            onPressed: () {
-                                              Navigator.push(
-                                                context,
-                                                MaterialPageRoute(
-                                                  builder: (context) =>
-                                                      EditTripScreen(
-                                                        tripId: '',
-                                                        tripData: {},
-                                                      ),
-                                                ),
-                                              );
-                                            },
-                                            icon: Icon(
-                                              Icons.edit,
-                                              color: AppColors.green,
-                                            ),
-                                          ),
-
-                                          IconButton(
-                                            onPressed: () {
-                                              Navigator.push(context, MaterialPageRoute(builder: (context)=>EditTripScreen(
-                                                        tripId: '',
-                                                        tripData: {},
-                                                      ),));
-                                            },
-                                            icon: Icon(
-                                              Icons.delete,
-                                              color: AppColors.red,
-                                            ),
-                                          ),
-                                        ],
                                       ),
                                     ],
                                   ),
