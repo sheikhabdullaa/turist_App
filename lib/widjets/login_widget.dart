@@ -135,41 +135,6 @@ class _LoginWidgetState extends State<LoginWidget> {
                   ),
                 ),
               ),
-              // const SizedBox(height: 20),
-              // inter(
-              //   text: 'OR',
-              //   fontSize: 14,
-              //   color: AppColors.black,
-              //   fw: FontWeight.w400,
-              // ),
-              // const SizedBox(height: 20),
-
-              // SizedBox(
-              //   width: double.infinity,
-              //   height: 48,
-              //   child: ElevatedButton(
-              //     onPressed: () {},
-              //     style: ElevatedButton.styleFrom(
-              //       backgroundColor: AppColors.button,
-              //       shape: RoundedRectangleBorder(
-              //         borderRadius: BorderRadius.circular(14),
-              //       ),
-              //     ),
-              //     child: Row(
-              //       mainAxisAlignment: MainAxisAlignment.center,
-              //       children: [
-              //         Image.asset('assets/google.png'),
-              //         SizedBox(width: 8),
-              //         inter(
-              //           text: 'Continue with Google',
-              //           fontSize: 14,
-              //           color: AppColors.black,
-              //           fw: FontWeight.w400,
-              //         ),
-              //       ],
-              //     ),
-              //   ),
-              // ),
             ],
           ),
         ),
