@@ -6,6 +6,7 @@ import 'package:turist_app/classes/day_classes.dart' show DayClasses;
 import 'package:turist_app/classes/degree_class.dart';
 import 'package:turist_app/components/inter_text.dart';
 import 'package:turist_app/components/popin_text.dart';
+import 'package:turist_app/practise/watsapp_service.dart';
 import 'package:turist_app/repository/creat_trip_repo.dart';
 import 'package:turist_app/utils/app_colors.dart';
 
@@ -129,7 +130,7 @@ class _TripDaetailsState extends State<TripDaetails> {
                                     Padding(
                                       padding: const EdgeInsets.only(left: 30),
                                       child: inter(
-                                        text: trip.username.toString() ,
+                                        text: trip.username.toString(),
                                         fontSize: 12,
                                         color: AppColors.white,
                                         fw: FontWeight.w400,
@@ -144,7 +145,7 @@ class _TripDaetailsState extends State<TripDaetails> {
                         ListTile(
                           leading: Icon(Icons.location_on_outlined),
                           title: popintext(
-                            text: trip.location.toString() ,
+                            text: trip.location.toString(),
                             fontSize: 16,
                             color: AppColors.black,
                             fw: FontWeight.w600,
@@ -783,6 +784,24 @@ class _TripDaetailsState extends State<TripDaetails> {
                               ),
                             ),
                             ListTile(
+                              onTap: () async {
+                                // Optional loader for better UX
+                                showDialog(
+                                  context: context,
+                                  barrierDismissible: false,
+                                  builder: (_) => const Center(
+                                    child: CircularProgressIndicator(),
+                                  ),
+                                );
+
+                                await WhatsAppService.openChat(
+                                  context: context,
+                                  phone: '923288898341',
+                                  message: 'Hello! I want to join the trip 😊',
+                                );
+
+                                Navigator.pop(context);
+                              },
                               leading: Container(
                                 height: 60,
                                 width: 60,
@@ -790,24 +809,25 @@ class _TripDaetailsState extends State<TripDaetails> {
                                   color: AppColors.green,
                                   shape: BoxShape.circle,
                                 ),
-                                child: Icon(
+                                child: const Icon(
                                   Icons.messenger_outline_rounded,
                                   color: AppColors.white,
                                 ),
                               ),
                               title: inter(
-                                text: 'Open Group Chat',
+                                text: 'Open Chat',
                                 fontSize: 16,
                                 color: AppColors.black,
                                 fw: FontWeight.w600,
                               ),
                               subtitle: inter(
-                                text: 'Chat with all trip members here',
+                                text: 'Chat with guider or honour from here',
                                 fontSize: 11,
                                 color: AppColors.grey,
-                                fw: .w300,
+                                fw: FontWeight.w300,
                               ),
                             ),
+
                             SizedBox(height: screenheight * 0.1),
                           ],
                         ),
