@@ -6,7 +6,7 @@
 
 
     <application
-        android:label="turist_app"
+        android:label="Trave Mate"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

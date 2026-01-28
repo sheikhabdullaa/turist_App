@@ -213,7 +213,7 @@ class _RequesttojoinTripDetailsState extends State<RequesttojoinTripDetails> {
 
                           await WhatsAppService.openChat(
                             context: context,
-                            phone: '923336988873',
+                            phone: '923288898341',
                             message: 'Hello! I want to join this trip 😊',
                           );
 
