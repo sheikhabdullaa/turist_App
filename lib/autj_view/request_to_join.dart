@@ -436,19 +436,7 @@ class _RequesttojoinTripDetailsState extends State<RequesttojoinTripDetails> {
                     ),
 
                     SizedBox(height: screenheight * 0.07),
-                    // Padding(
-                    //   padding: const EdgeInsets.symmetric(horizontal: 20),
-                    //   child: Column(
-                    //     children: [
-                    //       popintext(
-                    //         text: 'Weather',
-                    //         fontSize: 16,
-                    //         color: AppColors.black,
-                    //         fw: FontWeight.w600,
-                    //       ),
-                    //     ],
-                    //   ),
-                    // ),
+
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 20),
                       child: Row(
