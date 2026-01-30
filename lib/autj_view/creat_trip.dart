@@ -150,41 +150,6 @@ class _CreatTripState extends State<CreatTrip> {
                 controller: destinationcontroller,
               ),
 
-              // InkWell(
-              //   onTap: () {
-              //     Navigator.push(
-              //       context,
-              //       MaterialPageRoute(builder: (_) => GoogleMapscreen()),
-              //     );
-              //   },
-              //   child: Container(
-              //     height: screenheight * 0.09,
-              //     decoration: BoxDecoration(
-              //       // color: AppColors.white,
-              //       borderRadius: BorderRadius.circular(14),
-              //       border: BoxBorder.all(
-              //         color: Color.fromARGB(67, 158, 158, 158),
-              //       ),
-              //     ),
-              //     child: Padding(
-              //       padding: const EdgeInsets.symmetric(horizontal: 10),
-              //       child: Row(
-              //         children: [
-              //           const Icon(
-              //             Icons.location_on_outlined,
-              //             color: AppColors.grey,
-              //           ),
-              //           inter(
-              //             text: 'Where are you going?',
-              //             fontSize: 16,
-              //             color: AppColors.grey,
-              //             fw: FontWeight.w400,
-              //           ),
-              //         ],
-              //       ),
-              //     ),
-              //   ),
-              // ),
               SizedBox(height: screenheight * 0.04),
 
               /// IMAGE
