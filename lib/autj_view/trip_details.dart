@@ -800,6 +800,7 @@ class _TripDaetailsState extends State<TripDaetails> {
                                   message: 'Hello! I want to join the trip 😊',
                                 );
 
+                                // ignore: use_build_context_synchronously
                                 Navigator.pop(context);
                               },
                               leading: Container(

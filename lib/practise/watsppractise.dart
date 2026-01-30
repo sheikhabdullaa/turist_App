@@ -24,6 +24,7 @@ class Watsppractise extends StatelessWidget {
               message: 'Hello! I want to join this trip 😊',
             );
 
+            // ignore: use_build_context_synchronously
             Navigator.pop(context); // close loader
           },
           child: const Text('Join via WhatsApp'),
