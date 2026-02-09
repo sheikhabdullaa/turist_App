@@ -35,7 +35,6 @@
 //   }
 // }
 
-
 import 'dart:developer';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -67,16 +66,19 @@ class CreatTripRepo {
   Future<List<Trip>> activeTripsGet() async {
     final snapshot = await _firestore.collection("creattripuser").get();
 
-    final trips = snapshot.docs.map((doc) {
-      final json = doc.data();
-      log("Trip data: $json");
-      try {
-        return Trip.fromJson(json);
-      } catch (e) {
-        log("Error parsing trip: $e");
-        return null; // skip if error
-      }
-    }).whereType<Trip>().toList(); // remove nulls
+    final trips = snapshot.docs
+        .map((doc) {
+          final json = doc.data();
+          log("Trip data: $json");
+          try {
+            return Trip.fromJson(json);
+          } catch (e) {
+            log("Error parsing trip: $e");
+            return null; // skip if error
+          }
+        })
+        .whereType<Trip>()
+        .toList(); // remove nulls
 
     return trips;
   }
