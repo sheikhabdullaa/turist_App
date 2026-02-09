@@ -234,14 +234,14 @@ class _RequesttojoinTripDetailsState extends State<RequesttojoinTripDetails> {
                           Navigator.pop(context); // Close loader
                         },
                         style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.green, // Button color
+                          backgroundColor: AppColors.blueascent, // Button color
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(12),
                           ),
                         ),
                         icon: Icon(Icons.message, color: Colors.white),
                         label: const Text(
-                          'Open WhatsApp',
+                          'Join',
                           style: TextStyle(
                             color: Colors.white,
                             fontSize: 16,
