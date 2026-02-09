@@ -21,7 +21,7 @@
     </queries>
 
     <application
-        android:label="Trave Mate"
+        android:label="Travel Mate"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         
