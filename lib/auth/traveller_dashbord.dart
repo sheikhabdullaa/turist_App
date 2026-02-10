@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:turist_app/active_trip.dart';
-import 'package:turist_app/auth/empty_creat_trip.dart';
+import 'package:turist_app/autj_view/chat_bort.dart';
 import 'package:turist_app/autj_view/trip_details.dart';
 import 'package:turist_app/autj_view/active_bottom_sheet.dart';
 import 'package:turist_app/autj_view/bottom_sheet.dart';
@@ -13,6 +13,8 @@ import 'package:turist_app/components/custom_text.dart';
 import 'package:turist_app/components/custom_text_button.dart';
 import 'package:turist_app/components/inter_text.dart';
 import 'package:turist_app/components/popin_text.dart';
+import 'package:turist_app/quick_action.dart/expences.dart';
+import 'package:turist_app/quick_action.dart/weather.dart';
 import 'package:turist_app/repository/creat_trip_repo.dart';
 import 'package:turist_app/utils/app_colors.dart';
 
@@ -540,20 +542,6 @@ class TravellerDashbordState extends State<TravellerDashbord> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => EmptyCreatTrip(),
-                        ),
-                      );
-                    },
-                    child: actionButton(
-                      Icons.add_circle_outline,
-                      'Create Trip',
-                    ),
-                  ),
-                  InkWell(
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
                           builder: (context) => RequesttojoinTripDetails(),
                         ),
                       );
@@ -564,7 +552,7 @@ class TravellerDashbordState extends State<TravellerDashbord> {
                     onTap: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => RequesttojoinTripDetails()),
+                        MaterialPageRoute(builder: (context) => expencesPage()),
                       );
                     },
                     child: actionButton(Icons.credit_card, 'Expenses'),
@@ -580,14 +568,18 @@ class TravellerDashbordState extends State<TravellerDashbord> {
                     },
                     child: actionButton(Icons.calendar_today, 'Bookings'),
                   ),
-                  InkWell(
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => RequesttojoinTripDetails()),
-                      );
-                    },
-                    child: actionButton(Icons.cloud_outlined, 'Weather'),
+                  Center(
+                    child: InkWell(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => WeatherPage(),
+                          ),
+                        );
+                      },
+                      child: actionButton(Icons.cloud_outlined, 'Weather'),
+                    ),
                   ),
                   InkWell(
                     onTap: () {
@@ -599,6 +591,15 @@ class TravellerDashbordState extends State<TravellerDashbord> {
                       );
                     },
                     child: actionButton(Icons.menu_book, 'Guides'),
+                  ),
+                  InkWell(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => ChatBort()),
+                      );
+                    },
+                    child: actionButton(Icons.smart_toy_outlined, 'Chat Bot'),
                   ),
                 ],
               ),

@@ -34,7 +34,7 @@ android {
         applicationId = "com.travelmate.travel.app"
         minSdk = flutter.minSdkVersion
         targetSdk = flutter.targetSdkVersion
-        versionCode = 3
+        versionCode = 4
         versionName = "1.0.4"
     }
 

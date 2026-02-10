@@ -308,7 +308,7 @@ class _GuiderDashboardState extends State<GuiderDashboard> {
 
                   children: [
                     popintext(
-                      text: 'Active Trips',
+                      text: 'Other Guiders',
                       fontSize: 24,
                       color: AppColors.black,
                       fw: .w600,
