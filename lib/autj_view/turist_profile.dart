@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:turist_app/autj_view/sarah_edit_profile.dart';
-import 'package:turist_app/autj_view/tourist_dashbord.dart';
+import 'package:turist_app/autj_view/traveller_bottom_sheet.dart';
 import 'package:turist_app/classes/edit_profile.dart';
 import 'package:turist_app/components/inter_text.dart';
 import 'package:turist_app/components/popin_text.dart';
 import 'package:turist_app/repository/auth_repo.dart';
 import 'package:turist_app/utils/app_colors.dart';
+import 'package:turist_app/widjets/login_sacreen/login_sacreen.dart';
 import 'package:turist_app/widjets/login_widget.dart';
 
 class TuristProfile extends StatefulWidget {
@@ -38,7 +39,7 @@ class _TuristProfilePageState extends State<TuristProfile> {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) => TouristDashbord(),
+                                  builder: (context) => TravellerBottomSheet(),
                                 ),
                               );
                             },
@@ -233,45 +234,26 @@ class _TuristProfilePageState extends State<TuristProfile> {
                 ),
               ),
               SizedBox(height: screenHeight * 0.05),
-              TextButton(
-                onPressed: () async {
-                  await AuthRepo().logout();
 
-                  Navigator.pushAndRemoveUntil(
-                    // ignore: use_build_context_synchronously
-                    context,
-                    MaterialPageRoute(builder: (_) => const LoginWidget()),
-                    (route) => false,
-                  );
-                },
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Transform.rotate(
-                      angle: 3.1416,
-                      child: Icon(Icons.logout, color: Colors.red, size: 26),
-                    ),
-                    inter(
-                      text: 'Logout',
-                      fontSize: 18,
-                      color: AppColors.red,
-                      fw: FontWeight.w500,
-                    ),
-                  ],
-                ),
-              ),
               ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  // backgroundColor: AppColors.white,
+                  fixedSize: Size(screenwidth * 0.4, 25),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(14),
+                  ),
+                ),
                 onPressed: () async {
                   await AuthRepo().logout();
 
                   Navigator.pushAndRemoveUntil(
                     // ignore: use_build_context_synchronously
                     context,
-                    MaterialPageRoute(builder: (_) => const LoginWidget()),
+                    MaterialPageRoute(builder: (_) => const LoginSacreen()),
                     (route) => false,
                   );
                 },
-                child: const Text("Logout"),
+                child: const Text("Logout" , style: TextStyle(fontSize: 16 , color: AppColors.red , fontWeight: FontWeight.w700) ),
               ),
 
               SizedBox(height: screenHeight * 0.06),

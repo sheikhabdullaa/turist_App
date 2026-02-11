@@ -16,8 +16,7 @@ class _LogoutPageState extends State<LogoutPage> {
       appBar: AppBar(
         title: customtext(text: 'Logout', fontSize: 22, color: AppColors.black),
       ),
-      body: Column(
-        children: [
+      body: Column(children: [
         ],
       ),
     );

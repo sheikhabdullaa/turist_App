@@ -34,8 +34,8 @@ class _CreatTripState extends State<CreatTrip> {
   final ImagePicker _picker = ImagePicker();
 
   // checkboxes
-  bool withFamily = false;
-  bool withFriends = false;
+  bool femaleFriends = false;
+  bool Public = false;
 
   // dropdown values (IMPORTANT)
   String? selectedCategory;
@@ -94,20 +94,16 @@ class _CreatTripState extends State<CreatTrip> {
                     scale: 1.4,
                     child: Checkbox(
                       shape: CircleBorder(),
-                      value: withFamily,
+                      value: femaleFriends,
                       onChanged: (v) {
                         setState(() {
-                          withFamily = v!;
-                          if (v) withFriends = false;
+                          femaleFriends = v!;
+                          if (v) Public = false;
                         });
                       },
                     ),
                   ),
-                  inter(
-                    text: 'With Family',
-                    fontSize: 14,
-                    color: AppColors.black,
-                  ),
+                  inter(text: 'Public', fontSize: 14, color: AppColors.black),
 
                   const SizedBox(width: 20),
 
@@ -115,19 +111,19 @@ class _CreatTripState extends State<CreatTrip> {
                     scale: 1.4,
                     child: Checkbox(
                       shape: CircleBorder(),
-                      checkColor: AppColors.black,
 
-                      value: withFriends,
+                      // checkColor: AppColors.black,
+                      value: Public,
                       onChanged: (v) {
                         setState(() {
-                          withFriends = v!;
-                          if (v) withFamily = false;
+                          Public = v!;
+                          if (v) femaleFriends = false;
                         });
                       },
                     ),
                   ),
                   inter(
-                    text: 'With Friends',
+                    text: 'Female Friends',
                     fontSize: 14,
                     color: AppColors.black,
                   ),
@@ -288,7 +284,7 @@ class _CreatTripState extends State<CreatTrip> {
                 fw: FontWeight.w400,
               ),
               customTextField(
-                hint: 'for-example@example.com',
+                hint: 'Budget estimated',
                 controller: budgetecontroller,
                 icon: Icon(
                   Icons.monetization_on_outlined,
@@ -310,8 +306,11 @@ class _CreatTripState extends State<CreatTrip> {
               customDropdownField(
                 hint: 'Select trip category',
                 items: const [
-                  DropdownMenuItem(value: 'Friends', child: Text('Friends')),
-                  DropdownMenuItem(value: 'Family', child: Text('Family')),
+                  DropdownMenuItem(value: 'Friends', child: Text('Public')),
+                  DropdownMenuItem(
+                    value: 'Family',
+                    child: Text('Female friends'),
+                  ),
                   DropdownMenuItem(value: 'Group', child: Text('Group')),
                 ],
                 onChanged: (v) => selectedCategory = v,
@@ -356,48 +355,126 @@ class _CreatTripState extends State<CreatTrip> {
                 ],
                 onChanged: (v) => selectedAccommodation = v,
               ),
-              SizedBox(height: screenheight * 0.04),
-              customTextField(
-                hint: 'hotel booking expence',
-                controller: hotelbookingcontroller,
-                icon: Icon(Icons.hotel, color: AppColors.grey),
-                readOnly: true,
-                hintStyle: TextStyle(color: AppColors.grey),
-              ),
-              SizedBox(height: screenheight * 0.04),
+              SizedBox(height: screenheight * 0.02),
 
-              customTextField(
-                hint: 'transportation expence',
-                controller: transportcontroller,
-                icon: Icon(Icons.hotel, color: AppColors.grey),
-                readOnly: true,
-                hintStyle: TextStyle(color: AppColors.grey),
-              ),
-              SizedBox(height: screenheight * 0.04),
+              Container(
+                // margin: EdgeInsets.symmetric(vertical: screenheight * 0.02),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(12),
 
-              customTextField(
-                hint: 'dinner expence',
-                controller: dinnercontroller,
-                icon: Icon(Icons.dinner_dining, color: AppColors.grey),
-                readOnly: true,
-                hintStyle: TextStyle(color: AppColors.grey),
+                  // color: Colors.white,
+                ),
+                child: ExpansionTile(
+                  tilePadding: EdgeInsets.symmetric(horizontal: 16),
+                  childrenPadding: EdgeInsets.symmetric(
+                    horizontal: 16,
+                    vertical: 10,
+                  ),
+                  leading: Icon(
+                    Icons.account_balance_wallet,
+                    color: AppColors.blueascent,
+                  ),
+                  title: Text(
+                    'Expenses Details',
+                    style: TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.w600,
+                      color: AppColors.black,
+                    ),
+                  ),
+                  trailing: Icon(Icons.keyboard_arrow_down),
+                  children: [
+                    // 👇👇 AAP KA CODE – NO CHANGE 👇👇
+                    SizedBox(height: screenheight * 0.04),
+                    customTextField(
+                      hint: 'hotel booking expense',
+                      controller: hotelbookingcontroller,
+                      icon: Icon(Icons.hotel, color: AppColors.grey),
+                      readOnly: true,
+                      hintStyle: TextStyle(color: AppColors.grey),
+                    ),
+                    SizedBox(height: screenheight * 0.04),
+
+                    customTextField(
+                      hint: 'transportation expense',
+                      controller: transportcontroller,
+                      icon: Icon(Icons.directions_car, color: AppColors.grey),
+                      readOnly: true,
+                      hintStyle: TextStyle(color: AppColors.grey),
+                    ),
+                    SizedBox(height: screenheight * 0.04),
+
+                    customTextField(
+                      hint: 'dinner expense',
+                      controller: dinnercontroller,
+                      icon: Icon(Icons.dinner_dining, color: AppColors.grey),
+                      readOnly: true,
+                      hintStyle: TextStyle(color: AppColors.grey),
+                    ),
+                    SizedBox(height: screenheight * 0.04),
+
+                    customTextField(
+                      hint: 'Total Spend Expense',
+                      controller: totalspendcontroller,
+                      icon: Icon(Icons.attach_money, color: AppColors.grey),
+                      readOnly: true,
+                      hintStyle: TextStyle(color: AppColors.grey),
+                    ),
+                    SizedBox(height: screenheight * 0.04),
+
+                    customTextField(
+                      hint: 'Per Person Expense',
+                      controller: perpersoncontroller,
+                      icon: Icon(Icons.person, color: AppColors.grey),
+                      readOnly: true,
+                      hintStyle: TextStyle(color: AppColors.grey),
+                    ),
+                  ],
+                ),
               ),
-              SizedBox(height: screenheight * 0.04),
-              customTextField(
-                hint: 'Total Spend Expence',
-                controller: totalspendcontroller,
-                icon: Icon(Icons.attach_money, color: AppColors.grey),
-                readOnly: true,
-                hintStyle: TextStyle(color: AppColors.grey),
-              ),
-              SizedBox(height: screenheight * 0.04),
-              customTextField(
-                hint: 'Per Person Expence',
-                controller: perpersoncontroller,
-                icon: Icon(Icons.person, color: AppColors.grey),
-                readOnly: true,
-                hintStyle: TextStyle(color: AppColors.grey),
-              ),
+
+              // SizedBox(height: screenheight * 0.04),
+              // customTextField(
+              //   hint: 'hotel booking expence',
+              //   controller: hotelbookingcontroller,
+              //   icon: Icon(Icons.hotel, color: AppColors.grey),
+              //   readOnly: true,
+              //   hintStyle: TextStyle(color: AppColors.grey),
+              // ),
+              // SizedBox(height: screenheight * 0.04),
+
+              // customTextField(
+              //   hint: 'transportation expence',
+              //   controller: transportcontroller,
+              //   icon: Icon(Icons.hotel, color: AppColors.grey),
+              //   readOnly: true,
+              //   hintStyle: TextStyle(color: AppColors.grey),
+              // ),
+              // SizedBox(height: screenheight * 0.04),
+
+              // customTextField(
+              //   hint: 'dinner expence',
+              //   controller: dinnercontroller,
+              //   icon: Icon(Icons.dinner_dining, color: AppColors.grey),
+              //   readOnly: true,
+              //   hintStyle: TextStyle(color: AppColors.grey),
+              // ),
+              // SizedBox(height: screenheight * 0.04),
+              // customTextField(
+              //   hint: 'Total Spend Expence',
+              //   controller: totalspendcontroller,
+              //   icon: Icon(Icons.attach_money, color: AppColors.grey),
+              //   readOnly: true,
+              //   hintStyle: TextStyle(color: AppColors.grey),
+              // ),
+              // SizedBox(height: screenheight * 0.04),
+              // customTextField(
+              //   hint: 'Per Person Expence',
+              //   controller: perpersoncontroller,
+              //   icon: Icon(Icons.person, color: AppColors.grey),
+              //   readOnly: true,
+              //   hintStyle: TextStyle(color: AppColors.grey),
+              // ),
 
               /// SAVE BUTTON (FINAL & WORKING)
               SizedBox(height: screenheight * 0.04),
@@ -438,8 +515,8 @@ class _CreatTripState extends State<CreatTrip> {
                         await CreatTripRepo().createTrip({
                           'tripId': tripId,
                           'userId': user.uid,
-                          'withFamily': withFamily,
-                          'withFriends': withFriends,
+                          'withFamily': femaleFriends,
+                          'withFriends': Public,
                           'description': discriptioncontroller.text,
                           'members': memberCount,
                           'category': selectedCategory,
