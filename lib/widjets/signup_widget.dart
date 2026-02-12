@@ -19,7 +19,7 @@ class _SignupWidgetState extends State<SignupWidget> {
   TextEditingController numbercontroller = TextEditingController();
 
   bool loading = false;
-
+  bool _obscureText = true;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -103,11 +103,55 @@ class _SignupWidgetState extends State<SignupWidget> {
                     color: AppColors.black,
                     fw: FontWeight.w400,
                   ),
-                  customTextField(
-                    hint: '***********',
-                    icon: Icon(Icons.lock_outlined, color: AppColors.grey),
+
+                  TextFormField(
                     controller: passwordcontroller,
-                    readOnly: true,
+                    obscureText: _obscureText,
+                    decoration: InputDecoration(
+                      hintText: 'Enter your password',
+                      hintStyle: TextStyle(color: AppColors.grey),
+                      prefixIcon: Icon(
+                        Icons.lock_outline,
+                        color: AppColors.grey,
+                      ),
+                      suffixIcon: IconButton(
+                        icon: Icon(
+                          _obscureText
+                              ? Icons.visibility_off
+                              : Icons.visibility,
+                          color: AppColors.grey,
+                        ),
+                        onPressed: () {
+                          setState(() {
+                            _obscureText = !_obscureText;
+                          });
+                        },
+                      ),
+                      contentPadding: const EdgeInsets.symmetric(
+                        vertical: 16,
+                        horizontal: 16,
+                      ),
+                      enabledBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(
+                          12,
+                        ), // Rounded corners
+                        borderSide: BorderSide(
+                          color: Color.fromARGB(67, 158, 158, 158),
+                        ),
+                      ),
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(14),
+                        borderSide: const BorderSide(color: Colors.white),
+                      ),
+                      errorBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(12),
+                        borderSide: BorderSide(color: Colors.red, width: 1),
+                      ),
+                      focusedErrorBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(12),
+                        borderSide: BorderSide(color: Colors.red, width: 1),
+                      ),
+                    ),
                   ),
                 ],
               ),

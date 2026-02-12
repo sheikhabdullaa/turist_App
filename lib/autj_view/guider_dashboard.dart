@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:turist_app/autj_view/guider_profile.dart';
 import 'package:turist_app/autj_view/notification_page.dart';
 import 'package:turist_app/autj_view/request_to_join.dart';
 import 'package:turist_app/autj_view/tourist_dashbord.dart';
@@ -29,7 +30,15 @@ class _GuiderDashboardState extends State<GuiderDashboard> {
           // ignore: avoid_unnecessary_containers
           child: Container(
             child: ClipOval(
-              child: Image.asset('assets/guider.png', fit: BoxFit.cover),
+              child: InkWell(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => GuiderProfile()),
+                  );
+                },
+                child: Image.asset('assets/guider.png', fit: BoxFit.cover),
+              ),
             ),
           ),
         ),
@@ -405,8 +414,7 @@ class _GuiderDashboardState extends State<GuiderDashboard> {
                                                   SizedBox(
                                                     width: 90,
                                                     child: inter(
-                                                      text:
-                                                          trip.username ,
+                                                      text: trip.username,
                                                       fontSize: 12,
                                                       color: Colors.white,
                                                       maxLines: 1,
@@ -472,8 +480,7 @@ class _GuiderDashboardState extends State<GuiderDashboard> {
                                                   SizedBox(
                                                     width: 90,
                                                     child: inter(
-                                                      text:
-                                                          trip.username ,
+                                                      text: trip.username,
                                                       fontSize: 12,
                                                       color: Colors.white,
                                                       maxLines: 1,
@@ -516,8 +523,7 @@ class _GuiderDashboardState extends State<GuiderDashboard> {
                                       Row(
                                         children: [
                                           popintext(
-                                            text:
-                                                trip.location.toString() ,
+                                            text: trip.location.toString(),
                                             fontSize: 12,
                                             color: AppColors.black,
                                             fw: FontWeight.w500,
@@ -526,8 +532,7 @@ class _GuiderDashboardState extends State<GuiderDashboard> {
                                           ),
                                           SizedBox(width: screenWidth * 0.06),
                                           popintext(
-                                            text:
-                                                trip.members.toString() ,
+                                            text: trip.members.toString(),
                                             fontSize: 12,
                                             color: AppColors.grey,
                                             fw: FontWeight.w400,
@@ -581,8 +586,6 @@ class _GuiderDashboardState extends State<GuiderDashboard> {
           ),
         ),
       ),
-
-      
     );
   }
 }

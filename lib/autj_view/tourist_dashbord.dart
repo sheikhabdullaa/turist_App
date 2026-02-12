@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:turist_app/active_trip.dart';
-import 'package:turist_app/autj_view/seen_guider.dart';
 import 'package:turist_app/autj_view/trip_details.dart';
 import 'package:turist_app/autj_view/bottom_sheet.dart';
 import 'package:turist_app/autj_view/creat_trip.dart';
@@ -441,7 +440,9 @@ class _TouristDashbordState extends State<TouristDashbord> {
                     onTap: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => SeenGuider()),
+                        MaterialPageRoute(
+                          builder: (context) => guideBottomSheet(),
+                        ),
                       );
                     },
                     child: actionButton(Icons.menu_book, 'Guides'),

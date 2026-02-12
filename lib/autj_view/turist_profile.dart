@@ -7,7 +7,6 @@ import 'package:turist_app/components/popin_text.dart';
 import 'package:turist_app/repository/auth_repo.dart';
 import 'package:turist_app/utils/app_colors.dart';
 import 'package:turist_app/widjets/login_sacreen/login_sacreen.dart';
-import 'package:turist_app/widjets/login_widget.dart';
 
 class TuristProfile extends StatefulWidget {
   const TuristProfile({super.key});
@@ -253,7 +252,14 @@ class _TuristProfilePageState extends State<TuristProfile> {
                     (route) => false,
                   );
                 },
-                child: const Text("Logout" , style: TextStyle(fontSize: 16 , color: AppColors.red , fontWeight: FontWeight.w700) ),
+                child: const Text(
+                  "Logout",
+                  style: TextStyle(
+                    fontSize: 16,
+                    color: AppColors.red,
+                    fontWeight: FontWeight.w700,
+                  ),
+                ),
               ),
 
               SizedBox(height: screenHeight * 0.06),
