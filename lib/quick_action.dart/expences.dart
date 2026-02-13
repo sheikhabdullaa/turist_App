@@ -7,6 +7,7 @@ import 'package:turist_app/repository/creat_trip_repo.dart';
 import 'package:turist_app/utils/app_colors.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+// ignore: camel_case_types
 class expencesPage extends StatefulWidget {
   const expencesPage({super.key});
 
@@ -15,6 +16,7 @@ class expencesPage extends StatefulWidget {
       _expencesPageState();
 }
 
+// ignore: camel_case_types
 class _expencesPageState extends State<expencesPage> {
   final dayClass = DayClasses();
   final degreeClass = DegreeClass();
