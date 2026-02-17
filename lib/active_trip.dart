@@ -55,7 +55,7 @@ class _ActiveTripState extends State<ActiveTrip> {
               );
             },
           ),
-        ], 
+        ],
       ),
 
       body: Column(
