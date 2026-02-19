@@ -12,6 +12,8 @@ import 'package:turist_app/components/custom_text.dart';
 import 'package:turist_app/components/custom_text_button.dart';
 import 'package:turist_app/components/inter_text.dart';
 import 'package:turist_app/components/popin_text.dart';
+import 'package:turist_app/quick_action.dart/expences.dart';
+import 'package:turist_app/quick_action.dart/weather.dart';
 import 'package:turist_app/repository/creat_trip_repo.dart';
 import 'package:turist_app/utils/app_colors.dart';
 
@@ -411,7 +413,7 @@ class _TouristDashbordState extends State<TouristDashbord> {
                     onTap: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => TripDaetails()),
+                        MaterialPageRoute(builder: (context) => expencesPage()),
                       );
                     },
                     child: actionButton(Icons.credit_card, 'Expenses'),
@@ -431,7 +433,7 @@ class _TouristDashbordState extends State<TouristDashbord> {
                     onTap: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => TripDaetails()),
+                        MaterialPageRoute(builder: (context) => WeatherPage()),
                       );
                     },
                     child: actionButton(Icons.cloud_outlined, 'Weather'),
