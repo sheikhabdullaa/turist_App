@@ -3,8 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:turist_app/autj_view/traveller_bottom_sheet.dart';
-import 'package:turist_app/autj_view/turist_dashbord_bottom_sheet.dart'
-    hide TravellerBottomSheet;
+import 'package:turist_app/autj_view/turist_dashbord_bottom_sheet.dart';
 import 'package:turist_app/components/custom_text.dart';
 import 'package:turist_app/components/homenaje.dart';
 import 'package:turist_app/components/inter_text.dart';
